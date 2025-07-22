@@ -1,0 +1,10 @@
+User-agent: *
+
+Allow: /
+Allow: /about
+Allow: /projects
+Allow: /resume
+Allow: /contact
+Allow: /blog
+
+Sitemap: https://jando.live/sitemap.xml
