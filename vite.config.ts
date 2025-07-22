@@ -7,5 +7,9 @@ export default defineConfig({
   server: {
     port: 8080,
     allowedHosts: ['localhost', 'jando.live', 'www.jando.live'],
+  },
+  preview: {
+    port: 8080,
+    allowedHosts: ['localhost', 'jando.live', 'www.jando.live'],
   }
 })
