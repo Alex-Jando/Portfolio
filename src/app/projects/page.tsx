@@ -1,11 +1,13 @@
-import { useEffect } from "react";
-import Project from "../components/Project";
-import { projects } from "../assets/projects";
+import Project from "../../components/Project";
+import projects from "../../../public/data/projects.json";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects | Alexander Jando",
+  description: "The projects created by Alexander Jando.",
+};
 
 const Projects = () => {
-  useEffect(() => {
-    document.title = "Projects | Alexander Jando";
-  }, []);
 
   return (
     <main>

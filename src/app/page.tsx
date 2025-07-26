@@ -1,15 +1,19 @@
-import { useEffect } from "react";
+import { Metadata } from "next";
+import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Home | Alexander Jando",
+  description: "Welcome to my portfolio website, showcasing my projects and skills as a developer and designer.",
+};
 
 const Home = () => {
 
-  useEffect(() => {
-    document.title = "Home | Alexander Jando";
-  }, []);
 
   return (
       <main className="home">
         <section>
-          <img src="/favicon.jpeg" alt="Website Favicon Logo" />
+          {/* <img src="/favicon.jpeg" alt="Website Favicon Logo" /> */}
+          <Image src="/favicon.jpeg" alt="Website Favicon Logo" width={200} height={200} />
         </section>
         <section>
           <h1>Hi, I'm Alexander Jando.</h1>

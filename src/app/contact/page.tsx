@@ -1,6 +1,13 @@
+import ContactBox from "../../components/ContactBox";
+import { Metadata } from "next";
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
-export const contacts = [
+export const metadata: Metadata = {
+  title: "Contact | Alexander Jando",
+  description: "Contact page for Alexander Jando.",
+};
+
+const contacts = [
   {
     name: "Email",
     link: "mailto:alex@jando.live",
@@ -32,3 +39,25 @@ export const contacts = [
     icon: <FaInstagram />,
   }
 ]
+
+const Contact = () => {
+
+  return (
+    <main>
+      <h1>Contact Me</h1>
+      <section className="contacts">
+        {contacts.map((contact) => (
+          <ContactBox 
+            key={contact.name}
+            name={contact.name}
+            link={contact.link}
+            linkText={contact.linkText}
+            icon={contact.icon}
+          />
+        ))}
+      </section>
+    </main>
+  )
+}
+
+export default Contact

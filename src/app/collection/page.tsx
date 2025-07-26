@@ -1,11 +1,13 @@
-import { useEffect } from "react";
-import { collections } from "../assets/collections";
-import CollectionBox from "../components/CollectionBox";
+import collections from "../../../public/data/collections.json";
+import CollectionBox from "../../components/CollectionBox";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Collection | Alexander Jando",
+  description: "A collection of Alexander Jando's media.",
+};
 
 const Media = () => {
-  useEffect(() => {
-    document.title = "Collection | Alexander Jando";
-  }, []);
 
   return (
     <main>

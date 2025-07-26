@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About | Alexander Jando",
+  description: "Information about Alexander Jando.",
+};
 
 const About = () => {
-
-  useEffect(() => {
-      document.title = "About | Alexander Jando";
-    }, []);
 
   return (
     <main>
@@ -19,7 +21,7 @@ const About = () => {
         <p>
           Currently, I am focused on expanding my skillset and gaining experience through projects and work. I'm fascinated by the growth of AI and its endless possible applications. I try to stay up-to-date with the latest trends in technology and utilize them in my projects.
         </p>
-        <p>I am always looking for new opportunities to learn and grow, whether through internships, co-op positions, or personal projects. If you have any questions or would like to <a href="https://jando.live/contact">connect</a>, feel free to reach out!</p>
+        <p>I am always looking for new opportunities to learn and grow, whether through internships, co-op positions, or personal projects. If you have any questions or would like to <Link href="/contact" prefetch={true}>connect</Link>, feel free to reach out!</p>
       </section>
     </main>
   )

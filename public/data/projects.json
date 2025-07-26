@@ -1,4 +1,4 @@
-export const projects = [
+[
     {
       "name": "AI Short Story Video Maker",
       "description":

@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { Metadata } from "next";
 
-const Blog = () => {
+export const metadata: Metadata = {
+  title: "Resume | Alexander Jando",
+  description: "The resume of Alexander Jando.",
+};
 
-  useEffect(() => {
-    document.title = "Resume | Alexander Jando";
-  }, []);
+const Resume = () => {
 
   return (
     <main className="resume">
@@ -99,4 +100,4 @@ const Blog = () => {
   )
 }
 
-export default Blog
+export default Resume;
