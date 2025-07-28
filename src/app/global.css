@@ -95,6 +95,7 @@ a:hover {
   object-fit: cover;
   aspect-ratio: 1 / 1;
   width: 10rem;
+  height: auto;
 }
 
 .resume section {
@@ -203,6 +204,7 @@ a:hover {
   aspect-ratio: 16 / 9;
   object-fit: cover;
   width: 10rem;
+  height: auto;
   margin-bottom: 0.5rem;
   justify-self: flex-start;
 }
@@ -211,4 +213,21 @@ a:hover {
   text-align: center;
   margin: 1rem 0;
   font-weight: 600;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+  margin-top: 4rem;
+  font-size: 1.5rem;
+}
+
+.not-found section a {
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
 }

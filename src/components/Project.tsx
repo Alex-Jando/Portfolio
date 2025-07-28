@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 const Project = ({project}: {project: Record<string, string>}) => {
   return (
     <article className="project">
         <a href={project.link} target="_blank" rel="noopener noreferrer">
-            <img src={project.image} alt={project.name} />
+            <Image src={project.image} alt={project.name} width={100} height={100} />
         </a>
         <div>
             <h3>

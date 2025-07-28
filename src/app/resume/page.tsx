@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Resume | Alexander Jando",
-  description: "The resume of Alexander Jando.",
+  description: "Here is a detailed resume listing the work experience, education, and projects of Alexander Jando.",
 };
 
 const Resume = () => {

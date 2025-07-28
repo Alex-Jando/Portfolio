@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Collection | Alexander Jando",
-  description: "A collection of Alexander Jando's media.",
+  description: "A collection of my own works and other projects I've found interesting.",
 };
 
 const Media = () => {

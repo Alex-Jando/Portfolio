@@ -4,7 +4,7 @@ import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaInstagram } from "react-ic
 
 export const metadata: Metadata = {
   title: "Contact | Alexander Jando",
-  description: "Contact page for Alexander Jando.",
+  description: "Get in touch with me through any of these contact means.",
 };
 
 const contacts = [
