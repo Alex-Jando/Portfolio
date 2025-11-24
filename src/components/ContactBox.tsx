@@ -1,15 +1,29 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
-const Contact = ({name, link, linkText, icon}: {name: string, link: string, linkText: string, icon: ReactNode}) => {
+const Contact = ({
+  name,
+  link,
+  linkText,
+  icon,
+}: {
+  name: string;
+  link: string;
+  linkText: string;
+  icon: ReactNode;
+}) => {
   return (
     <section>
-        <p>{name}</p>
+      <p>{name}</p>
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        {icon}
+      </a>
+      <p>
         <a href={link} target="_blank" rel="noopener noreferrer">
-          {icon}
+          {linkText}
         </a>
-        <p><a href="link">{linkText}</a></p>
+      </p>
     </section>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
