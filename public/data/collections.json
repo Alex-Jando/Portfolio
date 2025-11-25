@@ -1,14 +1,20 @@
 [
-    {
-        "title": "NoNotes - Showcase Video",
-        "category": "Video",
-        "thumbnail": "/collections/nonotes.webp",
-        "link": "https://www.youtube.com/watch?v=EBiBeUzb0xY"
-    },
-    {
-        "title": "AI Short Story Video Maker - Sample Video",
-        "category": "Video",
-        "thumbnail": "/collections/AIShortStoryVideoMakerDemo.png",
-        "link": "/collections/AIShortStoryVideoMakerDemo.mp4"
-    }
+  {
+    "title": "NoNotes - Showcase Video",
+    "category": "Video",
+    "thumbnail": "/collections/nonotes.webp",
+    "link": "https://www.youtube.com/watch?v=EBiBeUzb0xY"
+  },
+  {
+    "title": "AI Short Story Video Maker - Sample Video",
+    "category": "Video",
+    "thumbnail": "/collections/AIShortStoryVideoMakerDemo.png",
+    "link": "https://github.com/Alex-Jando/AIShortStoryVideoMaker/raw/refs/heads/master/examples/sample_video.mp4"
+  },
+  {
+    "title": "FIRA National - 1st Place Interview",
+    "category": "News",
+    "thumbnail": "/collections/fira.png",
+    "link": "https://www.nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010"
+  }
 ]

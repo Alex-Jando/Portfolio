@@ -59,7 +59,9 @@ const Resume = () => {
         <article>
           <h4>Skills</h4>
           <ul>
-            <li>Programming Languages: Python, JavaScript, Java, C++</li>
+            <li>
+              Programming Languages: Python, MATLAB, JavaScript, Java, C++
+            </li>
             <li>Web Development: HTML, CSS, JS, React</li>
             <li>Database Management: SQL, MongoDB</li>
             <li>Version Control: Git</li>
