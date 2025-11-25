@@ -1,5 +1,5 @@
 :root {
-  font-family:'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   line-height: 1.5;
   font-weight: 400;
 
@@ -10,17 +10,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --PRIMARY_COLOR: #E5E5E5;
-  --SECONDARY_COLOR: #FCA311;
-  --BACKGROUND_COLOR: #14213D;
+  --PRIMARY_COLOR: #e5e5e5;
+  --SECONDARY_COLOR: #fca311;
+  --BACKGROUND_COLOR: #14213d;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --PRIMARY_COLOR: #0A0908;
-    --SECONDARY_COLOR: #006666;
-    --BACKGROUND_COLOR: #a0a0a0;
-    
+    --PRIMARY_COLOR: #0b0b0b;
+    --SECONDARY_COLOR: #004040;
+    --BACKGROUND_COLOR: #cfcfcf;
   }
 }
 
