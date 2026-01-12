@@ -1,5 +1,5 @@
-import Project from "../../components/Project";
-import projects from "../../../public/data/projects.json";
+import Project from "@/components/Project";
+import projects from "@/../public/data/projects.json";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 };
 
 const Projects = () => {
-
   return (
     <main>
       <h1>My Projects</h1>
