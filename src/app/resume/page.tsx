@@ -111,6 +111,34 @@ const Resume = () => {
 
       <section>
         <h3>Experience</h3>
+
+        <h4>McMaster University</h4>
+        <p>September 2025 – December 2025</p>
+        <p>Engineering Project Manager & Software Lead</p>
+        <ul>
+          <li>
+            Led and coordinated a multidisciplinary engineering team through
+            planning, design, and final system delivery
+          </li>
+          <li>
+            Managed project scope, timelines, and task allocation across
+            mechanical and software components
+          </li>
+          <li>
+            Designed mechanical parts in Autodesk Inventor and manufactured
+            components using 3D printing and laser cutting
+          </li>
+          <li>
+            Developed Python-based control software and integrated Raspberry Pi
+            and Arduino motor control systems
+          </li>
+          <li>
+            Oversaw system integration and testing to achieve reliable,
+            repeatable robotic performance
+          </li>
+        </ul>
+        <br />
+
         <h4>Hypercharge Canada</h4>
         <p>June 2023 – August 2023</p>
         <p>EV Charger Technician Intern</p>

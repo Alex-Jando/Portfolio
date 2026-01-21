@@ -1,44 +1,56 @@
 [
   {
-    "name": "AI Short Story Video Maker",
-    "description": "An AI-powered, locally run video generator that creates engaging short-form social media videos based on a single prompt.",
-    "link": "https://github.com/Alex-Jando/AIShortStoryVideoMaker",
-    "image": "/projects/ai-short-story-video-maker.png"
-  },
-  {
-    "name": "PY-RAT",
-    "description": "A Python-based Remote Access Trojan (RAT) showcasing the potential risks of unprotected systems.",
-    "link": "https://github.com/Alex-Jando/PY-RAT",
-    "image": "/projects/pyrat.png"
-  },
-  {
-    "name": "QArm Order Packer | ENG 1P13 Project 1",
-    "description": "Created a custom QArm end-effector and control software to automate item handling and packing.",
-    "link": "https://github.com/Alex-Jando/1P13-Project1-Q-Arm-Packing",
-    "image": "/projects/1p13_project1.png"
-  },
-  {
-    "name": "NoNotes",
-    "description": "An AI-powered note-taking application that helps users organize their thoughts and ideas efficiently.",
+    "name": "NoNotes – AI Powered Note Taking Platform",
+    "description": "NoNotes is an AI-powered note-taking platform built during a 48-hour hackathon, where I served as the backend and AI lead. I designed and implemented a Flask-based backend API with a SQLite database to store, process, and retrieve user notes. The system converts spoken audio into text using speech-to-text processing, then applies natural language processing with NLTK to extract and summarize key information. I also designed logging systems and REST API endpoints to support a full JavaScript frontend. The project won 1st Place at HappyHacks II.",
     "link": "https://github.com/Alex-Jando/NoNotes",
     "image": "/projects/nonotes.webp"
   },
   {
-    "name": "HTTP-PyServer",
-    "description": "A lightweight Python HTTP server engine package designed for simplicity and efficiency.",
-    "link": "https://github.com/Alex-Jando/HTTP-PyServer",
-    "image": "/projects/http-pyserver.png"
-  },
-  {
-    "name": "Skydle",
-    "description": "A Hypixel Skyblock-themed wordle game that tests your knowledge of the game.",
-    "link": "https://github.com/Alex-Jando/Skydle",
+    "name": "Skydle – Online Wordle Game for Hypixel Skyblock",
+    "description": "Skydle is a full-stack, interactive Wordle-style web game built entirely as a solo project using React and JavaScript. The application dynamically pulls live data from an external API to generate daily puzzles based on Hypixel Skyblock items. I designed the game logic, API integration, and a clean, responsive user interface optimized for daily play. The project is deployed as a production site on GitHub Pages with a publicly accessible live demo.",
+    "link": "https://alex-jando.github.io/Skydle/",
     "image": "/projects/skydle.png"
   },
   {
-    "name": "MyPlate",
-    "description": "A macro-focused meal planning and creation app that helps users track their nutrition.",
+    "name": "PY-RAT – Security Research & Remote Administration Tool",
+    "description": "PY-RAT is a Python-based remote administration and security research tool developed as a solo project to explore common system vulnerabilities. I designed a custom socket-based communication protocol to efficiently transmit data between client and host. The tool includes live camera streaming using OpenCV and NumPy, remote command execution, and credential access testing for security research purposes. I packaged the complete system into a standalone executable using PyInstaller, allowing it to be deployed and run without a Python environment.",
+    "link": "https://github.com/Alex-Jando/PY-RAT",
+    "image": "/projects/pyrat.png"
+  },
+  {
+    "name": "FIRA RoboWorld Cup Autonomous Race Car",
+    "description": "This project involved designing and building an autonomous line-following race car for the FIRA RoboWorld Cup, completed as part of a two-person team. I programmed Raspberry Pi and Arduino systems using Python and C, integrating a Logitech camera for real-time computer vision. The vehicle uses edge detection to identify road lines and a PID controller to dynamically adjust steering. We performed extensive physical testing and tuning to ensure consistent and reliable race performance, achieving 1st Place nationally and 2nd Place internationally.",
+    "link": "https://www.nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010",
+    "image": "/projects/fira-racecar.jpg"
+  },
+  {
+    "name": "Q-Arm Order Packing Robot",
+    "description": "The Q-Arm Order Packing Robot was a team-based engineering design project completed as part of ENG 1P13. I served as the engineering project manager and software lead, overseeing both mechanical design and system integration. I designed and modeled a custom robotic end effector in Autodesk Inventor, manufactured components using 3D printing and laser cutting, and developed control software to automate object pickup and placement. I also coordinated testing to validate gripping reliability and repeatable operation.",
+    "link": "https://www.notion.so/P-1-Robotic-End-Effector-System-2c2a5473791681db954af45b4c336348?pvs=74",
+    "image": "/projects/1p13_project1.png"
+  },
+  {
+    "name": "AI Short Story Video Maker",
+    "description": "AI Short Story Video Maker is a locally run AI system that generates short-form videos from a single text prompt. I built a complete automation pipeline that handles story generation, image creation, and video rendering into a single end-to-end workflow. The project focuses on rapid content generation and showcases system orchestration, media processing, and AI-driven automation.",
+    "link": "https://github.com/Alex-Jando/AIShortStoryVideoMaker",
+    "image": "/projects/ai-short-story-video-maker.png"
+  },
+  {
+    "name": "HTTP-PyServer",
+    "description": "HTTP-PyServer is a lightweight Python HTTP server framework designed for simplicity and performance. I built the core server architecture, packaged it as a reusable module, and published it to PyPI for public installation and use. The project demonstrates backend fundamentals, modular design, and real-world package distribution.",
+    "link": "https://pypi.org/project/HTTP-PyServer/",
+    "image": "/projects/http-pyserver.png"
+  },
+  {
+    "name": "MyPlate – Nutrition and Macro Planner",
+    "description": "MyPlate is a mobile nutrition and meal planning application built in Java using Android Studio as part of a team project. I implemented features for tracking meals, macronutrients, and daily nutrition goals, along with local data storage for saving user food logs and preferences. I also contributed to the user interface design, focusing on usability and fast data entry. The project earned Developer of the Year recognition.",
     "link": "https://github.com/Alex-Jando/GOA2023-MyPlate",
     "image": "/projects/myplate.png"
+  },
+  {
+    "name": "Personal Engineering Portfolio",
+    "description": "My personal engineering portfolio is a responsive website built with Next.js, HTML, CSS, and JavaScript to showcase my software, robotics, and mechanical projects. I implemented server-side rendering and SEO optimization to improve performance and search visibility. The site is deployed on a Linux server hosted in Oracle Cloud and secured with Cloudflare Tunnel for 24/7 availability. I manage hosting, updates, and version control using Git.",
+    "link": "https://jando.live",
+    "image": "/favicon/favicon.svg"
   }
 ]
