@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: "https://jando.live/collections",
+      url: "https://jando.live/collection",
       priority: 0.6,
     },
   ];
