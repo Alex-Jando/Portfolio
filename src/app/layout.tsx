@@ -3,6 +3,8 @@ import Link from "next/link";
 import TypewriterClient from "@/components/TypewriterClient";
 import sections from "@/../public/data/sections.json";
 import "./global.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Alexander Jando",
@@ -53,6 +55,8 @@ export default function RootLayout({
         {children}
         <footer></footer>
       </body>
+      <Analytics />
+      <SpeedInsights />
     </html>
   );
 }
