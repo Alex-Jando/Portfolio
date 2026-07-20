@@ -49,7 +49,7 @@ const contacts = [
 const Contact = () => {
   return (
     <main className="page-shell">
-      <p className="eyebrow">Say hello</p>
+      <p className="eyebrow">Get in Touch</p>
       <h1>Contact Me</h1>
       <p className="page-intro">I&apos;m always happy to talk about engineering, projects, or new opportunities.</p>
       <section className="contacts">

@@ -10,15 +10,15 @@ This is the source code repository for my personal portfolio website.
 - Contact
 - Collection
 
-## Résumé workflow
+## Resume workflow
 
-The mechatronics résumé has one editable source file:
+The mechatronics resume has one editable source file:
 
 ```text
 resumes/mechatronics/resume.tex
 ```
 
-Run `npm run resume:build` to regenerate both the native web résumé data and
+Run `npm run resume:build` to regenerate both the native web resume data and
 `public/resume/EngineeringResume.pdf`. The normal production build runs this
 step automatically. During development, `npm run dev` also watches the LaTeX
 source and rebuilds after each save.

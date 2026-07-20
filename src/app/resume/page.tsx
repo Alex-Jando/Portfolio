@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import resume from "@/generated/resume.json";
 
 export const metadata: Metadata = {
-  title: "Résumé | Alexander Jando",
-  description: "Alexander Jando's mechatronics engineering résumé, generated from LaTeX.",
+  title: "Resume | Alexander Jando",
+  description: "Alexander Jando's mechatronics engineering resume.",
 };
 
 export default function Resume() {
@@ -11,9 +11,9 @@ export default function Resume() {
     <main className="resume-page page-shell">
       <div className="resume-page-heading">
         <div>
-          <p className="eyebrow">Generated from LaTeX</p>
-          <h1>Résumé</h1>
-          <p className="page-intro">A web-readable version of my current mechatronics résumé.</p>
+          <p className="eyebrow">Experience &amp; Qualifications</p>
+          <h1>Resume</h1>
+          <p className="page-intro">My current mechatronics engineering resume.</p>
         </div>
         <div className="resume-actions">
           <a className="button-link" href="/resume/EngineeringResume.pdf" download>[ Download PDF ]</a>
@@ -92,7 +92,6 @@ export default function Resume() {
         </section>
       </article>
 
-      <p className="resume-note">This page and the downloadable PDF are generated from <code>resumes/mechatronics/resume.tex</code>.</p>
     </main>
   );
 }

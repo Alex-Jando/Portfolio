@@ -68,9 +68,6 @@ export default function RootLayout({
           <ThemeToggle />
         </header>
         <div id="main-content">{children}</div>
-        <footer className="site-footer">
-          <p>Designed and built by Alexander Jando.</p>
-        </footer>
       </body>
       <Analytics />
       <SpeedInsights />

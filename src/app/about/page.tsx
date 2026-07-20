@@ -10,7 +10,7 @@ const About = () => {
 
   return (
     <main className="page-shell">
-      <p className="eyebrow">A little context</p>
+      <p className="eyebrow">Background &amp; Interests</p>
       <h1>About Me</h1>
       <section className="about">
         <p>

@@ -57,7 +57,7 @@ const education = educationMatch ? {
 } : null;
 
 const data = {
-  variant: "Mechatronics Résumé",
+  variant: "Mechatronics Resume",
   name: "Alexander Jando",
   locations: "Hamilton, ON | West Vancouver, BC",
   contacts: [
@@ -101,4 +101,4 @@ if (result.status === 0) {
   console.warn("Tectonic is unavailable; kept the last compiled PDF. Install Tectonic for automatic PDF regeneration.");
 }
 
-console.log("Generated native résumé data and PDF assets from resumes/mechatronics/resume.tex");
+console.log("Generated native resume data and PDF assets from resumes/mechatronics/resume.tex");
