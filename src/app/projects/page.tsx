@@ -9,8 +9,10 @@ export const metadata: Metadata = {
 
 const Projects = () => {
   return (
-    <main>
+    <main className="page-shell">
+      <p className="eyebrow">Things I&apos;ve built</p>
       <h1>My Projects</h1>
+      <p className="page-intro">Software, robotics, embedded systems, and the experiments between them.</p>
       <section className="projects">
         {projects.map((project) => {
           return <Project project={project} key={project.name} />;

@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 
 const Media = () => {
   return (
-    <main>
+    <main className="page-shell">
+      <p className="eyebrow">Demos, interviews, and miscellany</p>
       <h1>My Collection</h1>
       <section className="collection">
         {collections.map((collection) => {

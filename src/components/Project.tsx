@@ -6,16 +6,16 @@ const Project = ({project}: {project: Record<string, string>}) => {
         <a href={project.link} target="_blank" rel="noopener noreferrer">
             <Image src={project.image} alt={project.name} width={100} height={100} />
         </a>
-        <div>
+        <div className="project-copy">
             <h3>
                 {project.name}
             </h3>
             <p>
                 {project.description}
             </p>
-            <p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-                View Project
+            <p className="project-link">
+            <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} (opens in a new tab)`}>
+                [ View Project ↗ ]
             </a>
         </p>
         </div>

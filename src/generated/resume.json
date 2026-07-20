@@ -1,0 +1,156 @@
+{
+  "variant": "Mechatronics Résumé",
+  "name": "Alexander Jando",
+  "locations": "Hamilton, ON | West Vancouver, BC",
+  "contacts": [
+    {
+      "label": "alex@jando.live",
+      "href": "mailto:alex@jando.live"
+    },
+    {
+      "label": "+1 (236) 865-5560",
+      "href": "tel:+12368655560"
+    },
+    {
+      "label": "jando.live",
+      "href": "https://jando.live"
+    },
+    {
+      "label": "github.com/Alex-Jando",
+      "href": "https://github.com/Alex-Jando"
+    },
+    {
+      "label": "alex-jando",
+      "href": "https://www.linkedin.com/in/alex-jando"
+    }
+  ],
+  "summary": "Mechatronics-focused engineering student at McMaster University with hands-on experience designing, building, and integrating robotic and embedded systems. Strong background in mechanical design, controls, sensors, and hardware–software integration, with leadership experience on multidisciplinary engineering projects.",
+  "education": {
+    "title": "McMaster University",
+    "date": "Expected 2029",
+    "subtitle": "Bachelor of Engineering (B.Eng.), General Engineering",
+    "location": "Hamilton, ON",
+    "detail": "Focus: Mechatronics, Robotics, Embedded and Mechanical Engineering"
+  },
+  "skills": [
+    {
+      "label": "Programming",
+      "value": "Python, C/C++, MATLAB"
+    },
+    {
+      "label": "Embedded Systems",
+      "value": "Arduino, Raspberry Pi, Jetson Nano"
+    },
+    {
+      "label": "Controls & Robotics",
+      "value": "PID Control, Motor Control, Sensors, Actuators"
+    },
+    {
+      "label": "Computer Vision",
+      "value": "OpenCV, NumPy"
+    },
+    {
+      "label": "CAD & Manufacturing",
+      "value": "Autodesk Inventor, OnShape, 3D Printing, Laser Cutting"
+    },
+    {
+      "label": "Tools",
+      "value": "Git, Linux, Oscilloscopes, Multimeters"
+    }
+  ],
+  "experience": [
+    {
+      "title": "McMaster University",
+      "date": "September 2025 – December 2025",
+      "subtitle": "Engineering Project Manager & Software Lead",
+      "location": "Hamilton, ON",
+      "items": [
+        "Led a multidisciplinary engineering team through system planning, design, and final robotic system delivery.",
+        "Managed project scope, timelines, and task allocation across mechanical, electrical, and software subsystems.",
+        "Designed mechanical components in Autodesk Inventor and manufactured parts using 3D printing and laser cutting.",
+        "Developed Python-based control software integrating Raspberry Pi and Arduino motor control systems."
+      ]
+    },
+    {
+      "title": "Hypercharge Canada",
+      "date": "June 2023 – August 2023",
+      "subtitle": "EV Charger Technician Intern",
+      "location": "Vancouver, BC",
+      "items": [
+        "Assembled, configured, and tested 100+ EV charging units involving embedded firmware and power electronics.",
+        "Diagnosed hardware faults, replaced internal components, and performed electrical checks and quality control."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "FIRA RoboWorld Cup Autonomous Race Car",
+      "subtitle": "Team Project",
+      "links": [
+        {
+          "href": "https://www.nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010/",
+          "label": "nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010"
+        }
+      ],
+      "items": [
+        "Designed and built an autonomous line-following race car using Raspberry Pi and Arduino.",
+        "Implemented computer vision edge detection and PID steering control using Python and OpenCV.",
+        "Performed extensive real-world testing and tuning to achieve competition-ready performance."
+      ]
+    },
+    {
+      "title": "Q-Arm Order Packing Robot",
+      "subtitle": "ENG 1P13 Engineering Design Project",
+      "links": [
+        {
+          "href": "https://www.notion.so/P-1-Robotic-End-Effector-System-2c2a5473791681db954af45b4c336348?pvs=74/",
+          "label": "notion.so/P-1-Robotic-End-Effector-System-2c2a5473791681db954af45b4c336348"
+        }
+      ],
+      "items": [
+        "Designed a custom robotic end effector in Autodesk Inventor for automated object handling.",
+        "Developed control software for pick-and-place motion and validated gripping reliability."
+      ]
+    },
+    {
+      "title": "NoNotes – AI Powered Note Taking Platform",
+      "subtitle": "Backend Lead",
+      "links": [
+        {
+          "href": "https://www.youtube.com/watch?v=EBiBeUzb0xY",
+          "label": "youtube.com/watch?v=EBiBeUzb0xY"
+        }
+      ],
+      "items": [
+        "Built backend systems for audio processing and AI summarization, demonstrating strong system integration skills."
+      ]
+    },
+    {
+      "title": "Personal Engineering Portfolio",
+      "subtitle": "Solo",
+      "links": [
+        {
+          "href": "https://www.jando.live",
+          "label": "jando.live"
+        }
+      ],
+      "items": [
+        "Documented robotics, mechanical, and embedded projects with CAD models, code, and system diagrams."
+      ]
+    }
+  ],
+  "awards": [
+    "1st Place FIRA RoboWorld Cup (National)",
+    "2nd Place (International)",
+    "1st Place HappyHacks II",
+    "CyberTitan Platinum",
+    "National Lifeguard",
+    "Standard First Aid & CPR C",
+    "DELF B2 French"
+  ],
+  "languages": [
+    "English (Native)",
+    "French (Fluent)"
+  ],
+  "generatedAt": "2026-07-20T19:44:40.723Z"
+}

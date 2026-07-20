@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "concurrently -k 'next dev --turbopack' 'npm run resume:watch'",
+    "build": "npm run resume:build && next build",
     "start": "next start -p 8080",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "resume:build": "node scripts/build-resumes.mjs",
+    "resume:watch": "node scripts/watch-resumes.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
+    "latex.js": "^0.12.6",
     "next": "^15.5.9",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -22,6 +26,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chokidar": "^5.0.0",
+    "concurrently": "^10.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.4.3",
     "typescript": "^5"

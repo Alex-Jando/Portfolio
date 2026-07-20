@@ -9,7 +9,8 @@ export const metadata: Metadata = {
 const About = () => {
 
   return (
-    <main>
+    <main className="page-shell">
+      <p className="eyebrow">A little context</p>
       <h1>About Me</h1>
       <section className="about">
         <p>

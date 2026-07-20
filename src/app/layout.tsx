@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TypewriterClient from "@/components/TypewriterClient";
+import ThemeToggle from "@/components/ThemeToggle";
 import sections from "@/../public/data/sections.json";
 import "./global.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -8,8 +9,19 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Alexander Jando",
-  description: "Portfolio of Alexander Jando.",
+  description: "The engineering and software portfolio of Alexander Jando.",
 };
+
+const themeScript = `
+  (() => {
+    const saved = localStorage.getItem('theme');
+    const theme = saved === 'light' || saved === 'dark'
+      ? saved
+      : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  })();
+`;
 
 export default function RootLayout({
   children,
@@ -17,8 +29,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link
           rel="icon"
           type="image/png"
@@ -36,11 +49,12 @@ export default function RootLayout({
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </head>
       <body>
-        <header>
-          <h2>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <header className="site-header">
+          <Link className="site-wordmark" href="/" aria-label="Alexander Jando — home">
             <TypewriterClient text="Alexander Jando" />
-          </h2>
-          <nav>
+          </Link>
+          <nav aria-label="Main navigation">
             <ul>
               {sections.map(([name, path]) => (
                 <li key={name}>
@@ -51,9 +65,12 @@ export default function RootLayout({
               ))}
             </ul>
           </nav>
+          <ThemeToggle />
         </header>
-        {children}
-        <footer></footer>
+        <div id="main-content">{children}</div>
+        <footer className="site-footer">
+          <p>Designed and built by Alexander Jando.</p>
+        </footer>
       </body>
       <Analytics />
       <SpeedInsights />

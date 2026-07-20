@@ -48,8 +48,10 @@ const contacts = [
 
 const Contact = () => {
   return (
-    <main>
+    <main className="page-shell">
+      <p className="eyebrow">Say hello</p>
       <h1>Contact Me</h1>
+      <p className="page-intro">I&apos;m always happy to talk about engineering, projects, or new opportunities.</p>
       <section className="contacts">
         {contacts.map((contact) => (
           <ContactBox
