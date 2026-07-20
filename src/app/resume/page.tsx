@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { FaEnvelope, FaGithub, FaGlobe, FaLinkedin, FaPhone } from "react-icons/fa";
 import resume from "@/generated/resume.json";
 
 export const metadata: Metadata = {
   title: "Resume | Alexander Jando",
   description: "Alexander Jando's mechatronics engineering resume.",
 };
+
+const contactIcons = [FaEnvelope, FaPhone, FaGlobe, FaGithub, FaLinkedin];
 
 export default function Resume() {
   return (
@@ -26,9 +29,17 @@ export default function Resume() {
           <h2>{resume.name}</h2>
           <p>{resume.locations}</p>
           <ul>
-            {resume.contacts.map((contact) => (
-              <li key={contact.href}><a href={contact.href}>{contact.label}</a></li>
-            ))}
+            {resume.contacts.map((contact, index) => {
+              const Icon = contactIcons[index];
+              return (
+                <li key={contact.href}>
+                  <a href={contact.href}>
+                    <Icon className="resume-contact-icon" aria-hidden="true" />
+                    <span>{contact.label}</span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </header>
 
