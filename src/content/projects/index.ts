@@ -1,7 +1,7 @@
-import { nonotes } from "./nonotes";
+import NoNotesContent, { project as nonotes } from "./nonotes.mdx";
 
 export const projectDetails = {
-  [nonotes.slug]: nonotes,
+  [nonotes.slug]: { ...nonotes, Content: NoNotesContent },
 };
 
 export type ProjectSlug = keyof typeof projectDetails;

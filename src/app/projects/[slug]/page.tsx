@@ -27,5 +27,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const project = getProject(slug);
   if (!project) notFound();
 
-  return <ProjectLayout project={project} />;
+  const Content = project.Content;
+
+  return <ProjectLayout project={{ ...project, content: <Content /> }} />;
 }

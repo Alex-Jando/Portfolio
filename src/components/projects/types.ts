@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ComponentType, ReactNode } from "react";
 
 export type ProjectLink = {
   label: string;
@@ -11,7 +11,7 @@ export type ProjectFact = {
   value: string;
 };
 
-export type ProjectDetail = {
+export type ProjectData = {
   slug: string;
   title: string;
   category: string;
@@ -23,6 +23,13 @@ export type ProjectDetail = {
   facts: ProjectFact[];
   technologies: string[];
   features?: string[];
-  content: ReactNode;
   sidebar?: ReactNode;
+};
+
+export type ProjectDetail = ProjectData & {
+  content: ReactNode;
+};
+
+export type ProjectEntry = ProjectData & {
+  Content: ComponentType;
 };
