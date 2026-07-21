@@ -15,12 +15,14 @@
   {
     "name": "PY-RAT – Security Research & Remote Administration Tool",
     "description": "PY-RAT is a Python-based remote administration and security research tool developed as a solo project to explore common system vulnerabilities. I designed a custom socket-based communication protocol to efficiently transmit data between client and host. The tool includes live camera streaming using OpenCV and NumPy, remote command execution, and credential access testing for security research purposes. I packaged the complete system into a standalone executable using PyInstaller, allowing it to be deployed and run without a Python environment.",
+    "detailLink": "/projects/py-rat",
     "link": "https://github.com/Alex-Jando/PY-RAT",
     "image": "/projects/pyrat.png"
   },
   {
     "name": "FIRA RoboWorld Cup Autonomous Race Car",
     "description": "This project involved designing and building an autonomous line-following race car for the FIRA RoboWorld Cup, completed as part of a two-person team. I programmed Raspberry Pi and Arduino systems using Python and C, integrating a Logitech camera for real-time computer vision. The vehicle uses edge detection to identify road lines and a PID controller to dynamically adjust steering. We performed extensive physical testing and tuning to ensure consistent and reliable race performance, achieving 1st Place nationally and 2nd Place internationally.",
+    "detailLink": "/projects/fira-race-car",
     "link": "https://www.nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010",
     "image": "/projects/fira-racecar.jpg"
   },

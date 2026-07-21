@@ -1,0 +1,67 @@
+import ProjectSection from "@/components/projects/ProjectSection";
+
+export const project = {
+  slug: "py-rat",
+  title: "PY-RAT",
+  category: "Security Research & Software",
+  summary: "A Python remote administration tool built to study client-server communication, system access, and common endpoint security risks in controlled environments.",
+  description: "A case study of PY-RAT, a solo security research and remote administration project.",
+  image: "/projects/pyrat.png",
+  imageAlt: "PY-RAT project logo",
+  links: [
+    { label: "View Source", href: "https://github.com/Alex-Jando/PY-RAT" },
+  ],
+  facts: [
+    { label: "Format", value: "Solo project" },
+    { label: "Architecture", value: "Client-server" },
+    { label: "Platform", value: "Windows" },
+    { label: "Distribution", value: "PyInstaller executable" },
+  ],
+  technologies: ["Python", "Sockets", "OpenCV", "NumPy", "Threading", "PyInstaller", "Windows"],
+  features: [
+    "Custom length-prefixed socket messages",
+    "Remote file and directory operations",
+    "System information and process controls",
+    "Screenshot and camera capture",
+    "Screen and camera streaming",
+    "Standalone client packaging",
+  ],
+};
+
+<ProjectSection title="Overview">
+
+PY-RAT is a remote administration tool I developed as a solo security research project. It pairs an operator-side console with a Windows client and uses a custom TCP socket protocol to exchange commands, status information, files, and image data.
+
+The project explored how remote administration software interacts with an endpoint and why unrestricted system access presents serious security risks. It was designed for authorized testing and educational use in controlled environments.
+
+</ProjectSection>
+
+<ProjectSection title="Original project description">
+
+PY-RAT is a Python-based remote administration and security research tool developed as a solo project to explore common system vulnerabilities. I designed a custom socket-based communication protocol to efficiently transmit data between client and host. The tool includes live camera streaming using OpenCV and NumPy, remote command execution, and credential access testing for security research purposes. I packaged the complete system into a standalone executable using PyInstaller, allowing it to be deployed and run without a Python environment.
+
+</ProjectSection>
+
+<ProjectSection title="System architecture">
+
+<ol className="project-process">
+  <li><strong>Connect</strong><span>The Windows client establishes a TCP connection to the operator-side server.</span></li>
+  <li><strong>Frame</strong><span>A custom length-prefixed message format keeps commands and responses intact across the socket connection.</span></li>
+  <li><strong>Execute</strong><span>The client maps recognized commands to file, system, process, and media operations.</span></li>
+  <li><strong>Return</strong><span>Results and binary media are encoded and transmitted back to the console for display or storage.</span></li>
+  <li><strong>Package</strong><span>PyInstaller bundles the client and required modules into a standalone Windows executable.</span></li>
+</ol>
+
+</ProjectSection>
+
+<ProjectSection title="Technical scope">
+
+The operator console manages connected clients and exposes commands for navigating directories, transferring files, inspecting system details, managing processes, and executing authorized system commands. OpenCV and NumPy support screenshot, camera, and live-stream handling, while threading keeps connection and streaming work from blocking the primary interface.
+
+</ProjectSection>
+
+<ProjectSection title="Security perspective">
+
+Building the tool provided a practical view of the capabilities defenders must account for in remote-access software: persistent network communication, broad file-system access, command execution, and sensor capture. The repository is presented as security research and should only be used on systems where the operator has explicit permission.
+
+</ProjectSection>

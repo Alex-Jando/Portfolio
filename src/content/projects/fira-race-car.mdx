@@ -1,0 +1,66 @@
+import ProjectSection from "@/components/projects/ProjectSection";
+
+export const project = {
+  slug: "fira-race-car",
+  title: "FIRA RoboWorld Cup Autonomous Race Car",
+  category: "Robotics & Embedded Systems",
+  summary: "A camera-guided autonomous race car that used computer vision and closed-loop steering control to place first nationally and second internationally.",
+  description: "A case study of the autonomous line-following race car built for the FIRA RoboWorld Cup.",
+  image: "/projects/fira-racecar.jpg",
+  imageAlt: "FIRA RoboWorld Cup autonomous race car",
+  links: [
+    { label: "Read News Interview", href: "https://www.nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010" },
+  ],
+  facts: [
+    { label: "Result", value: "1st national, 2nd international" },
+    { label: "Format", value: "Two-person team" },
+    { label: "Compute", value: "Raspberry Pi & Arduino" },
+    { label: "Control", value: "Vision-guided PID steering" },
+  ],
+  technologies: ["Python", "C", "OpenCV", "Raspberry Pi", "Arduino", "Computer Vision", "PID Control"],
+  features: [
+    "Real-time camera input",
+    "Road-line edge detection",
+    "Closed-loop steering correction",
+    "Raspberry Pi and Arduino integration",
+    "Physical testing and control tuning",
+  ],
+};
+
+<ProjectSection title="Overview">
+
+This autonomous race car was designed and built for the FIRA RoboWorld Cup as a two-person team project. A Raspberry Pi processed live video from a Logitech camera to identify the track, while an Arduino handled the vehicle's lower-level motor and steering interfaces.
+
+The completed system combined perception, control, embedded programming, and extensive physical validation. It achieved first place at the national competition and second place internationally.
+
+</ProjectSection>
+
+<ProjectSection title="Original project description">
+
+This project involved designing and building an autonomous line-following race car for the FIRA RoboWorld Cup, completed as part of a two-person team. I programmed Raspberry Pi and Arduino systems using Python and C, integrating a Logitech camera for real-time computer vision. The vehicle uses edge detection to identify road lines and a PID controller to dynamically adjust steering. We performed extensive physical testing and tuning to ensure consistent and reliable race performance, achieving 1st Place nationally and 2nd Place internationally.
+
+</ProjectSection>
+
+<ProjectSection title="Control pipeline">
+
+<ol className="project-process">
+  <li><strong>Capture</strong><span>A forward-facing Logitech camera provides a continuous view of the race track.</span></li>
+  <li><strong>Detect</strong><span>Python and OpenCV process each frame and use edge information to locate the road lines.</span></li>
+  <li><strong>Estimate</strong><span>The vision system calculates the car's position relative to the desired path.</span></li>
+  <li><strong>Correct</strong><span>A PID controller converts path error into responsive steering adjustments.</span></li>
+  <li><strong>Validate</strong><span>Repeated track testing informs control gains and improves consistency at race speed.</span></li>
+</ol>
+
+</ProjectSection>
+
+<ProjectSection title="Hardware and software integration">
+
+The vehicle divided responsibilities between the Raspberry Pi and Arduino so vision processing and lower-level hardware control could work together. Python supported the computer-vision pipeline and high-level steering decisions, while C handled embedded control tasks on the Arduino.
+
+</ProjectSection>
+
+<ProjectSection title="Testing and outcome">
+
+The largest part of making the system competition-ready was iterative physical testing. Camera placement, edge-detection behavior, steering response, and PID gains were tuned against real track conditions rather than evaluated only in software. That integration and validation work produced reliable race performance across both national and international competition.
+
+</ProjectSection>

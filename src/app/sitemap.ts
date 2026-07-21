@@ -19,6 +19,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://jando.live/projects/http-pyserver",
+      priority: 0.8,
+    },
+    {
+      url: "https://jando.live/projects/py-rat",
+      priority: 0.8,
+    },
+    {
+      url: "https://jando.live/projects/fira-race-car",
+      priority: 0.8,
+    },
+    {
       url: "https://jando.live/resume",
       priority: 0.9,
     },
