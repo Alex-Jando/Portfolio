@@ -15,6 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://jando.live/projects/nonotes",
+      priority: 0.8,
+    },
+    {
       url: "https://jando.live/resume",
       priority: 0.9,
     },

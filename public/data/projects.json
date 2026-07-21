@@ -2,6 +2,7 @@
   {
     "name": "NoNotes – AI Powered Note Taking Platform",
     "description": "NoNotes is an AI-powered note-taking platform built during a 48-hour hackathon, where I served as the backend and AI lead. I designed and implemented a Flask-based backend API with a SQLite database to store, process, and retrieve user notes. The system converts spoken audio into text using speech-to-text processing, then applies natural language processing with NLTK to extract and summarize key information. I also designed logging systems and REST API endpoints to support a full JavaScript frontend. The project won 1st Place at HappyHacks II.",
+    "detailLink": "/projects/nonotes",
     "link": "https://github.com/Alex-Jando/NoNotes",
     "image": "/projects/nonotes.webp"
   },

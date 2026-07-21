@@ -1,11 +1,23 @@
 import Image from "next/image";
+import Link from "next/link";
 
-const Project = ({project}: {project: Record<string, string>}) => {
+type ProjectData = {
+  name: string;
+  description: string;
+  link: string;
+  image: string;
+  detailLink?: string;
+};
+
+const Project = ({project}: {project: ProjectData}) => {
+  const projectLink = project.detailLink || project.link;
+  const isInternal = Boolean(project.detailLink);
+
   return (
     <article className="project">
-        <a href={project.link} target="_blank" rel="noopener noreferrer">
+        <Link href={projectLink}>
             <Image src={project.image} alt={project.name} width={100} height={100} />
-        </a>
+        </Link>
         <div className="project-copy">
             <h3>
                 {project.name}
@@ -14,9 +26,15 @@ const Project = ({project}: {project: Record<string, string>}) => {
                 {project.description}
             </p>
             <p className="project-link">
-            <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} (opens in a new tab)`}>
+            {isInternal ? (
+              <Link href={projectLink} aria-label={`Read the ${project.name} case study`}>
+                [ View Case Study → ]
+              </Link>
+            ) : (
+              <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} (opens in a new tab)`}>
                 [ View Project ↗ ]
-            </a>
+              </a>
+            )}
         </p>
         </div>
     </article>
