@@ -1,0 +1,85 @@
+import ProjectSection from "@/components/projects/ProjectSection";
+
+export const project = {
+  slug: "http-pyserver",
+  title: "HTTP-PyServer",
+  category: "Software & Open Source",
+  summary: "A lightweight Python framework for building customizable HTTP servers with a compact API and no third-party runtime dependencies.",
+  description: "A case study of HTTP-PyServer, a lightweight HTTP server framework for Python published on PyPI.",
+  image: "/projects/http-pyserver.png",
+  imageAlt: "HTTP-PyServer project logo",
+  links: [
+    { label: "View on PyPI", href: "https://pypi.org/project/HTTP-PyServer/" },
+    { label: "View Source", href: "https://github.com/Alex-Jando/HTTP-PyServer", variant: "secondary" },
+  ],
+  facts: [
+    { label: "Distribution", value: "Published on PyPI" },
+    { label: "Current release", value: "0.1.4.4" },
+    { label: "Compatibility", value: "Python 3.7+" },
+    { label: "License", value: "MIT" },
+  ],
+  technologies: ["Python", "Sockets", "Threading", "HTTP", "SSL", "PyPI", "Setuptools"],
+  features: [
+    "Decorator-based routing",
+    "Wildcard routes and request parsing",
+    "Static files and multiple response types",
+    "Sessions and expiring server-side cache",
+    "HTML templating with Python values",
+    "Custom logging and SSL support",
+  ],
+};
+
+<ProjectSection title="Overview">
+
+HTTP-PyServer is a lightweight framework for creating HTTP servers in Python with a small, approachable API. It builds on Python's standard library rather than a third-party web framework, providing the core pieces needed to route requests, return files and structured data, manage sessions, cache information, and render templates.
+
+I designed the server architecture, separated its behavior into reusable modules, packaged the project for installation with `pip`, and published it on PyPI. The project gave me practical experience with HTTP, sockets, concurrent request handling, API design, packaging, and maintaining a public software release.
+
+![PyPI Downloads](https://img.shields.io/pypi/dm/HTTP-PyServer)
+
+</ProjectSection>
+
+<ProjectSection title="A compact server API">
+
+The framework uses decorators to connect Python functions to routes while keeping the underlying server setup out of the application code. A basic server can be expressed in only a few lines:
+
+```python
+import server
+
+app = server.Server()
+
+@app.route('/')
+def home(request):
+    return 'Hello, world!'
+
+with app:
+    app.wait('Press Enter to continue...')
+```
+
+This interface keeps simple applications concise while still exposing request data, response behavior, logging, templates, sessions, caching, and wildcard routes when a project needs more control.
+
+</ProjectSection>
+
+<ProjectSection title="How it is structured">
+
+<ol className="project-process">
+  <li><strong>Listen</strong><span>The server accepts incoming connections using Python's socket APIs.</span></li>
+  <li><strong>Parse</strong><span>Request objects expose headers, query values, client information, and the HTTP method.</span></li>
+  <li><strong>Route</strong><span>Registered paths and wildcard patterns map requests to application functions.</span></li>
+  <li><strong>Respond</strong><span>Response handling supports text, HTML, CSS, JavaScript, JSON, images, and video.</span></li>
+  <li><strong>Maintain state</strong><span>Session and cache modules support user-specific and time-limited server data.</span></li>
+</ol>
+
+</ProjectSection>
+
+<ProjectSection title="Design priorities">
+
+The project focuses on keeping the dependency footprint small and the application-facing API understandable. Its runtime uses only modules included with Python 3.7 or newer, while multithreading allows the server to handle concurrent work. The package also gives applications explicit control over which files and routes are exposed rather than automatically publishing a directory.
+
+</ProjectSection>
+
+<ProjectSection title="Distribution">
+
+HTTP-PyServer is packaged with a modern `pyproject.toml` build configuration and distributed publicly through PyPI. Publishing the library required treating installation, versioning, documentation, licensing, and compatibility as part of the product—not just the server implementation itself.
+
+</ProjectSection>

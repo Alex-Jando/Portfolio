@@ -39,6 +39,7 @@
   {
     "name": "HTTP-PyServer",
     "description": "HTTP-PyServer is a lightweight Python HTTP server framework designed for simplicity and performance. I built the core server architecture, packaged it as a reusable module, and published it to PyPI for public installation and use. The project demonstrates backend fundamentals, modular design, and real-world package distribution.",
+    "detailLink": "/projects/http-pyserver",
     "link": "https://pypi.org/project/HTTP-PyServer/",
     "image": "/projects/http-pyserver.png"
   },
