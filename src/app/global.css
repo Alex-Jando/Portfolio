@@ -100,7 +100,7 @@ h1 { margin-bottom: 0.75rem; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1
 .project-detail-hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.5fr); align-items: center; gap: clamp(2rem, 7vw, 6rem); }
 .project-detail-lede { max-width: 60ch; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); }
 .project-detail-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
-.project-detail-mark { padding: clamp(1rem, 3vw, 2rem); background: #fff; border: 1px solid var(--border); box-shadow: 14px 14px 0 var(--surface-strong); }
+.project-detail-mark { overflow: hidden; background: transparent; box-shadow: 14px 14px 0 var(--surface-strong); }
 .project-detail-mark img { display: block; width: 100%; height: auto; }
 .project-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin: clamp(2.5rem, 7vw, 5rem) 0; border: 1px solid var(--border); background: var(--border); }
 .project-facts div { display: flex; flex-direction: column; gap: 0.3rem; padding: 1.15rem; background: var(--surface); }
