@@ -4,7 +4,7 @@ export const project = {
   slug: "nonotes",
   title: "NoNotes",
   category: "AI & Software",
-  summary: "An AI-powered note-taking platform that turns recorded audio into a transcription and concise, point-form notes.",
+  summary: "A first-place hackathon prototype that converts browser-recorded audio into transcripts and BERT-based extractive notes.",
   description: "A case study of NoNotes, the first-place AI note-taking platform built at HappyHacks II.",
   image: "/projects/nonotes.webp",
   imageAlt: "NoNotes logo",
@@ -14,8 +14,8 @@ export const project = {
   ],
   facts: [
     { label: "Result", value: "1st Place, HappyHacks II" },
-    { label: "Format", value: "48-hour hackathon" },
-    { label: "Role", value: "Backend & AI Lead" },
+    { label: "Format", value: "Team hackathon project" },
+    { label: "Focus", value: "Backend & NLP pipeline" },
     { label: "Year", value: "2023" },
   ],
   technologies: ["Python", "Flask", "SQLite", "JavaScript", "NLTK", "BERT", "SpeechRecognition", "PyDub"],
@@ -32,13 +32,7 @@ export const project = {
 
 NoNotes was built to reduce the work between hearing useful information and turning it into organized notes. A user records audio in the browser, then the application transcribes the recording, restores punctuation, extracts the most important information, and presents both the full transcription and a summarized set of notes.
 
-I led the backend and AI work, connecting the browser experience to a Flask application and building the processing pipeline behind the product. The project was completed during HappyHacks II and earned first place.
-
-</ProjectSection>
-
-<ProjectSection title="Original project description">
-
-NoNotes is an AI-powered note-taking platform built during a 48-hour hackathon, where I served as the backend and AI lead. I designed and implemented a Flask-based backend API with a SQLite database to store, process, and retrieve user notes. The system converts spoken audio into text using speech-to-text processing, then applies natural language processing with NLTK to extract and summarize key information. I also designed logging systems and REST API endpoints to support a full JavaScript frontend. The project won 1st Place at HappyHacks II.
+I led the backend and AI work, implementing the Flask API, transcription and summarization pipeline, and SQLite persistence that connected the browser experience to saved notes. The team completed a working end-to-end prototype during HappyHacks II, where it earned first place.
 
 </ProjectSection>
 
@@ -46,22 +40,30 @@ NoNotes is an AI-powered note-taking platform built during a 48-hour hackathon, 
 
 <ol className="project-process">
   <li><strong>Record</strong><span>The browser captures spoken audio through a simple recording interface.</span></li>
-  <li><strong>Transcribe</strong><span>The server processes the uploaded recording and converts speech into text.</span></li>
-  <li><strong>Refine</strong><span>A punctuation service cleans the raw transcription before summarization.</span></li>
+  <li><strong>Transcribe</strong><span>The server divides the recording into 10-second segments and submits them for speech recognition.</span></li>
+  <li><strong>Refine</strong><span>An external punctuation service restores sentence boundaries before summarization.</span></li>
   <li><strong>Summarize</strong><span>A BERT-based extractive model identifies key sentences and formats them as point-form notes.</span></li>
   <li><strong>Save</strong><span>The application stores the title, transcription, and summarized notes for later retrieval.</span></li>
 </ol>
 
 </ProjectSection>
 
-<ProjectSection title="My contribution">
+<ProjectSection title="Backend and NLP architecture">
 
-I designed the Flask routes and REST endpoints that coordinate file uploads, transcription, summarization, note creation, and deletion. I also integrated the processing services and the SQLite-backed storage layer so the frontend could save and retrieve completed notes through a consistent interface.
+I designed the Flask routes that coordinate audio upload, conversion, note creation, retrieval, and deletion. The transcription pipeline segments audio with PyDub, uses Google speech recognition, restores punctuation through the Tartu NLP service, and passes the result to an extractive BERT summarizer configured to retain the most relevant sentences.
+
+Completed notes are stored in SQLite with URL-safe identifiers, allowing the JavaScript frontend to open and manage saved results. I also added application logging and command-line host and port configuration to make the prototype easier to run and troubleshoot during the event.
+
+</ProjectSection>
+
+<ProjectSection title="Trade-offs and next steps">
+
+The 48-hour deadline made scope control part of the engineering problem. SQLite provided fast, local persistence; extractive summarization preserved wording from the source transcript; and third-party speech and punctuation services made an end-to-end demo achievable within the event. For a production release, those integrations would require stronger privacy controls, authentication, upload validation, error recovery, and automated testing.
 
 </ProjectSection>
 
 <ProjectSection title="Outcome">
 
-The team delivered a working end-to-end prototype within the hackathon window. NoNotes demonstrated a complete path from microphone input to persistent, readable notes and received first place at HappyHacks II.
+The team delivered a working browser-to-notes workflow during the event: record audio, generate a transcript, extract key sentences, and save the result for later viewing. The project was awarded first place at HappyHacks II. For me, the most valuable engineering result was delivering a coherent workflow across audio processing, external NLP services, a Flask API, and persistent storage under a fixed deadline.
 
 </ProjectSection>

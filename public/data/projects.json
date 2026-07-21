@@ -1,7 +1,7 @@
 [
   {
     "name": "NoNotes – AI Powered Note Taking Platform",
-    "description": "NoNotes is an AI-powered note-taking platform built during a 48-hour hackathon, where I served as the backend and AI lead. I designed and implemented a Flask-based backend API with a SQLite database to store, process, and retrieve user notes. The system converts spoken audio into text using speech-to-text processing, then applies natural language processing with NLTK to extract and summarize key information. I also designed logging systems and REST API endpoints to support a full JavaScript frontend. The project won 1st Place at HappyHacks II.",
+    "description": "A first-place hackathon project that turns recorded audio into transcripts and BERT-based extractive notes. I led the backend and AI work, implementing the Flask API, processing pipeline, and SQLite persistence.",
     "detailLink": "/projects/nonotes",
     "link": "https://github.com/Alex-Jando/NoNotes",
     "image": "/projects/nonotes.webp"
@@ -14,14 +14,14 @@
   },
   {
     "name": "PY-RAT – Security Research & Remote Administration Tool",
-    "description": "PY-RAT is a Python-based remote administration and security research tool developed as a solo project to explore common system vulnerabilities. I designed a custom socket-based communication protocol to efficiently transmit data between client and host. The tool includes live camera streaming using OpenCV and NumPy, remote command execution, and credential access testing for security research purposes. I packaged the complete system into a standalone executable using PyInstaller, allowing it to be deployed and run without a Python environment.",
+    "description": "A retrospective on an early Python endpoint-security prototype. The project explored socket framing, binary transfer, threading, and executable packaging—and demonstrated why remote-access systems require authentication, encryption, least privilege, consent, and auditability from the outset.",
     "detailLink": "/projects/py-rat",
-    "link": "https://github.com/Alex-Jando/PY-RAT",
+    "link": "/projects/py-rat",
     "image": "/projects/pyrat.png"
   },
   {
     "name": "FIRA RoboWorld Cup Autonomous Race Car",
-    "description": "This project involved designing and building an autonomous line-following race car for the FIRA RoboWorld Cup, completed as part of a two-person team. I programmed Raspberry Pi and Arduino systems using Python and C, integrating a Logitech camera for real-time computer vision. The vehicle uses edge detection to identify road lines and a PID controller to dynamically adjust steering. We performed extensive physical testing and tuning to ensure consistent and reliable race performance, achieving 1st Place nationally and 2nd Place internationally.",
+    "description": "A two-person autonomous racing project combining OpenCV-based road-line detection, Raspberry Pi and Arduino control, PID steering, and repeated physical track testing. The vehicle placed first nationally and second internationally.",
     "detailLink": "/projects/fira-race-car",
     "link": "https://www.nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010",
     "image": "/projects/fira-racecar.jpg"
@@ -40,7 +40,7 @@
   },
   {
     "name": "HTTP-PyServer",
-    "description": "HTTP-PyServer is a lightweight Python HTTP server framework designed for simplicity and performance. I built the core server architecture, packaged it as a reusable module, and published it to PyPI for public installation and use. The project demonstrates backend fundamentals, modular design, and real-world package distribution.",
+    "description": "A standard-library Python HTTP framework with routing, request parsing, sessions, caching, templating, and TLS support. I designed the modular server architecture, packaged it for pip, and published it on PyPI.",
     "detailLink": "/projects/http-pyserver",
     "link": "https://pypi.org/project/HTTP-PyServer/",
     "image": "/projects/http-pyserver.png"

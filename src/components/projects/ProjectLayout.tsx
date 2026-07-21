@@ -12,8 +12,9 @@ export default function ProjectLayout({ project }: { project: ProjectDetail }) {
           <p className="eyebrow">{project.category}</p>
           <h1>{project.title}</h1>
           <p className="project-detail-lede">{project.summary}</p>
-          <div className="project-detail-actions">
-            {project.links.map((link) => (
+          {project.links.length > 0 && (
+            <div className="project-detail-actions">
+              {project.links.map((link) => (
               <a
                 className={`button-link${link.variant === "secondary" ? " secondary" : ""}`}
                 href={link.href}
@@ -23,8 +24,9 @@ export default function ProjectLayout({ project }: { project: ProjectDetail }) {
               >
                 [ {link.label} ↗ ]
               </a>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="project-detail-mark">
           <Image src={project.image} alt={project.imageAlt} width={600} height={600} priority />

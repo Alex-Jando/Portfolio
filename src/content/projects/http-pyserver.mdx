@@ -4,7 +4,7 @@ export const project = {
   slug: "http-pyserver",
   title: "HTTP-PyServer",
   category: "Software & Open Source",
-  summary: "A lightweight Python framework for building customizable HTTP servers with a compact API and no third-party runtime dependencies.",
+  summary: "A standard-library Python HTTP framework, published on PyPI, that exposes routing, request handling, sessions, caching, and templating through a compact API.",
   description: "A case study of HTTP-PyServer, a lightweight HTTP server framework for Python published on PyPI.",
   image: "/projects/http-pyserver.png",
   imageAlt: "HTTP-PyServer project logo",
@@ -14,7 +14,7 @@ export const project = {
   ],
   facts: [
     { label: "Distribution", value: "Published on PyPI" },
-    { label: "Current release", value: "0.1.4.4" },
+    { label: "Runtime", value: "No third-party dependencies" },
     { label: "Compatibility", value: "Python 3.7+" },
     { label: "License", value: "MIT" },
   ],
@@ -34,14 +34,6 @@ export const project = {
 HTTP-PyServer is a lightweight framework for creating HTTP servers in Python with a small, approachable API. It builds on Python's standard library rather than a third-party web framework, providing the core pieces needed to route requests, return files and structured data, manage sessions, cache information, and render templates.
 
 I designed the server architecture, separated its behavior into reusable modules, packaged the project for installation with `pip`, and published it on PyPI. The project gave me practical experience with HTTP, sockets, concurrent request handling, API design, packaging, and maintaining a public software release.
-
-![PyPI Downloads](https://img.shields.io/pypi/dm/HTTP-PyServer)
-
-</ProjectSection>
-
-<ProjectSection title="Original project description">
-
-HTTP-PyServer is a lightweight Python HTTP server framework designed for simplicity and performance. I built the core server architecture, packaged it as a reusable module, and published it to PyPI for public installation and use. The project demonstrates backend fundamentals, modular design, and real-world package distribution.
 
 </ProjectSection>
 
@@ -78,14 +70,18 @@ This interface keeps simple applications concise while still exposing request da
 
 </ProjectSection>
 
-<ProjectSection title="Design priorities">
+<ProjectSection title="Engineering approach">
 
-The project focuses on keeping the dependency footprint small and the application-facing API understandable. Its runtime uses only modules included with Python 3.7 or newer, while multithreading allows the server to handle concurrent work. The package also gives applications explicit control over which files and routes are exposed rather than automatically publishing a directory.
+I built the framework directly on Python's `socket`, `threading`, and `ssl` modules to understand the protocol and concurrency concerns normally hidden by a web framework. Responsibilities are separated across request parsing, response construction, route matching, rendering, sessions, caching, and server lifecycle modules rather than concentrated in one monolithic class.
+
+The public API prioritizes short, readable application code while retaining explicit control over routes and exposed files. Thread-per-connection handling supports concurrent requests, and the runtime depends only on Python's standard library. This is a learning-oriented framework rather than a replacement for a hardened production server. Production use would require systematic coverage of malformed requests, parser edge cases, concurrent access, path traversal, TLS configuration, and sustained load.
 
 </ProjectSection>
 
 <ProjectSection title="Distribution">
 
-HTTP-PyServer is packaged with a modern `pyproject.toml` build configuration and distributed publicly through PyPI. Publishing the library required treating installation, versioning, documentation, licensing, and compatibility as part of the product—not just the server implementation itself.
+HTTP-PyServer is packaged with a `pyproject.toml` build configuration and distributed publicly through PyPI. Publishing it turned installation, release versioning, API documentation, licensing, and compatibility into product concerns alongside implementation.
+
+![PyPI monthly downloads](https://img.shields.io/pypi/dm/HTTP-PyServer)
 
 </ProjectSection>

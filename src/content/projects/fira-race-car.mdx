@@ -4,7 +4,7 @@ export const project = {
   slug: "fira-race-car",
   title: "FIRA RoboWorld Cup Autonomous Race Car",
   category: "Robotics & Embedded Systems",
-  summary: "A camera-guided autonomous race car that used computer vision and closed-loop steering control to place first nationally and second internationally.",
+  summary: "An autonomous race car combining computer vision, embedded control, and physical track testing to place first nationally and second internationally.",
   description: "A case study of the autonomous line-following race car built for the FIRA RoboWorld Cup.",
   image: "/projects/fira-racecar.jpg",
   imageAlt: "FIRA RoboWorld Cup autonomous race car",
@@ -31,13 +31,7 @@ export const project = {
 
 This autonomous race car was designed and built for the FIRA RoboWorld Cup as a two-person team project. A Raspberry Pi processed live video from a Logitech camera to identify the track, while an Arduino handled the vehicle's lower-level motor and steering interfaces.
 
-The completed system combined perception, control, embedded programming, and extensive physical validation. It achieved first place at the national competition and second place internationally.
-
-</ProjectSection>
-
-<ProjectSection title="Original project description">
-
-This project involved designing and building an autonomous line-following race car for the FIRA RoboWorld Cup, completed as part of a two-person team. I programmed Raspberry Pi and Arduino systems using Python and C, integrating a Logitech camera for real-time computer vision. The vehicle uses edge detection to identify road lines and a PID controller to dynamically adjust steering. We performed extensive physical testing and tuning to ensure consistent and reliable race performance, achieving 1st Place nationally and 2nd Place internationally.
+The completed system combined perception, control, embedded programming, and physical track validation. It achieved first place at the national competition and second place internationally.
 
 </ProjectSection>
 
@@ -53,14 +47,18 @@ This project involved designing and building an autonomous line-following race c
 
 </ProjectSection>
 
-<ProjectSection title="Hardware and software integration">
+<ProjectSection title="My engineering contribution">
 
-The vehicle divided responsibilities between the Raspberry Pi and Arduino so vision processing and lower-level hardware control could work together. Python supported the computer-vision pipeline and high-level steering decisions, while C handled embedded control tasks on the Arduino.
+Working in a two-person team, I programmed the Raspberry Pi and Arduino systems in Python and C and integrated the Logitech camera used for real-time perception. The vehicle divided responsibilities between the two controllers: the Raspberry Pi handled image processing and high-level steering decisions, while the Arduino interfaced with lower-level motor and steering hardware.
+
+My work focused on integrating the camera-based perception pipeline with embedded steering control. Detected road edges were converted into a path-error signal for the PID controller, while separating perception from actuation made the system easier to diagnose and tune on the physical track.
 
 </ProjectSection>
 
 <ProjectSection title="Testing and outcome">
 
-The largest part of making the system competition-ready was iterative physical testing. Camera placement, edge-detection behavior, steering response, and PID gains were tuned against real track conditions rather than evaluated only in software. That integration and validation work produced reliable race performance across both national and international competition.
+Making the system competition-ready required iterative physical testing. Camera placement, edge-detection behavior, steering response, and PID gains were adjusted through repeated track runs rather than evaluated only in software. This process required treating perception and control as one coupled system: changes to the detected path directly affected steering stability.
+
+The resulting vehicle placed first at the national competition and second at the international FIRA RoboWorld Cup. The project strengthened my experience integrating software with physical hardware, diagnosing coupled failures, and refining control behavior through repeatable testing.
 
 </ProjectSection>
