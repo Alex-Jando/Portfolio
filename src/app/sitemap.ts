@@ -31,6 +31,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://jando.live/projects/q-arm",
+      priority: 0.8,
+    },
+    {
+      url: "https://jando.live/projects/accessible-macro-pad",
+      priority: 0.8,
+    },
+    {
       url: "https://jando.live/resume",
       priority: 0.9,
     },

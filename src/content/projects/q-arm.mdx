@@ -1,0 +1,69 @@
+import ProjectSection from "@/components/projects/ProjectSection";
+import ProjectMedia from "@/components/projects/ProjectMedia";
+
+export const project = {
+  slug: "q-arm",
+  title: "Q-Arm Order Packing Robot",
+  category: "Mechanical Design & Robotics",
+  summary: "A custom robotic end effector that combined a geared rack-and-pinion gripper, iterative additive manufacturing, and modular Python control to automate warehouse order packing.",
+  description: "A case study of the Q-Arm robotic end effector designed and built for an engineering design project.",
+  image: "/projects/q-arm-prototype.png",
+  imageAlt: "Q-Arm robot using the custom gripper to place an object into a bin",
+  links: [
+    { label: "View Project Portfolio", href: "https://app.notion.com/p/P-1-Robotic-End-Effector-System-325a5473791680c7be1fe87f22bf5c24" },
+  ],
+  facts: [
+    { label: "Role", value: "Mechanical design & software integration" },
+    { label: "Mechanism", value: "4:1 geared rack-and-pinion" },
+    { label: "Constraint", value: "100 g end-effector limit" },
+    { label: "Context", value: "ENG 1P13 team project" },
+  ],
+  technologies: ["Autodesk Inventor", "Python", "Q-Arm", "3D Printing", "Laser Cutting", "GitHub"],
+  features: [
+    "Custom two-finger mechanical gripper",
+    "Torque-multiplying 4:1 gear train",
+    "Modular order-packing control software",
+    "Product lookup and operation logging",
+    "Iterative tolerance and strength validation",
+  ],
+};
+
+<ProjectSection title="Overview">
+
+This team-based engineering project addressed a warehouse automation scenario: design an end effector and control system capable of using a Q-Arm robot to identify, pick, and pack products. The mechanism had to operate within limited motor torque, a 100 g mass allowance, and manufacturing constraints that restricted parts to 3D printing and laser cutting.
+
+Our final system paired a custom mechanical gripper with modular Python software for product lookup, arm movement, packing operations, and tracking logs. I contributed across the mechanical and software workstreams, from the initial mechanism concept and first working CAD assembly to system integration and physical debugging.
+
+</ProjectSection>
+
+<ProjectSection title="Mechanical design">
+
+I proposed a two-finger gripper driven by a 4:1 gear reduction and linear rack-and-pinion mechanism. The gear train increased the clamping force available from the Q-Arm motor, while the opposed racks translated rotation into synchronized linear jaw motion. The design was intentionally compatible with additive manufacturing and compact enough to remain within the end-effector mass limit.
+
+I created the initial sketches and the first fully functional Autodesk Inventor assembly. The team then iterated on that model through repeated print-and-test cycles, addressing gear meshing, friction, dimensional tolerances, and flex in the rack supports. When the original supports proved insufficiently rigid, I proposed expanding the supporting base geometry to improve mechanical reliability.
+
+<ProjectMedia
+  src="/projects/q-arm-cad.png"
+  alt="CAD rendering of the Q-Arm rack-and-pinion gripper"
+  caption="The completed CAD assembly shows the geared drive, opposed racks, and two-finger gripper mechanism."
+  width={932}
+  height={560}
+/>
+
+</ProjectSection>
+
+<ProjectSection title="Control software and integration">
+
+The control program was divided into independently testable functions before full-system integration. I wrote the main orchestration logic, `pack_products`, and `lookup_products`, then rewrote and integrated the remaining modules into a single program. This structure allowed individual behaviours to be verified without repeatedly resetting and exercising the full robot.
+
+Modularity became especially valuable during hardware integration. Arm positions, gripper behaviour, and order-handling logic could be calibrated separately, making it easier to distinguish mechanical issues from control-flow defects. The resulting program coordinated product selection, Q-Arm movement, packing, and operation records as one end-to-end workflow.
+
+</ProjectSection>
+
+<ProjectSection title="Validation and engineering lessons">
+
+Physical testing revealed failure modes that were not obvious in CAD. Printed parts introduced friction and dimensional variation, zero-clearance features did not assemble reliably, and thin supports flexed under load. Each issue required a measured redesign rather than assuming the digital model would translate directly into a working mechanism.
+
+The completed prototype successfully used the Q-Arm and custom gripper to pick up and place the test objects. More importantly, the project established a repeatable engineering workflow: define constraints, model a mechanism, manufacture it, isolate failures through modular testing, and feed those results into the next design iteration.
+
+</ProjectSection>
