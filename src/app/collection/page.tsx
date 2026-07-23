@@ -1,4 +1,4 @@
-import collections from "@/../public/data/collections.json";
+import { collectionItems } from "@/content/collections";
 import CollectionBox from "@/components/CollectionBox";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -24,7 +24,7 @@ const Collection = () => {
       </header>
       <section className="collection">
         <h2 className="sr-only">Collected notes</h2>
-        {collections.map((item, index) => <CollectionBox item={item} index={index} key={item.id} />)}
+        {collectionItems.map((item, index) => <CollectionBox item={item} index={index} key={item.id} />)}
       </section>
       <footer className="collection-footer">
         <span aria-hidden="true">*</span>

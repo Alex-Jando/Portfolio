@@ -1,5 +1,5 @@
 import Project from "@/components/Project";
-import projects from "@/../public/data/projects.json";
+import { projectEntries } from "@/content/projects";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,8 +14,8 @@ const Projects = () => {
       <h1>My Projects</h1>
       <p className="page-intro">Software, robotics, embedded systems, and the experiments between them.</p>
       <section className="projects">
-        {projects.map((project) => {
-          return <Project project={project} key={project.name} />;
+        {projectEntries.map((project) => {
+          return <Project project={project} key={project.slug} />;
         })}
       </section>
     </main>

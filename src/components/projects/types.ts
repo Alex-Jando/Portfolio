@@ -33,3 +33,5 @@ export type ProjectDetail = ProjectData & {
 export type ProjectEntry = ProjectData & {
   Content: ComponentType;
 };
+
+export const defineProject = <T extends ProjectData>(project: T) => project;

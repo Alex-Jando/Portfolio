@@ -1,0 +1,27 @@
+import { defineCollection } from "./types";
+
+export const collection = defineCollection({
+  id: "fira-press-coverage",
+  title: "A race car, a national win, and what came next",
+  category: "Press coverage",
+  source: "North Shore News",
+  thumbnail: "/collections/fira.png",
+  imageAlt: "FIRA robotics team members with their autonomous race car and competition trophy",
+  media: { type: "image" },
+  primaryLink: {
+    href: "https://www.nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010",
+    label: "Read the coverage",
+  },
+  project: "fira-race-car",
+  featured: false,
+  order: 3,
+});
+
+Coverage of our autonomous FIRA race car after a first-place national finish
+and before the world competition.
+
+<div className="collection-note">
+  <strong>Why it&apos;s here</strong>
+  A snapshot of engineering under real constraints: unreliable lighting,
+  physical hardware, tight timelines, and a very real finish line.
+</div>

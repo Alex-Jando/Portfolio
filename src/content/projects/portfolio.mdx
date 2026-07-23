@@ -1,0 +1,32 @@
+import ProjectSection from "@/components/projects/ProjectSection";
+import { defineProject } from "@/components/projects/types";
+
+export const project = defineProject({
+  slug: "portfolio",
+  title: "Personal Engineering Portfolio",
+  category: "Web Platform",
+  summary: "The MDX-driven site you are viewing: a fast, accessible home for engineering case studies, field notes, and an automatically generated résumé.",
+  description: "A case study of the architecture and maintenance of this portfolio.",
+  image: "/favicon/favicon.svg",
+  imageAlt: "Alexander Jando portfolio mark",
+  links: [
+    { label: "Visit Site", href: "https://jando.live" },
+    { label: "View Source", href: "https://github.com/Alex-Jando/Portfolio", variant: "secondary" },
+  ],
+  facts: [
+    { label: "Framework", value: "Next.js" },
+    { label: "Content", value: "MDX" },
+    { label: "Delivery", value: "Vercel" },
+    { label: "Focus", value: "Accessible case studies" },
+  ],
+  technologies: ["Next.js", "React", "TypeScript", "MDX", "Vercel"],
+  features: ["Static generation", "MDX content", "Responsive design", "SEO metadata"],
+});
+
+<ProjectSection title="Overview">
+
+This portfolio is both a presentation layer and an evolving engineering
+project. Its content is stored in small, reviewable MDX files, rendered into
+static pages, and deployed through an automated production workflow.
+
+</ProjectSection>

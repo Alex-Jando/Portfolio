@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
+import { projectEntries } from "@/content/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const routes: MetadataRoute.Sitemap = [
     {
       url: "https://jando.live",
       priority: 1.0,
@@ -12,30 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: "https://jando.live/projects",
-      priority: 0.8,
-    },
-    {
-      url: "https://jando.live/projects/nonotes",
-      priority: 0.8,
-    },
-    {
-      url: "https://jando.live/projects/http-pyserver",
-      priority: 0.8,
-    },
-    {
-      url: "https://jando.live/projects/py-rat",
-      priority: 0.8,
-    },
-    {
-      url: "https://jando.live/projects/fira-race-car",
-      priority: 0.8,
-    },
-    {
-      url: "https://jando.live/projects/q-arm",
-      priority: 0.8,
-    },
-    {
-      url: "https://jando.live/projects/accessible-macro-pad",
       priority: 0.8,
     },
     {
@@ -50,5 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://jando.live/collection",
       priority: 0.6,
     },
+  ];
+
+  return [
+    ...routes,
+    ...projectEntries.map((project) => ({
+      url: `https://jando.live/projects/${project.slug}`,
+      priority: 0.8,
+    })),
   ];
 }

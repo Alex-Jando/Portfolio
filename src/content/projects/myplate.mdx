@@ -1,0 +1,29 @@
+import ProjectSection from "@/components/projects/ProjectSection";
+import { defineProject } from "@/components/projects/types";
+
+export const project = defineProject({
+  slug: "myplate",
+  title: "MyPlate",
+  category: "Mobile Development",
+  summary: "A mobile meal and macro planner designed for quick food logging, daily nutrition goals, and persistent personal preferences.",
+  description: "A case study of MyPlate, a team-built mobile nutrition application.",
+  image: "/projects/myplate.png",
+  imageAlt: "MyPlate mobile application interface",
+  links: [{ label: "View Source", href: "https://github.com/Alex-Jando/GOA2023-MyPlate" }],
+  facts: [
+    { label: "Format", value: "Team project" },
+    { label: "Recognition", value: "Developer of the Year" },
+    { label: "Platform", value: "Android" },
+    { label: "Focus", value: "Fast daily logging" },
+  ],
+  technologies: ["Java", "Android Studio", "Local Storage", "Mobile UI"],
+  features: ["Meal logging", "Macro tracking", "Daily goals", "Saved preferences"],
+});
+
+<ProjectSection title="Overview">
+
+MyPlate was built as a team mobile project around a simple goal: make daily
+nutrition tracking fast enough to use consistently. I implemented meal and
+macronutrient tracking, local persistence, and parts of the interaction design.
+
+</ProjectSection>

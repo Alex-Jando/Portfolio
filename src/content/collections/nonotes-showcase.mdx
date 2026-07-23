@@ -1,0 +1,27 @@
+import { defineCollection } from "./types";
+
+export const collection = defineCollection({
+  id: "nonotes-showcase",
+  title: "NoNotes: the two-minute pitch",
+  category: "Demo reel",
+  source: "YouTube",
+  thumbnail: "/collections/nonotes.webp",
+  imageAlt: "NoNotes application mark",
+  media: { type: "image" },
+  primaryLink: {
+    href: "https://www.youtube.com/watch?v=EBiBeUzb0xY",
+    label: "Watch the showcase",
+  },
+  project: "nonotes",
+  featured: false,
+  order: 2,
+});
+
+A quick look at the first-place hackathon project: recorded audio becomes a
+transcript, then concise BERT-powered notes.
+
+<div className="collection-note">
+  <strong>Why it&apos;s here</strong>
+  A compact example of how I explain a technical system without losing the
+  product story.
+</div>

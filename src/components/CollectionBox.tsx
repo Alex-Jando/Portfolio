@@ -1,21 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-
-type CollectionItem = {
-  id: string;
-  title: string;
-  category: string;
-  source: string;
-  description: string;
-  note: string;
-  thumbnail: string;
-  video: string | null;
-  link: string;
-  linkLabel: string;
-  projectLink: string;
-  projectLabel: string;
-  featured: boolean;
-};
+import type { CollectionItem } from "@/content/collections";
+import { requireProject } from "@/content/projects";
 
 const isExternal = (href: string) => href.startsWith("http");
 
@@ -31,19 +17,22 @@ const CollectionLink = ({ href, children }: { href: string; children: React.Reac
 };
 
 const CollectionBox = ({ item, index }: { item: CollectionItem; index: number }) => {
+  const project = item.project ? requireProject(item.project) : undefined;
   return (
     <article className={`collection-box${item.featured ? " collection-box-featured" : ""}`}>
-      <div className={`collection-image${item.video ? " collection-video" : ""}`}>
-        {item.video ? (
+      <div className={`collection-image${item.media.type === "video" ? " collection-video" : ""}`}>
+        {item.media.type === "video" ? (
           <video controls preload="metadata" poster={item.thumbnail} aria-label={`Video: ${item.title}`}>
-            <source src={item.video} type="video/mp4" />
-            <track kind="captions" src="/collections/AIShortStoryVideoMakerDemo.en.vtt" srcLang="en" label="English" default />
+            <source src={item.media.src} type="video/mp4" />
+            {item.media.captions && (
+              <track kind="captions" src={item.media.captions} srcLang="en" label="English" default />
+            )}
             Your browser does not support embedded video.
           </video>
         ) : (
           <Image
             src={item.thumbnail}
-            alt=""
+            alt={item.imageAlt}
             fill
             sizes={item.featured ? "(max-width: 760px) 100vw, 62vw" : "(max-width: 760px) 100vw, 38vw"}
           />
@@ -56,11 +45,14 @@ const CollectionBox = ({ item, index }: { item: CollectionItem; index: number })
           <span>{item.source}</span>
         </div>
         <h3>{item.title}</h3>
-        <p className="collection-description">{item.description}</p>
-        <p className="collection-note"><span>Why it&apos;s here</span>{item.note}</p>
+        <div className="collection-body"><item.Content /></div>
         <div className="collection-links">
-          {!item.video && <CollectionLink href={item.link}>{item.linkLabel}</CollectionLink>}
-          <CollectionLink href={item.projectLink}>{item.projectLabel}</CollectionLink>
+          <CollectionLink href={item.primaryLink.href}>{item.primaryLink.label}</CollectionLink>
+          {project && (
+            <CollectionLink href={`/projects/${project.slug}`}>
+              Read the {project.title} case study
+            </CollectionLink>
+          )}
         </div>
       </div>
     </article>

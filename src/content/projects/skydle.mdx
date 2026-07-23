@@ -1,0 +1,32 @@
+import ProjectSection from "@/components/projects/ProjectSection";
+import { defineProject } from "@/components/projects/types";
+
+export const project = defineProject({
+  slug: "skydle",
+  title: "Skydle",
+  category: "Web Development",
+  summary: "A daily Wordle-style game that turns live Hypixel SkyBlock item data into a focused, responsive guessing challenge.",
+  description: "A case study of Skydle, a data-driven daily web game built around the Hypixel SkyBlock community.",
+  image: "/projects/skydle.png",
+  imageAlt: "Skydle game interface",
+  links: [
+    { label: "Play Skydle", href: "https://alex-jando.github.io/Skydle/" },
+    { label: "View Source", href: "https://github.com/Alex-Jando/Skydle", variant: "secondary" },
+  ],
+  facts: [
+    { label: "Format", value: "Solo project" },
+    { label: "Cadence", value: "Daily puzzle" },
+    { label: "Data", value: "Live external API" },
+    { label: "Delivery", value: "GitHub Pages" },
+  ],
+  technologies: ["React", "JavaScript", "REST APIs", "CSS", "GitHub Pages"],
+  features: ["Daily item puzzle", "Live SkyBlock data", "Responsive interface", "Shareable results"],
+});
+
+<ProjectSection title="Overview">
+
+Skydle adapts the familiar Wordle loop to Hypixel SkyBlock items. I built the
+game logic, API integration, daily-puzzle selection, and responsive interface
+as a solo project, then deployed it as a public web experience.
+
+</ProjectSection>

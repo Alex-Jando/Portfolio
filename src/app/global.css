@@ -152,9 +152,12 @@ h1 { margin-bottom: 0.75rem; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1
 .collection-copy { display: flex; flex: 1; flex-direction: column; width: 100%; min-width: 0; max-width: 100%; padding: clamp(1.25rem, 3vw, 2rem); overflow: hidden; overflow-wrap: anywhere; }
 .collection-meta { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 1.1rem; color: var(--secondary); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; }
 .collection-copy h3 { max-width: 22ch; font-size: clamp(1.25rem, 2.5vw, 1.8rem); line-height: 1.22; letter-spacing: -0.025em; }
-.collection-description { margin-top: 0.8rem; color: var(--muted); }
-.collection-note { margin-top: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--secondary); color: var(--muted); font-size: 0.9rem; }
-.collection-note span { display: block; margin-bottom: 0.35rem; color: var(--primary); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.collection-body { margin-top: 0.8rem; color: var(--muted); }
+.collection-body > * + * { margin-top: 1rem; }
+.collection-body ul, .collection-body ol { padding-left: 1.25rem; }
+.collection-body img { max-width: 100%; height: auto; }
+.collection-body .collection-note { margin-top: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--secondary); font-size: 0.9rem; }
+.collection-body .collection-note strong { display: block; margin-bottom: 0.35rem; color: var(--primary); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .collection-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; margin-top: auto; padding-top: 1.75rem; }
 .collection-links a { font-weight: 700; }
 .collection-footer { display: flex; gap: 1rem; max-width: 65ch; margin-top: 2rem; color: var(--muted); font-size: 0.9rem; }
