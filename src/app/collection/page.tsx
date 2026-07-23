@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Field Notes | Alexander Jando",
   description:
-    "Demos, artifacts, interviews, and other field notes from Alexander Jando's engineering work.",
+    "Projects, experiments, side quests, and other things Alexander Jando wanted to remember.",
 };
 
 const Collection = () => {
@@ -16,12 +16,12 @@ const Collection = () => {
     <main className="page-shell collection-page">
       <header className="collection-header">
         <div>
-          <p className="eyebrow">The extra shelf</p>
+          <p className="eyebrow">Projects, side quests & miscellany</p>
           <h1>Field notes</h1>
         </div>
         <p className="page-intro">
-          The work around the work: demos, press, experiments, and small artifacts
-          that reveal how I build, explain, and learn.
+          A running scrapbook of things I made, learned, tried, broke, fixed,
+          or just thought were worth keeping.
         </p>
       </header>
       {sections.map((section) => {
@@ -48,8 +48,8 @@ const Collection = () => {
       <footer className="collection-footer">
         <span aria-hidden="true">*</span>
         <p>
-          This is a living shelf. New finds are added when they say something the project cards cannot.
-          {" "}<Link href="/projects">Explore the technical case studies →</Link>
+          This page is intentionally a little random. For the polished version,
+          {" "}<Link href="/projects">explore the project case studies →</Link>
         </p>
       </footer>
     </main>
