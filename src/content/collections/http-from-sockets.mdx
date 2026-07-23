@@ -6,9 +6,13 @@ export const collection = defineCollection({
   section: "Technical notes",
   category: "Protocol notes",
   source: "HTTP-PyServer",
-  thumbnail: "/projects/http-pyserver.png",
-  imageAlt: "HTTP-PyServer project logo",
-  media: { type: "image" },
+  thumbnail: "/collections/http-pyserver-request-lifecycle.html",
+  imageAlt: "HTTP request lifecycle through HTTP-PyServer",
+  media: {
+    type: "embed",
+    src: "/collections/http-pyserver-request-lifecycle.html",
+    title: "HTTP-PyServer request lifecycle diagram",
+  },
   primaryLink: {
     href: "https://github.com/Alex-Jando/HTTP-PyServer",
     label: "Read the implementation",

@@ -18,9 +18,10 @@ const CollectionLink = ({ href, children }: { href: string; children: React.Reac
 
 const CollectionBox = ({ item, index }: { item: CollectionItem; index: number }) => {
   const project = item.project ? requireProject(item.project) : undefined;
+  const isEmbeddedMedia = item.media.type === "embed";
   return (
     <article className={`collection-box${item.featured ? " collection-box-featured" : ""}`}>
-      <div className={`collection-image${item.media.type === "video" ? " collection-video" : ""}`}>
+      <div className={`collection-image${item.media.type === "video" || isEmbeddedMedia ? " collection-video" : ""}`}>
         {item.media.type === "video" ? (
           <video controls preload="metadata" poster={item.thumbnail} aria-label={`Video: ${item.title}`}>
             <source src={item.media.src} type="video/mp4" />
@@ -29,6 +30,14 @@ const CollectionBox = ({ item, index }: { item: CollectionItem; index: number })
             )}
             Your browser does not support embedded video.
           </video>
+        ) : item.media.type === "embed" ? (
+          <iframe
+            src={item.media.src}
+            title={item.media.title}
+            allow={item.media.allow}
+            allowFullScreen
+            loading="lazy"
+          />
         ) : (
           <Image
             src={item.thumbnail}

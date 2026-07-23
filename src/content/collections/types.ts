@@ -2,7 +2,8 @@ import type { ComponentType } from "react";
 
 export type CollectionMedia =
   | { type: "image" }
-  | { type: "video"; src: string; captions?: string };
+  | { type: "video"; src: string; captions?: string }
+  | { type: "embed"; src: string; title: string; allow?: string };
 
 export type CollectionItemData = {
   id: string;
