@@ -7,6 +7,7 @@ export type CollectionMedia =
 export type CollectionItemData = {
   id: string;
   title: string;
+  section: "Build notes" | "Technical notes" | "Demos & recognition";
   category: string;
   source: string;
   thumbnail: string;

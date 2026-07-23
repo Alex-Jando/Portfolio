@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 const Collection = () => {
+  const sections = ["Build notes", "Technical notes", "Demos & recognition"] as const;
+
   return (
     <main className="page-shell collection-page">
       <header className="collection-header">
@@ -22,10 +24,27 @@ const Collection = () => {
           that reveal how I build, explain, and learn.
         </p>
       </header>
-      <section className="collection">
-        <h2 className="sr-only">Collected notes</h2>
-        {collectionItems.map((item, index) => <CollectionBox item={item} index={index} key={item.id} />)}
-      </section>
+      {sections.map((section) => {
+        const sectionItems = collectionItems.filter((item) => item.section === section);
+
+        return (
+          <section className="collection-section" key={section}>
+            <div className="collection-section-heading">
+              <p className="eyebrow">Shelf {String(sections.indexOf(section) + 1).padStart(2, "0")}</p>
+              <h2>{section}</h2>
+            </div>
+            <div className="collection">
+              {sectionItems.map((item) => (
+                <CollectionBox
+                  item={item}
+                  index={collectionItems.indexOf(item)}
+                  key={item.id}
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })}
       <footer className="collection-footer">
         <span aria-hidden="true">*</span>
         <p>

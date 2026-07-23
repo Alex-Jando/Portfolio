@@ -1,0 +1,35 @@
+import { defineCollection } from "./types";
+
+export const collection = defineCollection({
+  id: "carbon-pals-hackathon",
+  title: "Carbon Pals: turning a footprint into a daily action",
+  section: "Build notes",
+  category: "Hackathon reflection",
+  source: "GDG McMaster Mac-a-thon",
+  thumbnail: "/collections/carbon-pals-home.png",
+  imageAlt: "Carbon Pals dashboard showing daily sustainability tasks and progress",
+  media: { type: "image" },
+  primaryLink: {
+    href: "https://github.com/Alex-Jando/carbonapp",
+    label: "Explore the source",
+  },
+  featured: true,
+  order: 1,
+});
+
+Built with Chris Li, Ben Rosa, and Sophia Bianchi for the Google Developer
+Group Mac-a-thon at McMaster, Carbon Pals reframed a broad climate problem as
+something a person could act on today. An onboarding questionnaire estimated a
+baseline footprint, then Gemini generated ten tailored daily tasks.
+
+The product loop connected those recommendations to streaks, progress charts,
+friends, communities, and an activity feed. Optional photo proof was resized
+and compressed before being stored, keeping a social feature practical within
+a fast-moving hackathon build.
+
+<div className="collection-note">
+  <strong>What I learned</strong>
+  A useful AI feature needs more than generated text. It needs context,
+  constraints, a clear action, and feedback that gives someone a reason to
+  return.
+</div>

@@ -1,0 +1,38 @@
+import { defineCollection } from "./types";
+
+export const collection = defineCollection({
+  id: "http-from-sockets",
+  title: "What a web framework hides between listen and respond",
+  section: "Technical notes",
+  category: "Protocol notes",
+  source: "HTTP-PyServer",
+  thumbnail: "/projects/http-pyserver.png",
+  imageAlt: "HTTP-PyServer project logo",
+  media: { type: "image" },
+  primaryLink: {
+    href: "https://github.com/Alex-Jando/HTTP-PyServer",
+    label: "Read the implementation",
+  },
+  project: "http-pyserver",
+  featured: false,
+  order: 3,
+});
+
+HTTP-PyServer started below the abstraction layer used by most web projects:
+open a TCP socket, bind it to an address, listen for connections, read bytes,
+and turn an HTTP request into structured data. From there, route matching
+selected a Python function and response code serialized status, headers, and a
+body back onto the connection.
+
+Implementing those steps with Python&apos;s standard library made the protocol
+feel concrete. Thread-per-connection handling introduced concurrency; sessions
+and caches introduced shared state and expiry; TLS introduced another layer
+around the socket. It also exposed why production servers spend so much effort
+on malformed input, partial reads, path safety, timeouts, and load.
+
+<div className="collection-note">
+  <strong>What I learned</strong>
+  A framework&apos;s convenience is built from systems decisions. Recreating a
+  small version made its boundaries—and the value of mature implementations—
+  much easier to understand.
+</div>

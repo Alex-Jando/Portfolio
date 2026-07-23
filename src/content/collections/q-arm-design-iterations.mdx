@@ -1,0 +1,37 @@
+import { defineCollection } from "./types";
+
+export const collection = defineCollection({
+  id: "q-arm-design-iterations",
+  title: "When the CAD works but the printed gripper does not",
+  section: "Build notes",
+  category: "Design iteration",
+  source: "Q-Arm",
+  thumbnail: "/projects/q-arm-cad.png",
+  imageAlt: "CAD rendering of the Q-Arm rack-and-pinion gripper",
+  media: { type: "image" },
+  primaryLink: {
+    href: "https://app.notion.com/p/P-1-Robotic-End-Effector-System-325a5473791680c7be1fe87f22bf5c24",
+    label: "View the project portfolio",
+  },
+  project: "q-arm",
+  featured: false,
+  order: 4,
+});
+
+The Q-Arm gripper had to create useful clamping force from limited motor torque,
+stay below a 100 g end-effector allowance, and be manufactured with 3D printing
+and laser cutting. A 4:1 gear reduction traded speed for force, while opposed
+racks kept the two jaws moving together.
+
+The first physical parts revealed what the CAD model could not: printed gears
+need clearance, long rack supports flex, layer direction changes strength, and
+extra material must be placed where loads travel rather than added everywhere.
+We widened support geometry, adjusted fits, and kept parts simple to orient,
+print, replace, and test.
+
+<div className="collection-note">
+  <strong>What I learned</strong>
+  Designing for additive manufacturing means treating tolerances, load paths,
+  print orientation, assembly, and iteration speed as first-class requirements—
+  not cleanup after the model is finished.
+</div>
