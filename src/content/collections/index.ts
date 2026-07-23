@@ -5,6 +5,8 @@ import CarbonPalsContent, { collection as carbonPals } from "./carbon-pals-hacka
 import AccessibleDesignContent, { collection as accessibleDesign } from "./accessible-design-constraints.mdx";
 import HttpFundamentalsContent, { collection as httpFundamentals } from "./http-from-sockets.mdx";
 import QArmIterationsContent, { collection as qArmIterations } from "./q-arm-design-iterations.mdx";
+import CodingShortsContent, { collection as codingShorts } from "./coding-shorts.mdx";
+import GithubPagesTutorialContent, { collection as githubPagesTutorial } from "./github-pages-tutorial.mdx";
 import type { CollectionItem } from "./types";
 
 export type { CollectionItem } from "./types";
@@ -17,4 +19,6 @@ export const collectionItems = [
   { ...aiShortStory, Content: AiShortStoryContent },
   { ...noNotesShowcase, Content: NoNotesShowcaseContent },
   { ...firaPressCoverage, Content: FiraPressCoverageContent },
+  { ...codingShorts, Content: CodingShortsContent },
+  { ...githubPagesTutorial, Content: GithubPagesTutorialContent },
 ].sort((a, b) => a.order - b.order) satisfies CollectionItem[];

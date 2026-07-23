@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const Collection = () => {
-  const sections = ["Build notes", "Technical notes", "Demos & recognition"] as const;
+  const sections = ["Build notes", "Technical notes", "Demos & recognition", "Internet detours"] as const;
 
   return (
     <main className="page-shell collection-page">
