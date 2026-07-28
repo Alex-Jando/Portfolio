@@ -5,73 +5,267 @@ export const project = {
   slug: "accessible-macro-pad",
   title: "Accessible Macro Pad",
   category: "Accessible Design & Embedded Systems",
-  summary: "A client-centred assistive device combining low-force physical controls, ESP32 firmware, Bluetooth communication, and a React Native app to simplify everyday mobile interactions.",
-  description: "A case study of an accessible macro pad developed around the mobility needs of a client with physical disabilities.",
-  image: "/projects/accessible-macro-pad-prototype.jpg",
-  imageAlt: "ESP32 prototype connected to three large accessible switches",
-  links: [
-    { label: "View Project Portfolio", href: "https://app.notion.com/p/P-3-Accessible-Macro-Pad-2c2a5473791681db954af45b4c336348" },
-  ],
+  summary: "A three-button controller that turns physical key presses into useful phone actions.",
+  description: "A visual case study of an accessible Bluetooth macro pad, from early ideas to a working hardware-and-app prototype.",
+  image: "/projects/macro-pad-final-hq.png",
+  imageAlt: "Completed accessible macro pad with three large white keycaps in a blue enclosure",
+  thumbnail: "/projects/macro-pad-paired-app-hq.png",
+  thumbnailAlt: "Accessible macro pad beside its companion Android application",
+  links: [],
   facts: [
-    { label: "Role", value: "Project coordinator & system integrator" },
-    { label: "Interface", value: "Three low-force physical controls" },
-    { label: "Connectivity", value: "ESP32 Bluetooth Low Energy" },
-    { label: "Client focus", value: "Reduced effort and interaction steps" },
+    { label: "Role", value: "Project coordinator & sole hardware designer" },
+    { label: "Context", value: "Five-person engineering design team" },
+    { label: "System", value: "ESP32 + Bluetooth LE + Android" },
+    { label: "Outcome", value: "6 actions working end to end" },
   ],
-  technologies: ["ESP32", "C/C++", "Bluetooth LE", "React Native", "JavaScript", "Autodesk Inventor", "Soldering"],
+  technologies: ["ESP32", "C/C++", "Bluetooth LE", "React Native", "TypeScript", "Expo", "Autodesk Inventor", "3D Printing", "Soldering"],
   features: [
-    "Large, low-force physical controls",
-    "Wireless mobile-device communication",
-    "Configurable macro actions",
-    "Debounced and threshold-calibrated inputs",
-    "Compact custom enclosure",
+    "Three large physical controls",
+    "Configurable one-press actions",
+    "Custom enclosure and keycaps",
+    "Persistent app settings",
   ],
 };
 
-<ProjectSection title="Overview">
+<div className="case-story-row case-story-row-lead">
+  <div>
+    <h2>A simpler way to reach important phone actions</h2>
+    <p>
+      Our engineering design class asked each team to build around a client
+      interview. Mark explained that limited dexterity made precise touchscreen
+      interactions difficult. Our five-person team responded with a separate
+      controller: three large buttons connected to a configurable Android app.
+    </p>
+    <p>
+      The final prototype could sound an alarm, call a trusted contact, share
+      location, send an SOS message, open medical information, or place an
+      emergency call. It was a working proof of concept rather than a finished
+      assistive product.
+    </p>
+  </div>
+  <ProjectMedia
+    src="/projects/macro-pad-paired-app-hq.png"
+    alt="Accessible macro pad beside a tablet running its companion application"
+    caption="The finished controller connected to its companion Android app."
+    width={1284}
+    height={802}
+  />
+</div>
 
-This team project began with a client who experienced limited mobility due to an amputated leg and rheumatoid arthritis. We focused on reducing the physical effort and number of steps required for common mobile-device interactions while keeping the product simple, reliable, and easy to understand.
+<ProjectSection title="What I worked on">
 
-The resulting prototype connected three large physical switches to an ESP32, transmitted their inputs over Bluetooth Low Energy, and mapped them to configurable actions in a React Native application. I served as project coordinator and took primary ownership of the physical system, electrical integration, and mobile application.
+<div className="case-story-row">
+  <div>
+    <p>
+      I coordinated meetings and divided tasks, but my main technical
+      responsibility was the complete physical prototype. I designed the
+      enclosure and keycaps, developed and built the circuit, soldered the
+      connections, and handled hardware integration and debugging.
+    </p>
+    <p>
+      I also contributed to the ESP32 firmware, React Native app, and testing the
+      full path from a button press to its assigned mobile action.
+    </p>
+  </div>
+  <ProjectMedia
+    src="/projects/macro-pad-printed-enclosure.png"
+    alt="Freshly 3D-printed blue macro pad enclosure held in front of a 3D printer"
+    caption="The enclosure after printing, before the switches and electronics were installed."
+    width={600}
+    height={800}
+    className="case-media-narrow"
+  />
+</div>
 
 </ProjectSection>
 
-<ProjectSection title="Designing around the client">
+<ProjectSection title="The first direction">
 
-We translated the client's needs into concrete engineering priorities: low activation force, clear feedback, reliable operation, wireless communication, and a compact enclosure. Early ideation produced a more complex autonomous product, but feasibility analysis showed that it did not fit the available time, resources, or technical risk. The team deliberately reset around the underlying accessibility need and selected the macro-pad concept.
-
-That pivot improved the project because it replaced feature-driven ideation with a needs-first design process. Each major decision—from the number and size of controls to Bluetooth connectivity—could be traced back to reducing interaction effort and creating a system the client could operate consistently.
+<div className="case-story-row case-story-row-reverse">
+  <div>
+    <p>
+      We initially explored a reaction-wheel ball that could help Mark play with
+      his dog, Rosie. Sketching the mechanism made the idea easier to evaluate,
+      but it also exposed the amount of mechanical and control risk involved.
+    </p>
+    <p>
+      We returned to Mark’s interview and compared what would be useful with what
+      we could build and test well. That led us to the macro pad, a different
+      challenge that combined accessible hardware, embedded firmware, Bluetooth,
+      and a mobile app.
+    </p>
+  </div>
+  <ProjectMedia
+    src="/projects/macro-pad-dog-ball-sketch.jpg"
+    alt="Early handwritten sketch of a remote-controlled dog ball using two reaction wheels"
+    caption="The early reaction-wheel ball concept."
+    width={1668}
+    height={2157}
+    className="case-media-narrow"
+  />
+</div>
 
 </ProjectSection>
 
-<ProjectSection title="Hardware and enclosure">
+<ProjectSection title="Designing the physical controller">
 
-I designed the complete physical assembly in Autodesk Inventor, selected the ESP32 and Cherry MX Blue switches, developed the electrical circuit, and completed the soldering and wiring. The ESP32 provided a compact embedded platform with built-in Bluetooth connectivity, while the large switch surfaces created forgiving targets for users with limited dexterity.
+<div className="case-story-row">
+  <div>
+    <p>
+      The controller used three widely spaced mechanical switches with custom
+      30 mm keycaps. Their tactile bump and audible click made activation easy
+      to confirm. I designed the enclosure around the switches, ESP32, circuit,
+      cable access, and mounting points.
+    </p>
+    <p>
+      Cherry MX Blue switches are not ideal for every user because they still
+      require noticeable actuation force. A future version should compare softer
+      switches through user testing instead of assuming one switch works for
+      everyone.
+    </p>
+  </div>
+  <ProjectMedia
+    src="/projects/macro-pad-enclosure-cad-hq.jpg"
+    alt="CAD model of the macro pad enclosure with internal mounting posts"
+    caption="Enclosure CAD showing the internal space and mounting points."
+    width={1152}
+    height={618}
+    className="case-media-contained"
+  />
+</div>
+
+</ProjectSection>
+
+<ProjectSection title="From a key press to a phone action">
 
 <ProjectMedia
-  src="/projects/accessible-macro-pad.png"
-  alt="ESP32 and three accessible switches arranged inside the macro pad enclosure"
-  caption="The integrated hardware prototype brought the ESP32, input circuit, and three large controls into the custom enclosure."
-  width={661}
-  height={644}
+  src="/projects/macro-pad-architecture-hq.png"
+  alt="System diagram from three buttons through an ADC and ESP32 Bluetooth connection to mobile actions"
+  caption="The complete path from the physical controls to the assigned mobile action."
+  width={1230}
+  height={966}
+  className="case-media-wide"
 />
 
-The enclosure was designed to contain and protect the electronics while maintaining straightforward access to the three controls. Hardware validation covered button response, signal consistency, and practical ease of use. Testing led us to refine voltage thresholds and add input debouncing rather than treating occasional activations as unavoidable prototype behaviour.
+<ol className="project-process case-process-simple">
+  <li><strong>Read</strong><span>The ESP32 averages ADC samples and identifies the pressed key from its voltage range.</span></li>
+  <li><strong>Filter</strong><span>Calibrated dead zones and a 150 ms debounce window reject noisy readings.</span></li>
+  <li><strong>Send</strong><span>The ESP32 reports press and release events over Bluetooth Low Energy.</span></li>
+  <li><strong>Run</strong><span>The app decodes the event and launches the action assigned to that key.</span></li>
+</ol>
 
 </ProjectSection>
 
-<ProjectSection title="Firmware and mobile application">
+<ProjectSection title="Three switches through one input">
 
-I contributed to the ESP32 firmware that sampled the physical inputs and transmitted button events over Bluetooth Low Energy. I also developed most of the React Native application, which received those events and translated them into the corresponding user actions. Together, these layers formed a complete path from physical activation to digital output.
-
-The firmware and application were organized into modular functions so input handling, wireless communication, and macro behaviour could be tested independently. This reduced debugging ambiguity across a system that combined mechanical, electrical, embedded, and mobile-software components.
+<div className="case-story-row case-story-row-reverse">
+  <div>
+    <p>
+      A resistor ladder produced a different voltage for each switch, about
+      0.825 V, 1.650 V, and 2.475 V. This let the ESP32 distinguish all three
+      buttons using a single ADC pin.
+    </p>
+    <p>
+      Serial readings helped us calibrate the ranges around each voltage. We
+      later widened those ranges and averaged multiple samples to make detection
+      more reliable.
+    </p>
+  </div>
+  <ProjectMedia
+    src="/projects/macro-pad-circuit-hq.png"
+    alt="Resistor-ladder circuit diagram showing three switches connected to one ESP32 ADC input"
+    caption="The resistor-ladder circuit used to identify all three switches."
+    width={1024}
+    height={1536}
+    className="case-media-narrow"
+  />
+</div>
 
 </ProjectSection>
 
-<ProjectSection title="Outcome and reflection">
+<ProjectSection title="The first build did not hold up">
 
-The team delivered a working prototype that demonstrated reliable physical input, wireless transmission, and configurable mobile actions. My contribution centred on making those subsystems function as one coherent product: coordinating the schedule, designing and assembling the hardware, supporting firmware development, and implementing most of the mobile experience.
+<div className="case-story-row">
+  <div>
+    <p>
+      My first free-form circuit looked compact, but several solder joints failed
+      and the tightly packed connections made faults difficult to isolate. I had
+      to practise my soldering, rebuild the connections, and change how I
+      approached the prototype.
+    </p>
+  </div>
+  <ProjectMedia
+    src="/projects/macro-pad-failed-wiring-hq.webp"
+    alt="Early free-form resistor-ladder wiring with exposed solder joints"
+    caption="Attempt 01: compact, fragile, and difficult to debug."
+    width={4032}
+    height={3024}
+  />
+</div>
 
-The most important engineering lesson was the value of evaluating feasibility against the user's actual problem before committing to a concept. By changing direction and narrowing the design around accessibility, we recovered from an overly ambitious initial idea and produced a functional, testable system within the project constraints.
+</ProjectSection>
+
+<ProjectSection title="Rebuilding for easier testing">
+
+<div className="case-story-row case-story-row-reverse">
+  <div>
+    <p>
+      Moving the circuit to a breadboard made every connection easier to inspect,
+      probe, and change. Serial ADC readings exposed noise near the original
+      thresholds, so we added sample averaging, wider voltage ranges, and longer
+      debouncing.
+    </p>
+    <p>
+      The revised layout took up more space, but it made debugging much faster.
+      By the final demonstration, every button consistently produced the correct
+      event.
+    </p>
+  </div>
+  <ProjectMedia
+    src="/projects/macro-pad-breadboard-hq.webp"
+    alt="Three switches and an ESP32 connected through a breadboard during testing"
+    caption="Attempt 02: larger, but much easier to probe, change, and verify."
+    width={4032}
+    height={3024}
+  />
+</div>
+
+</ProjectSection>
+
+<ProjectSection title="The final demonstration">
+
+<div className="case-story-row">
+  <div>
+    <p>
+      All three inputs were recognized correctly, BLE events reached the Android
+      app, all six configured actions worked, and button assignments persisted
+      after the app was closed and reopened.
+    </p>
+    <p>
+      We demonstrated the system on a Samsung Galaxy Tab S10 FE. We did not run
+      a long-term usability trial with Mark, so the result should be understood
+      as a complete proof of concept rather than a validated assistive product.
+    </p>
+    <p>
+      My biggest hardware lesson was simple: compact is not the same as reliable.
+      A circuit that is easy to inspect and change is often the faster path to a
+      working design.
+    </p>
+  </div>
+  <ProjectMedia
+    src="/projects/macro-pad-final-hq.png"
+    alt="Completed blue accessible macro pad with three large white keycaps and a fitted lid"
+    caption="The completed prototype with its custom enclosure, keycaps, ESP32, and input circuit."
+    width={1215}
+    height={1620}
+    className="case-media-narrow"
+  />
+</div>
+
+<p className="case-next-step">
+  A next version should replace the breadboard with a custom PCB, improve internal
+  wire management, use a tougher enclosure, run from a battery, and test softer
+  switches and mounting options with users over time.
+</p>
 
 </ProjectSection>

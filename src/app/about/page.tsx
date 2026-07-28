@@ -14,15 +14,29 @@ const About = () => {
       <h1>About Me</h1>
       <section className="about">
         <p>
-          I&apos;m an engineering student studying at McMaster University. I&apos;m interested in using technology to innovate and solve problems. I like to work on projects that challenge me and provide tangible benefits to others. In my free time, I enjoy exploring new technologies, contributing to open-source projects, and learning about new technologies.
+          I&apos;m a mechatronics engineering student at McMaster University.
+          I&apos;m most interested in embedded systems, robotics, and practical
+          software. I enjoy projects where I can test something physical, figure
+          out why it failed, and improve both the hardware and code until the
+          full system works.
         </p>
         <p>
-          Some of my hobbies outside of technology include rugby, skiing and swimming. I also enjoy spending time outdoors on hikes and while fishing. Travelling is another passion of mine. I love getting to know the history and culture of new places.
+          Hackathons, robotics competitions, course projects, and personal
+          experiments have pushed me to learn unfamiliar tools quickly. They
+          have also taught me to document trade-offs, ask better questions, and
+          be honest about what a prototype actually proves.
         </p>
         <p>
-          Currently, I am focused on expanding my skillset and gaining experience through projects and work. I&apos;m fascinated by the growth of AI and its endless possible applications. I try to stay up-to-date with the latest trends in technology and utilize them in my projects.
+          Outside engineering, I enjoy rugby, skiing, swimming, hiking, and
+          fishing. I also like travelling and learning about the history and
+          culture of new places.
         </p>
-        <p>I am always looking for new opportunities to learn and grow, whether through internships, co-op positions, or personal projects. If you have any questions or would like to <Link href="/contact" prefetch={true}>connect</Link>, feel free to reach out!</p>
+        <p>
+          Right now, I&apos;m looking for opportunities to contribute, learn
+          from experienced engineers, and keep building useful systems. You can
+          <Link href="/projects"> browse my projects</Link> or{" "}
+          <Link href="/contact">get in touch</Link>.
+        </p>
       </section>
     </main>
   )

@@ -4,7 +4,7 @@ import type { ProjectDetail } from "./types";
 
 export default function ProjectLayout({ project }: { project: ProjectDetail }) {
   return (
-    <main className="page-shell project-detail">
+    <main className={`page-shell project-detail project-${project.slug}`}>
       <Link className="project-back" href="/projects">← Back to projects</Link>
 
       <header className="project-detail-hero">
@@ -23,13 +23,21 @@ export default function ProjectLayout({ project }: { project: ProjectDetail }) {
                 rel="noopener noreferrer"
               >
                 [ {link.label} ↗ ]
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
               ))}
             </div>
           )}
         </div>
         <div className="project-detail-mark">
-          <Image src={project.image} alt={project.imageAlt} width={600} height={600} priority />
+          <Image
+            src={project.image}
+            alt={project.imageAlt}
+            width={600}
+            height={600}
+            sizes="(max-width: 680px) 72vw, (max-width: 1100px) 35vw, 420px"
+            priority
+          />
         </div>
       </header>
 
@@ -58,6 +66,17 @@ export default function ProjectLayout({ project }: { project: ProjectDetail }) {
           {project.sidebar}
         </aside>
       </div>
+
+      <nav className="project-next-actions" aria-label="Continue exploring">
+        <div>
+          <p className="eyebrow">Keep exploring</p>
+          <h2>See what else I&apos;ve been building.</h2>
+        </div>
+        <div>
+          <Link className="button-link" href="/projects">[ More Projects ]</Link>
+          <Link className="button-link secondary" href="/contact">[ Contact Me ]</Link>
+        </div>
+      </nav>
     </main>
   );
 }

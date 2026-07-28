@@ -1,6 +1,5 @@
 import { existsSync } from "node:fs";
-import { mkdir, readFile, unlink, writeFile } from "node:fs/promises";
-import { spawnSync } from "node:child_process";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { createHTMLWindow } from "svgdom";
@@ -57,7 +56,7 @@ const education = educationMatch ? {
 } : null;
 
 const data = {
-  variant: "Mechatronics Resume",
+  variant: "General Engineering Resume",
   name: "Alexander Jando",
   locations: "Hamilton, ON | West Vancouver, BC",
   contacts: [
@@ -87,18 +86,8 @@ await mkdir(generatedDir, { recursive: true });
 await mkdir(publicDir, { recursive: true });
 await writeFile(path.join(generatedDir, "resume.json"), `${JSON.stringify(data, null, 2)}\n`);
 
-const compiler = process.env.TECTONIC_BIN || "tectonic";
-const result = spawnSync(compiler, [source, "--outdir", publicDir], { stdio: "inherit" });
-if (result.status === 0) {
-  const built = path.join(publicDir, "resume.pdf");
-  if (existsSync(built)) {
-    await writeFile(path.join(publicDir, "EngineeringResume.pdf"), await readFile(built));
-    await unlink(built);
-  }
-} else if (!existsSync(path.join(publicDir, "EngineeringResume.pdf"))) {
-  throw new Error("No LaTeX compiler was found and no previously compiled PDF is available.");
-} else {
-  console.warn("Tectonic is unavailable; kept the last compiled PDF. Install Tectonic for automatic PDF regeneration.");
+if (!existsSync(path.join(publicDir, "EngineeringResume.pdf"))) {
+  throw new Error("The browser-rendered resume PDF is missing. Run npm run resume:pdf after starting the site.");
 }
 
-console.log("Generated native resume data and PDF assets from resumes/mechatronics/resume.tex");
+console.log("Generated native resume data from resumes/mechatronics/resume.tex");

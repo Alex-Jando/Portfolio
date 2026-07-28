@@ -14,11 +14,11 @@ const Contact = ({
   return (
     <section>
       <p>{name}</p>
-      <a href={link} target="_blank" rel="noopener noreferrer">
+      <a href={link} aria-label={`${name}: ${linkText}`}>
         {icon}
       </a>
       <p>
-        <a href={link} target="_blank" rel="noopener noreferrer">
+        <a href={link}>
           {linkText}
         </a>
       </p>

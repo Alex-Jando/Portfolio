@@ -1,15 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import TypewriterClient from "@/components/TypewriterClient";
 import ThemeToggle from "@/components/ThemeToggle";
+import TypewriterClient from "@/components/TypewriterClient";
 import sections from "@/../public/data/sections.json";
 import "./global.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://jando.live"),
   title: "Alexander Jando",
   description: "The engineering and software portfolio of Alexander Jando.",
+  alternates: { canonical: "./" },
+  openGraph: {
+    type: "website",
+    siteName: "Alexander Jando",
+    title: "Alexander Jando | Mechatronics Engineering Portfolio",
+    description: "Embedded systems, robotics, software, and engineering projects by Alexander Jando.",
+    images: [{ url: "/images/alexander-jando-headshot.webp", width: 1024, height: 1024, alt: "Alexander Jando" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alexander Jando | Mechatronics Engineering Portfolio",
+    description: "Embedded systems, robotics, software, and engineering projects by Alexander Jando.",
+    images: ["/images/alexander-jando-headshot.webp"],
+  },
 };
 
 const themeScript = `
@@ -51,7 +66,7 @@ export default function RootLayout({
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
         <header className="site-header">
-          <Link className="site-wordmark" href="/" aria-label="Alexander Jando — home">
+          <Link className="site-wordmark" href="/" aria-label="Alexander Jando, home">
             <TypewriterClient text="Alexander Jando" />
           </Link>
           <nav aria-label="Main navigation">

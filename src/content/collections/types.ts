@@ -8,7 +8,7 @@ export type CollectionMedia =
 export type CollectionItemData = {
   id: string;
   title: string;
-  section: "Build notes" | "Technical notes" | "Demos & recognition" | "Internet detours";
+  section: "Build notes" | "Technical notes" | "Demos & recognition" | "Made for fun";
   category: string;
   source: string;
   thumbnail: string;

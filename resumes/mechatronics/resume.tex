@@ -1,19 +1,18 @@
-% Mechatronics / robotics resume — source for both web and PDF versions.
-\documentclass[11pt]{article}
+% General engineering resume, source for both web and PDF versions.
+\documentclass[10pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.52in]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tabularx}
-\usepackage{fontawesome5}
 \usepackage{ragged2e}
 \pagenumbering{gobble}
 \setlength{\parindent}{0pt}
-\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=*, itemsep=1pt}
-\titleformat{\section}{\vspace{4pt}\bfseries\large}{}{0pt}{}[\titlerule\vspace{-2pt}]
-\titlespacing*{\section}{0pt}{6pt}{4pt}
+\setlist[itemize]{noitemsep, topsep=1pt, leftmargin=*, itemsep=0pt}
+\titleformat{\section}{\vspace{2pt}\bfseries\normalsize}{}{0pt}{}[\titlerule\vspace{-3pt}]
+\titlespacing*{\section}{0pt}{4pt}{2pt}
 \newcommand{\resumeItem}[1]{\item \small #1}
 \newcommand{\resumeSubheading}[4]{
   \textbf{#1} \hfill \textbf{#2}\\
@@ -27,35 +26,30 @@
 \begin{document}
 {\LARGE \textbf{Alexander Jando}}\\
 Hamilton, ON \textbar{} West Vancouver, BC \\
-\faEnvelope\ \href{mailto:alex@jando.live}{alex@jando.live} \quad
-\faPhone\ +1 (236) 865-5560 \quad
-\faGlobe\ \link{https://jando.live}{jando.live} \quad
-\faGithub\ \link{https://github.com/Alex-Jando}{github.com/Alex-Jando} \quad
-\faLinkedin\ \link{https://www.linkedin.com/in/alex-jando}{alex-jando}
-
-\section*{Summary}
-\small Mechatronics-focused engineering student at McMaster University with hands-on experience designing, building, and integrating robotic and embedded systems. Strong background in mechanical design, controls, sensors, and hardware--software integration, with leadership experience on multidisciplinary engineering projects.
+\href{mailto:alex@jando.live}{alex@jando.live} \quad
++1 (236) 865-5560 \quad
+\link{https://jando.live}{jando.live} \quad
+\link{https://github.com/Alex-Jando}{GitHub} \quad
+\link{https://www.linkedin.com/in/alex-jando}{LinkedIn}
 
 \section*{Education}
-\resumeSubheading{McMaster University}{Expected 2029}{Bachelor of Engineering (B.Eng.), General Engineering}{Hamilton, ON}
-\small Focus: Mechatronics, Robotics, Embedded and Mechanical Engineering
+\resumeSubheading{McMaster University}{Expected 2029}{Mechatronics Engineering and Management (B.Eng.Mgt.)}{Hamilton, ON}
 
 \section*{Technical Skills}
 \small
-\textbf{Programming:} Python, C/C++, MATLAB \\
-\textbf{Embedded Systems:} Arduino, Raspberry Pi, Jetson Nano \\
-\textbf{Controls \& Robotics:} PID Control, Motor Control, Sensors, Actuators \\
-\textbf{Computer Vision:} OpenCV, NumPy \\
-\textbf{CAD \& Manufacturing:} Autodesk Inventor, OnShape, 3D Printing, Laser Cutting \\
-\textbf{Tools:} Git, Linux, Oscilloscopes, Multimeters
+\textbf{Programming:} Python, C/C++, Java, JavaScript/TypeScript, MATLAB, SQL \\
+\textbf{Testing \& Software:} Pytest, Playwright, Jenkins, React, Next.js, Flask, OpenCV \\
+\textbf{Hardware \& Embedded:} ESP32, Arduino, Raspberry Pi, Jetson Nano, sensors, motor control, basic wiring \\
+\textbf{CAD \& Manufacturing:} Fusion 360, Autodesk Inventor, Onshape, 3D printing, laser cutting \\
+\textbf{Engineering Tools:} Git, Bitbucket, Linux, Jira, Confluence
 
 \section*{Experience}
-\resumeSubheading{McMaster University}{September 2025 -- December 2025}{Engineering Project Manager \& Software Lead}{Hamilton, ON}
+\resumeSubheading{Corinex Communications}{May 2026 -- Present}{Hardware R\&D Engineering Co-op / Software QA Engineering Co-op}{Vancouver, BC}
 \begin{itemize}
-  \resumeItem{Led a multidisciplinary engineering team through system planning, design, and final robotic system delivery.}
-  \resumeItem{Managed project scope, timelines, and task allocation across mechanical, electrical, and software subsystems.}
-  \resumeItem{Designed mechanical components in Autodesk Inventor and manufactured parts using 3D printing and laser cutting.}
-  \resumeItem{Developed Python-based control software integrating Raspberry Pi and Arduino motor control systems.}
+  \resumeItem{Transitioned from Software QA to Hardware R\&D after six weeks, expanding from test automation into mechanical design, prototyping, and workshop development.}
+  \resumeItem{Developed automated tests with Python, Pytest, and Playwright, integrated them into Jenkins CI, and tracked defects using Bitbucket and Jira.}
+  \resumeItem{Designed production and workshop components in Fusion 360, then manufactured and iterated prototypes using 3D printing.}
+  \resumeItem{Contributed to workshop layout, ventilation-system development, equipment installation, and basic electrical wiring.}
 \end{itemize}
 
 \resumeSubheading{Hypercharge Canada}{June 2023 -- August 2023}{EV Charger Technician Intern}{Vancouver, BC}
@@ -64,40 +58,38 @@ Hamilton, ON \textbar{} West Vancouver, BC \\
   \resumeItem{Diagnosed hardware faults, replaced internal components, and performed electrical checks and quality control.}
 \end{itemize}
 
+\resumeSubheading{McMaster University}{September 2025 -- December 2025}{Project Coordinator \& Software Lead, Engineering Design Project}{Hamilton, ON}
+\begin{itemize}
+  \resumeItem{Coordinated scope, timelines, and task allocation for a five-person multidisciplinary engineering team.}
+  \resumeItem{Designed manufactured components and Python control software integrating Raspberry Pi and Arduino systems.}
+\end{itemize}
+
 \section*{Projects}
-\resumeProject{FIRA RoboWorld Cup Autonomous Race Car}{Team Project}\\
-\textbf{News Interview:} \link{https://www.nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010/}{nsnews.com/local-news/west-van-high-school-trio-wins-national-robotics-championship-sets-eyes-on-world-stage-8817010}
+\resumeProject{Accessible Macro Pad}{Project Coordinator \& Sole Hardware Designer}\\
+\textbf{Case Study:} \link{https://jando.live/projects/accessible-macro-pad}{jando.live/projects/accessible-macro-pad}
 \begin{itemize}
-  \resumeItem{Designed and built an autonomous line-following race car using Raspberry Pi and Arduino.}
-  \resumeItem{Implemented computer vision edge detection and PID steering control using Python and OpenCV.}
-  \resumeItem{Performed extensive real-world testing and tuning to achieve competition-ready performance.}
+  \resumeItem{Designed an accessible Bluetooth device with three large physical controls and six configurable mobile actions.}
+  \resumeItem{Created the enclosure, keycaps, and ESP32 resistor-ladder circuit; contributed to firmware and the React Native app.}
+  \resumeItem{Rebuilt failed connections and calibrated ADC thresholds until all three inputs triggered reliably.}
 \end{itemize}
 
-\resumeProject{Q-Arm Order Packing Robot}{ENG 1P13 Engineering Design Project}\\
-\textbf{Project Portfolio:} \link{https://app.notion.com/p/P-1-Robotic-End-Effector-System-325a5473791680c7be1fe87f22bf5c24}{app.notion.com/p/P-1-Robotic-End-Effector-System}
+\resumeProject{FIRA RoboWorld Cup Autonomous Race Car}{1st Nationally, 2nd Internationally}
 \begin{itemize}
-  \resumeItem{Designed a custom robotic end effector in Autodesk Inventor for automated object handling.}
-  \resumeItem{Developed control software for pick-and-place motion and validated gripping reliability.}
+  \resumeItem{Built an autonomous race car using Raspberry Pi, Arduino, Python, and OpenCV.}
+  \resumeItem{Implemented vision-based edge detection and PID steering, then tuned the integrated system for competition.}
 \end{itemize}
 
-\resumeProject{NoNotes -- AI Powered Note Taking Platform}{Backend Lead}\\
-\textbf{Video demo:} \link{https://www.youtube.com/watch?v=EBiBeUzb0xY}{youtube.com/watch?v=EBiBeUzb0xY}
+\resumeProject{NoNotes, AI-Powered Note-Taking Platform}{1st Place, HappyHacks II}
 \begin{itemize}
-  \resumeItem{Built backend systems for audio processing and AI summarization, demonstrating strong system integration skills.}
-\end{itemize}
-
-\resumeProject{Personal Engineering Portfolio}{Solo}\\
-\textbf{Live:} \link{https://www.jando.live}{jando.live}
-\begin{itemize}
-  \resumeItem{Documented robotics, mechanical, and embedded projects with CAD models, code, and system diagrams.}
+  \resumeItem{Led backend development for a Flask and SQLite platform that converted lectures into searchable notes.}
+  \resumeItem{Integrated speech-to-text, NLTK processing, and automated summarization during a 48-hour hackathon.}
 \end{itemize}
 
 \section*{Awards \& Certifications}
 \small
-1st Place FIRA RoboWorld Cup (National) \textbar{} 2nd Place (International) \\
-1st Place HappyHacks II \textbar{} CyberTitan Platinum \\
-National Lifeguard \textbar{} Standard First Aid \& CPR C \textbar{} DELF B2 French
+1st Place, FIRA RoboWorld Cup National \textbar{} 2nd Place, FIRA RoboWorld Cup International \\
+1st Place, HappyHacks II \textbar{} Developer of the Year, Game of Apps \textbar{} CyberTitan Platinum Division
 
 \section*{Languages}
-\small English (Native) \textbar{} French (Fluent)
+\small English (Native) \textbar{} French (Fluent, DELF B2)
 \end{document}

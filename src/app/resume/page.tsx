@@ -4,7 +4,7 @@ import resume from "@/generated/resume.json";
 
 export const metadata: Metadata = {
   title: "Resume | Alexander Jando",
-  description: "Alexander Jando's mechatronics engineering resume.",
+  description: "Alexander Jando's engineering resume.",
 };
 
 const contactIcons = [FaEnvelope, FaPhone, FaGlobe, FaGithub, FaLinkedin];
@@ -16,7 +16,7 @@ export default function Resume() {
         <div>
           <p className="eyebrow">Experience &amp; Qualifications</p>
           <h1>Resume</h1>
-          <p className="page-intro">My current mechatronics engineering resume.</p>
+          <p className="page-intro">My current engineering resume.</p>
         </div>
         <div className="resume-actions">
           <a className="button-link" href="/resume/EngineeringResume.pdf" download>[ Download PDF ]</a>
@@ -43,10 +43,12 @@ export default function Resume() {
           </ul>
         </header>
 
-        <section>
-          <h3>Summary</h3>
-          <p>{resume.summary}</p>
-        </section>
+        {resume.summary && (
+          <section>
+            <h3>Summary</h3>
+            <p>{resume.summary}</p>
+          </section>
+        )}
 
         {resume.education && (
           <section>

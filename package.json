@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "resume:build": "node scripts/build-resumes.mjs",
+    "resume:pdf": "node scripts/render-resume-pdf.mjs",
     "resume:watch": "node scripts/watch-resumes.mjs"
   },
   "dependencies": {

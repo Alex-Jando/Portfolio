@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Home | Alexander Jando",
@@ -30,10 +31,39 @@ const Home = () => {
           <p className="eyebrow">Engineering Portfolio</p>
           <h1>Hi, I&apos;m Alexander Jando.</h1>
           <h3>Developer &#183; Engineer &#183; Designer</h3>
-          <p>Here, you&apos;ll find projects I&apos;ve worked on, skills I&apos;ve developed, and insights into my journey as an aspiring engineer.</p>
+          <p>
+            I&apos;m a mechatronics engineering student who enjoys building
+            across hardware and software, from embedded devices and robots to
+            practical developer tools.
+          </p>
           <div className="home-actions">
             <Link className="button-link" href="/projects">[ Explore Projects ]</Link>
             <Link className="button-link secondary" href="/resume">[ View Resume ]</Link>
+            <Link className="button-link secondary" href="/contact">[ Contact Me ]</Link>
+          </div>
+          <div className="home-contact-links" aria-label="Quick contact links">
+            <a href="mailto:alex@jando.live" aria-label="Email Alexander Jando">
+              <FaEnvelope aria-hidden="true" />
+              <span>Email</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/alex-jando/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Alexander Jando on LinkedIn"
+            >
+              <FaLinkedin aria-hidden="true" />
+              <span>LinkedIn</span>
+            </a>
+            <a
+              href="https://github.com/Alex-Jando"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Alexander Jando on GitHub"
+            >
+              <FaGithub aria-hidden="true" />
+              <span>GitHub</span>
+            </a>
           </div>
         </section>
       </main>

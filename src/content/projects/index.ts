@@ -25,16 +25,16 @@ export const projectDetails = {
 export type ProjectSlug = keyof typeof projectDetails;
 
 export const projectEntries = [
+  projectDetails["accessible-macro-pad"],
   projectDetails["nonotes"],
-  projectDetails["skydle"],
-  projectDetails["py-rat"],
   projectDetails["fira-race-car"],
   projectDetails["q-arm"],
-  projectDetails["accessible-macro-pad"],
-  projectDetails["ai-short-story-video-maker"],
   projectDetails["http-pyserver"],
+  projectDetails["skydle"],
+  projectDetails["ai-short-story-video-maker"],
   projectDetails["myplate"],
   projectDetails["portfolio"],
+  projectDetails["py-rat"],
 ];
 
 export function getProject(slug: string) {
