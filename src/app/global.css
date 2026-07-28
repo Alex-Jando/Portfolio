@@ -339,9 +339,27 @@ h1 { margin-bottom: 0.75rem; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1
 }
 
 @media print {
-  .site-header, .resume-page-heading { display: none; }
-  .page-shell { width: auto; min-height: 0; padding: 0; }
-  .resume-document { width: 100%; margin: 0; padding: 0.65in; border: 0; box-shadow: none; }
+  @page { size: letter; margin: 0; }
+  html, body, #main-content, .resume-page {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    background: #fff !important;
+  }
+  .skip-link, .site-header, .resume-page-heading { display: none !important; }
+  .page-shell { width: auto; min-height: 0; margin: 0; padding: 0; }
+  .resume-document {
+    width: 100%;
+    min-height: 11in;
+    margin: 0;
+    padding: 0.5in 0.55in;
+    border: 0;
+    box-shadow: none;
+    background: #fff !important;
+    font-size: 9pt;
+    print-color-adjust: exact;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
