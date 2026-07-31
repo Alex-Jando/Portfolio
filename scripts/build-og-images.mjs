@@ -52,16 +52,27 @@ const MIN_SOURCE_WIDTH = 380;
  */
 async function panel(imagePath) {
   const meta = await sharp(imagePath).metadata();
+  // Upscaling past this factor visibly softens the panel.
   const scale = Math.max(IMAGE_PANEL_WIDTH / meta.width, HEIGHT / meta.height);
+  const wouldBlur = scale > 1.15;
 
-  // Logos and diagrams are usually light-on-white and read as a glaring slab
-  // against the dark card. Inset those on the surface colour instead of
-  // bleeding them to the edges. Photos and screenshots fill the panel.
+  // Logos, diagrams, and screenshots are flat art: cropping them cuts off
+  // meaning, and light ones read as a glaring slab against the dark card. Inset
+  // those on the surface colour. Photographs crop safely, so let them bleed.
+  //
+  // Entropy separates the two reliably where brightness does not: the FIRA car
+  // is photographed on a white table, so it is "light" but still a photo.
+  // Measured here, photos land at 6.5+ and flat art at 2.2 or below.
   const stats = await sharp(imagePath).stats();
-  const { r, g, b } = stats.dominant;
-  const isLight = (r * 299 + g * 587 + b * 114) / 1000 > 170;
+  const isFlatArt = stats.entropy < 4.5;
 
-  if (isLight || scale > 1.15) {
+  // Inset also protects against blur, but only when cropping cannot save us.
+  // A tall-enough source (a square photo, say) still fills the panel sharply
+  // after a centre crop, so judge blur on the crop rather than the full fit.
+  const cropScale = IMAGE_PANEL_WIDTH / meta.width;
+  const canCropSharply = cropScale <= 1.15 && meta.height >= HEIGHT * 0.75;
+
+  if (isFlatArt || (wouldBlur && !canCropSharply)) {
     const inset = await sharp(imagePath)
       .resize(IMAGE_PANEL_WIDTH - 56, HEIGHT - 96, {
         fit: "contain",
@@ -69,7 +80,7 @@ async function panel(imagePath) {
       })
       .toBuffer();
 
-    return sharp({
+    const buffer = await sharp({
       create: {
         width: IMAGE_PANEL_WIDTH,
         height: HEIGHT,
@@ -80,15 +91,19 @@ async function panel(imagePath) {
       .composite([{ input: inset, gravity: "center" }])
       .png()
       .toBuffer();
+
+    return { buffer, inset: true };
   }
 
-  return sharp(imagePath)
+  const buffer = await sharp(imagePath)
     .resize(IMAGE_PANEL_WIDTH, HEIGHT, {
       fit: "cover",
       position: "attention",
       background: { r: 17, g: 28, b: 52, alpha: 1 },
     })
     .toBuffer();
+
+  return { buffer, inset: false };
 }
 
 /**
@@ -241,21 +256,22 @@ async function render(name, options) {
     return file;
   }
 
-  // Composite artwork, then lay the fade and accent rules back on top so the
-  // panel blends into the card instead of looking pasted on.
+  // Composite artwork, then lay the accent rules back on top. Bled photos also
+  // get a left-edge fade so they blend into the card; inset art already sits on
+  // the card colour, where a fade would just smear its light edge.
   const overlay = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}">
   <defs><linearGradient id="f" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0%" stop-color="${BACKGROUND}" stop-opacity="1"/>
     <stop offset="100%" stop-color="${BACKGROUND}" stop-opacity="0"/>
   </linearGradient></defs>
-  <rect x="${WIDTH - IMAGE_PANEL_WIDTH}" y="0" width="170" height="${HEIGHT}" fill="url(#f)"/>
+  ${artwork.inset ? "" : `<rect x="${WIDTH - IMAGE_PANEL_WIDTH}" y="0" width="170" height="${HEIGHT}" fill="url(#f)"/>`}
   <rect x="${WIDTH - IMAGE_PANEL_WIDTH}" y="0" width="4" height="${HEIGHT}" fill="${ACCENT}" opacity="0.5"/>
   <rect x="0" y="0" width="${WIDTH}" height="10" fill="${ACCENT}"/>
 </svg>`);
 
   await sharp(await base.png().toBuffer())
     .composite([
-      { input: artwork, left: WIDTH - IMAGE_PANEL_WIDTH, top: 0 },
+      { input: artwork.buffer, left: WIDTH - IMAGE_PANEL_WIDTH, top: 0 },
       { input: overlay, left: 0, top: 0 },
     ])
     .png({ compressionLevel: 9 })

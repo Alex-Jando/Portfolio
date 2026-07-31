@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { readdir } from "node:fs/promises";
+import { readdir, stat } from "node:fs/promises";
 import path from "node:path";
 
 /**
@@ -13,13 +13,28 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+export const dynamic = "force-dynamic";
+
 const PAGE_ORDER = ["default", "about", "projects", "collection", "resume", "contact"];
 
 const OgPreview = async () => {
-  const files = await readdir(path.join(process.cwd(), "public", "og"));
+  const ogDir = path.join(process.cwd(), "public", "og");
+  const files = await readdir(ogDir);
   const names = files
     .filter((file) => file.endsWith(".png"))
     .map((file) => file.replace(/\.png$/, ""));
+
+  // Cards are served with `max-age=3600`, so a rebuilt card keeps showing the
+  // previously cached bytes during review. Stamp each URL with the file mtime
+  // so regenerating always busts the browser cache.
+  const versions = new Map(
+    await Promise.all(
+      names.map(async (name) => {
+        const { mtimeMs } = await stat(path.join(ogDir, `${name}.png`));
+        return [name, Math.round(mtimeMs)] as const;
+      }),
+    ),
+  );
 
   const pages = PAGE_ORDER.filter((name) => names.includes(name));
   const projects = names.filter((name) => name.startsWith("project-")).sort();
@@ -40,7 +55,7 @@ const OgPreview = async () => {
                 must be reviewed exactly as social platforms receive them. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`/og/${name}.png`}
+              src={`/og/${name}.png?v=${versions.get(name) ?? 0}`}
               alt={`Open Graph card for ${name}`}
               width={1200}
               height={630}
