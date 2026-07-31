@@ -19,6 +19,25 @@ type ProjectModule = {
 
 const context = require.context("./", false, /\.mdx$/);
 
+/**
+ * Trims text to a sentence boundary within `limit` characters.
+ *
+ * Search engines truncate around 155-160 characters, and a snippet that stops
+ * mid-word reads as broken. Prefer the last complete sentence that fits; fall
+ * back to the last whole word with an ellipsis.
+ */
+function clampToSentence(text: string, limit = 158): string {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= limit) return clean;
+
+  const window = clean.slice(0, limit + 1);
+  const lastStop = Math.max(window.lastIndexOf(". "), window.lastIndexOf("! "));
+  if (lastStop > limit * 0.6) return window.slice(0, lastStop + 1);
+
+  const lastSpace = window.lastIndexOf(" ");
+  return `${window.slice(0, lastSpace > 0 ? lastSpace : limit)}\u2026`;
+}
+
 const loaded: ProjectEntry[] = context
   .keys()
   .map((key: string) => {
@@ -31,7 +50,20 @@ const loaded: ProjectEntry[] = context
       );
     }
 
-    return { ...project, Content };
+    // `description` drives search snippets and social cards. When a project
+    // omits it, derive one from `summary` rather than shipping a page with no
+    // description at all.
+    const description = project.description?.trim()
+      ? project.description
+      : clampToSentence(project.summary ?? "");
+
+    if (!description) {
+      throw new Error(
+        `Project "${project.slug}" needs a \`description\` or \`summary\` for search and social metadata.`,
+      );
+    }
+
+    return { ...project, description, Content };
   })
   .sort((a, b) => {
     const orderA = (a as ProjectData & { order?: number }).order ?? Number.MAX_SAFE_INTEGER;
