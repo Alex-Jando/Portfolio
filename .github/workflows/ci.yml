@@ -39,6 +39,6 @@ jobs:
 
       # Skips the LaTeX step so CI does not need Tectonic installed.
       - name: Build
-        run: npx next build
+        run: npm run og:build && npx next build
         env:
           NEXT_TELEMETRY_DISABLED: "1"

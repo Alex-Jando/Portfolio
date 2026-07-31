@@ -44,6 +44,19 @@ export const project = {
 
 Duplicate slugs/ids fail the build with a clear error.
 
+## Social share cards
+
+Link previews (Twitter/X, Facebook, LinkedIn, Discord, iMessage) use branded
+1200x630 cards generated into `public/og/`:
+
+```bash
+npm run og:build
+```
+
+This runs automatically as part of `npm run build`. Cards are derived from each
+page's title/description and each project's MDX metadata, so a new project gets
+a matching card with no extra work.
+
 ## Resume workflow
 
 The mechatronics resume has one editable source file:
@@ -102,6 +115,16 @@ None are required. Optional:
 | `NEXT_PUBLIC_SITE_URL` | Canonical origin for metadata/sitemap. Defaults to `https://jando.live`. |
 | `NEXT_PUBLIC_ENABLE_ANALYTICS` | `true`/`false` to force Vercel Analytics on or off. Defaults to on only for Vercel builds. |
 | `TECTONIC_BIN` | Absolute path to the Tectonic binary. |
+
+## Theme
+
+Two themes share one accent identity so the site reads consistently:
+
+- **Dark** (default): deep navy with amber `#fca311`
+- **Light**: warm cream with burnt amber `#9a5b06`
+
+Both are defined as CSS custom properties at the top of `src/app/global.css`
+and meet WCAG AA contrast.
 
 ## CI
 
