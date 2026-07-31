@@ -65,14 +65,23 @@ The mechatronics resume has one editable source file:
 resumes/mechatronics/resume.tex
 ```
 
-Run `npm run resume:build` to regenerate both the native web resume data and
-`public/resume/EngineeringResume.pdf`. The normal production build runs this
-step automatically. During development, `npm run dev` also watches the LaTeX
-source and rebuilds after each save.
+Run `npm run resume:build` to regenerate the native web resume data from that
+source. The normal production build runs this step automatically. During
+development, `npm run dev` also watches the LaTeX source and rebuilds after each
+save.
 
-PDF generation uses Tectonic. Install the `tectonic` executable somewhere on
-`PATH`, or set `TECTONIC_BIN` to its absolute path. If Tectonic is temporarily
-unavailable, the last valid PDF is retained while the web version is updated.
+**The downloadable PDF is a separate, manual step.** `public/resume/EngineeringResume.pdf`
+is rendered by printing the live `/resume` page with headless Chromium, so it
+needs a running site and cannot be produced by `resume:build`:
+
+```bash
+# with the site running (locally, staging, or production)
+RESUME_URL=https://jando.live/resume npm run resume:pdf
+```
+
+After editing `resume.tex`, re-render the PDF or the download will disagree with
+the page. `resume:build` guards against this: it fails when the PDF is older
+than the LaTeX source, so a stale PDF cannot reach production unnoticed.
 
 ## Deployments
 

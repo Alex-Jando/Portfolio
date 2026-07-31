@@ -1,4 +1,4 @@
-import { existsSync } from "node:fs";
+import { existsSync, statSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -86,8 +86,24 @@ await mkdir(generatedDir, { recursive: true });
 await mkdir(publicDir, { recursive: true });
 await writeFile(path.join(generatedDir, "resume.json"), `${JSON.stringify(data, null, 2)}\n`);
 
-if (!existsSync(path.join(publicDir, "EngineeringResume.pdf"))) {
+// The PDF is rendered from the live site by `npm run resume:pdf`, so it cannot be
+// regenerated here. Existence alone is not enough: if resume.tex is edited and the
+// PDF is not re-rendered, the site and the downloadable PDF silently disagree.
+const pdfPath = path.join(publicDir, "EngineeringResume.pdf");
+
+if (!existsSync(pdfPath)) {
   throw new Error("The browser-rendered resume PDF is missing. Run npm run resume:pdf after starting the site.");
+}
+
+const pdfModified = statSync(pdfPath).mtimeMs;
+const sourceModified = statSync(source).mtimeMs;
+
+if (pdfModified < sourceModified) {
+  throw new Error(
+    `${path.relative(root, pdfPath)} is older than ${path.relative(root, source)}, ` +
+      "so the downloadable PDF no longer matches the resume on the site. " +
+      "Start the site and run npm run resume:pdf to re-render it.",
+  );
 }
 
 console.log("Generated native resume data from resumes/mechatronics/resume.tex");
