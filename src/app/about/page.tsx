@@ -4,6 +4,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About | Alexander Jando",
   description: "Here's a general overview about who I am and things that interest me.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    type: "website",
+    url: "/about",
+  },
 };
 
 const About = () => {

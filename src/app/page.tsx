@@ -6,6 +6,7 @@ import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 export const metadata: Metadata = {
   title: "Home | Alexander Jando",
   description: "Welcome to my portfolio website, showcasing my projects and skills as a developer and designer.",
+  alternates: { canonical: "/" },
 };
 
 const Home = () => {

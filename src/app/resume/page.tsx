@@ -5,6 +5,11 @@ import resume from "@/generated/resume.json";
 export const metadata: Metadata = {
   title: "Resume | Alexander Jando",
   description: "Alexander Jando's engineering resume.",
+  alternates: { canonical: "/resume" },
+  openGraph: {
+    type: "website",
+    url: "/resume",
+  },
 };
 
 const contactIcons = [FaEnvelope, FaPhone, FaGlobe, FaGithub, FaLinkedin];

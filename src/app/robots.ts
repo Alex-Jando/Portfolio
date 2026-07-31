@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jando.live";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -8,6 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://jando.live/sitemap.xml",
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

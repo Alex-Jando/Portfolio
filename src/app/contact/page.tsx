@@ -11,6 +11,11 @@ import {
 export const metadata: Metadata = {
   title: "Contact | Alexander Jando",
   description: "Get in touch with me through any of these contact means.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    type: "website",
+    url: "/contact",
+  },
 };
 
 const contacts = [

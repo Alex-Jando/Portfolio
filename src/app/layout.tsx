@@ -6,6 +6,7 @@ import sections from "@/../public/data/sections.json";
 import "./global.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { JsonLd, personSchema, websiteSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://jando.live"),
@@ -27,6 +28,18 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Vercel Analytics only reports from a Vercel deployment. Self-hosted
+ * previews (for example the staging box) would otherwise load a script that
+ * can never report, so it is disabled unless explicitly turned on.
+ *
+ * Set NEXT_PUBLIC_ENABLE_ANALYTICS="true" to force it on.
+ */
+const analyticsEnabled =
+  process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === "true" ||
+  (process.env.NEXT_PUBLIC_ENABLE_ANALYTICS !== "false" &&
+    process.env.VERCEL === "1");
+
 const themeScript = `
   (() => {
     const saved = localStorage.getItem('theme');
@@ -47,6 +60,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <JsonLd schema={personSchema()} />
+        <JsonLd schema={websiteSchema()} />
         <link
           rel="icon"
           type="image/png"
@@ -83,9 +98,43 @@ export default function RootLayout({
           <ThemeToggle />
         </header>
         <div id="main-content">{children}</div>
+        <footer className="site-footer">
+          <p className="site-footer-copy">
+            &copy; {new Date().getFullYear()} Alexander Jando
+          </p>
+          <nav aria-label="Footer">
+            <ul className="site-footer-links">
+              <li>
+                <a href="mailto:alex@jando.live">Email</a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Alex-Jando"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/alex-jando/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </footer>
       </body>
-      <Analytics />
-      <SpeedInsights />
+      {analyticsEnabled && (
+        <>
+          <Analytics />
+          <SpeedInsights />
+        </>
+      )}
     </html>
   );
 }

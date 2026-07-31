@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ProjectLayout from "@/components/projects/ProjectLayout";
 import { getProject, projectDetails } from "@/content/projects";
+import { JsonLd, breadcrumbSchema, projectSchema } from "@/lib/seo";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -37,5 +38,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const Content = project.Content;
 
-  return <ProjectLayout project={{ ...project, content: <Content /> }} />;
+  return (
+    <>
+      <JsonLd schema={projectSchema(project)} />
+      <JsonLd
+        schema={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Projects", path: "/projects" },
+          { name: project.title, path: `/projects/${project.slug}` },
+        ])}
+      />
+      <ProjectLayout project={{ ...project, content: <Content /> }} />
+    </>
+  );
 }

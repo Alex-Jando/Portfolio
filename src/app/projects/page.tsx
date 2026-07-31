@@ -5,6 +5,11 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Projects | Alexander Jando",
   description: "Here are many of the projects I've worked on and completed.",
+  alternates: { canonical: "/projects" },
+  openGraph: {
+    type: "website",
+    url: "/projects",
+  },
 };
 
 const Projects = () => {

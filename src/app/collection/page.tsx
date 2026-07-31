@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: "Field Notes | Alexander Jando",
   description:
     "Projects, experiments, side quests, and other things Alexander Jando wanted to remember.",
+  alternates: { canonical: "/collection" },
+  openGraph: {
+    type: "website",
+    url: "/collection",
+  },
 };
 
 const Collection = () => {
