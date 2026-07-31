@@ -23,6 +23,13 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    // Source art tops out near 1280px wide. Without this, Next.js requests
+    // w=3840 for the collection grid, which upscales small thumbnails and
+    // re-compresses them for no benefit.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [96, 128, 256, 384, 512, 640],
+    // Thumbnails are small and detail-dense (screenshots, CAD, text).
+    qualities: [75, 90],
   },
   async headers() {
     return [

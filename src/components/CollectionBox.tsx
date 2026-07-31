@@ -43,7 +43,8 @@ const CollectionBox = ({ item, index }: { item: CollectionItem; index: number })
             src={item.thumbnail}
             alt={item.imageAlt}
             fill
-            sizes={item.featured ? "(max-width: 760px) 100vw, 62vw" : "(max-width: 760px) 100vw, 38vw"}
+            quality={90}
+            sizes={item.featured ? "(max-width: 760px) 100vw, 640px" : "(max-width: 760px) 100vw, 512px"}
           />
         )}
         <span className="collection-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>

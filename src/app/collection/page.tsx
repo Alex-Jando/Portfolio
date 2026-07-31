@@ -41,10 +41,10 @@ const Collection = () => {
               <h2>{section}</h2>
             </div>
             <div className="collection">
-              {sectionItems.map((item) => (
+              {sectionItems.map((item, indexInSection) => (
                 <CollectionBox
                   item={item}
-                  index={collectionItems.indexOf(item)}
+                  index={indexInSection}
                   key={item.id}
                 />
               ))}

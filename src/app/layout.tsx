@@ -81,12 +81,6 @@ export default function RootLayout({
         />
         <meta name="apple-mobile-web-app-title" content="Jando.live" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="Alexander Jando"
-          href="/feed.xml"
-        />
       </head>
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
