@@ -3,13 +3,14 @@ import ProjectMedia from "@/components/projects/ProjectMedia";
 
 export const project = {
   slug: "accessible-macro-pad",
+  order: 1,
   title: "Accessible Macro Pad",
   category: "Accessible Design & Embedded Systems",
   summary: "A three-button controller that turns physical key presses into useful phone actions.",
-  description: "A visual case study of an accessible Bluetooth macro pad, from early ideas to a working hardware-and-app prototype.",
-  image: "/projects/macro-pad-final-hq.png",
+  description: "An accessible three-button Bluetooth macro pad built with an ESP32 and 3D-printed enclosure, with a companion app mapping key presses to phone actions.",
+  image: "/projects/macro-pad-final-hq.webp",
   imageAlt: "Completed accessible macro pad with three large white keycaps in a blue enclosure",
-  thumbnail: "/projects/macro-pad-paired-app-hq.png",
+  thumbnail: "/projects/macro-pad-paired-app-hq.webp",
   thumbnailAlt: "Accessible macro pad beside its companion Android application",
   links: [],
   facts: [
@@ -44,7 +45,7 @@ export const project = {
     </p>
   </div>
   <ProjectMedia
-    src="/projects/macro-pad-paired-app-hq.png"
+    src="/projects/macro-pad-paired-app-hq.webp"
     alt="Accessible macro pad beside a tablet running its companion application"
     caption="The finished controller connected to its companion Android app."
     width={1284}
@@ -68,7 +69,7 @@ export const project = {
     </p>
   </div>
   <ProjectMedia
-    src="/projects/macro-pad-printed-enclosure.png"
+    src="/projects/macro-pad-printed-enclosure.webp"
     alt="Freshly 3D-printed blue macro pad enclosure held in front of a 3D printer"
     caption="The enclosure after printing, before the switches and electronics were installed."
     width={600}
@@ -198,8 +199,8 @@ export const project = {
     src="/projects/macro-pad-failed-wiring-hq.webp"
     alt="Early free-form resistor-ladder wiring with exposed solder joints"
     caption="Attempt 01: compact, fragile, and difficult to debug."
-    width={4032}
-    height={3024}
+    width={2000}
+    height={1500}
   />
 </div>
 
@@ -225,8 +226,8 @@ export const project = {
     src="/projects/macro-pad-breadboard-hq.webp"
     alt="Three switches and an ESP32 connected through a breadboard during testing"
     caption="Attempt 02: larger, but much easier to probe, change, and verify."
-    width={4032}
-    height={3024}
+    width={2000}
+    height={1500}
   />
 </div>
 
@@ -253,7 +254,7 @@ export const project = {
     </p>
   </div>
   <ProjectMedia
-    src="/projects/macro-pad-final-hq.png"
+    src="/projects/macro-pad-final-hq.webp"
     alt="Completed blue accessible macro pad with three large white keycaps and a fitted lid"
     caption="The completed prototype with its custom enclosure, keycaps, ESP32, and input circuit."
     width={1215}

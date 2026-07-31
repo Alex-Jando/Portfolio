@@ -2,11 +2,18 @@ import { collectionItems } from "@/content/collections";
 import CollectionBox from "@/components/CollectionBox";
 import Link from "next/link";
 import { Metadata } from "next";
+import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Field Notes | Alexander Jando",
-  description:
-    "Projects, experiments, side quests, and other things Alexander Jando wanted to remember.",
+  description: "Field notes by Alexander Jando: build logs, technical write-ups, hackathon reflections, and experiments from robotics, embedded, and software projects.",
+  alternates: { canonical: "/collection" },
+  ...socialMetadata({
+    title: "Field Notes | Alexander Jando",
+    description: "Field notes by Alexander Jando: build logs, technical write-ups, hackathon reflections, and experiments from robotics, embedded, and software projects.",
+    path: "/collection",
+    image: "collection",
+  }),
 };
 
 const Collection = () => {
@@ -34,10 +41,10 @@ const Collection = () => {
               <h2>{section}</h2>
             </div>
             <div className="collection">
-              {sectionItems.map((item) => (
+              {sectionItems.map((item, indexInSection) => (
                 <CollectionBox
                   item={item}
-                  index={collectionItems.indexOf(item)}
+                  index={indexInSection}
                   key={item.id}
                 />
               ))}

@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import { FaEnvelope, FaGithub, FaGlobe, FaLinkedin, FaPhone } from "react-icons/fa";
 import resume from "@/generated/resume.json";
+import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Resume | Alexander Jando",
-  description: "Alexander Jando's engineering resume.",
+  description: "Resume of Alexander Jando, mechatronics engineering student: embedded systems, robotics, computer vision, and full-stack software experience.",
+  alternates: { canonical: "/resume" },
+  ...socialMetadata({
+    title: "Resume | Alexander Jando",
+    description: "Resume of Alexander Jando, mechatronics engineering student: embedded systems, robotics, computer vision, and full-stack software experience.",
+    path: "/resume",
+    image: "resume",
+  }),
 };
 
 const contactIcons = [FaEnvelope, FaPhone, FaGlobe, FaGithub, FaLinkedin];
@@ -20,7 +28,7 @@ export default function Resume() {
         </div>
         <div className="resume-actions">
           <a className="button-link" href="/resume/EngineeringResume.pdf" download>[ Download PDF ]</a>
-          <a className="button-link secondary" href="/resume/EngineeringResume.pdf" target="_blank" rel="noreferrer">[ Open PDF ↗ ]</a>
+          <a className="button-link secondary" href="/resume/EngineeringResume.pdf" target="_blank" rel="noopener noreferrer">[ Open PDF ↗ ]<span className="sr-only"> (opens in a new tab)</span></a>
         </div>
       </div>
 
@@ -88,7 +96,7 @@ export default function Resume() {
           {resume.projects.map((project) => (
             <div className="resume-entry" key={project.title}>
               <div className="resume-row resume-project-row"><strong>{project.title}</strong><em>{project.subtitle}</em></div>
-              {project.links.map((link) => <p className="resume-source" key={link.href}><a href={link.href} target="_blank" rel="noreferrer">{link.label}</a></p>)}
+              {project.links.map((link) => <p className="resume-source" key={link.href}><a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span></a></p>)}
               <ul>{project.items.map((item) => <li key={item}>{item}</li>)}</ul>
             </div>
           ))}

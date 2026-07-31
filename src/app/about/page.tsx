@@ -1,9 +1,17 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About | Alexander Jando",
-  description: "Here's a general overview about who I am and things that interest me.",
+  description: "About Alexander Jando, a mechatronics engineering student at McMaster University working across embedded hardware, robotics, and software development.",
+  alternates: { canonical: "/about" },
+  ...socialMetadata({
+    title: "About | Alexander Jando",
+    description: "About Alexander Jando, a mechatronics engineering student at McMaster University working across embedded hardware, robotics, and software development.",
+    path: "/about",
+    image: "about",
+  }),
 };
 
 const About = () => {

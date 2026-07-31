@@ -1,5 +1,6 @@
 import ContactBox from "@/components/ContactBox";
 import { Metadata } from "next";
+import { socialMetadata } from "@/lib/seo";
 import {
   FaEnvelope,
   FaPhone,
@@ -10,7 +11,14 @@ import {
 
 export const metadata: Metadata = {
   title: "Contact | Alexander Jando",
-  description: "Get in touch with me through any of these contact means.",
+  description: "Get in touch with Alexander Jando by email, LinkedIn, or GitHub for engineering roles, internships, collaboration, or project questions.",
+  alternates: { canonical: "/contact" },
+  ...socialMetadata({
+    title: "Contact | Alexander Jando",
+    description: "Get in touch with Alexander Jando by email, LinkedIn, or GitHub for engineering roles, internships, collaboration, or project questions.",
+    path: "/contact",
+    image: "contact",
+  }),
 };
 
 const contacts = [

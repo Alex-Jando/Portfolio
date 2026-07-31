@@ -3,10 +3,11 @@ import { defineProject } from "@/components/projects/types";
 
 export const project = defineProject({
   slug: "portfolio",
+  order: 9,
   title: "Personal Engineering Portfolio",
   category: "Web Platform",
   summary: "The MDX-driven site you are viewing: a fast, accessible home for engineering case studies, field notes, and an automatically generated résumé.",
-  description: "A case study of the architecture and maintenance of this portfolio.",
+  description: "How this site is built: a static Next.js portfolio driven by MDX content, with generated social cards and a LaTeX-to-web resume pipeline.",
   image: "/favicon/favicon.svg",
   imageAlt: "Alexander Jando portfolio mark",
   links: [
