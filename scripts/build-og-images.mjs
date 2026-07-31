@@ -36,6 +36,61 @@ const escapeXml = (value) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&apos;");
 
+// Cards that carry artwork reserve the right side for it, so text wraps sooner.
+const IMAGE_PANEL_WIDTH = 470;
+
+// Sources below this width look soft once scaled into the panel, so they are
+// skipped in favour of a clean text-only card.
+const MIN_SOURCE_WIDTH = 380;
+
+/**
+ * Renders artwork into the right-hand panel.
+ *
+ * `cover` fills the panel and crops overflow, which suits photos and
+ * screenshots. Sources too small to fill it are letterboxed onto the card
+ * background rather than upscaled into a blurry mess.
+ */
+async function panel(imagePath) {
+  const meta = await sharp(imagePath).metadata();
+  const scale = Math.max(IMAGE_PANEL_WIDTH / meta.width, HEIGHT / meta.height);
+
+  // Logos and diagrams are usually light-on-white and read as a glaring slab
+  // against the dark card. Inset those on the surface colour instead of
+  // bleeding them to the edges. Photos and screenshots fill the panel.
+  const stats = await sharp(imagePath).stats();
+  const { r, g, b } = stats.dominant;
+  const isLight = (r * 299 + g * 587 + b * 114) / 1000 > 170;
+
+  if (isLight || scale > 1.15) {
+    const inset = await sharp(imagePath)
+      .resize(IMAGE_PANEL_WIDTH - 56, HEIGHT - 96, {
+        fit: "contain",
+        background: { r: 24, g: 38, b: 66, alpha: 1 },
+      })
+      .toBuffer();
+
+    return sharp({
+      create: {
+        width: IMAGE_PANEL_WIDTH,
+        height: HEIGHT,
+        channels: 4,
+        background: { r: 24, g: 38, b: 66, alpha: 1 },
+      },
+    })
+      .composite([{ input: inset, gravity: "center" }])
+      .png()
+      .toBuffer();
+  }
+
+  return sharp(imagePath)
+    .resize(IMAGE_PANEL_WIDTH, HEIGHT, {
+      fit: "cover",
+      position: "attention",
+      background: { r: 17, g: 28, b: 52, alpha: 1 },
+    })
+    .toBuffer();
+}
+
 /**
  * Wraps to fit the available pixel width. The display font is monospace,
  * so character advance is a reliable fraction of the font size.
@@ -69,15 +124,15 @@ function wrap(text, maxChars, maxLines) {
  * Picks the largest font size at which the title fits the card, then wraps.
  * Prevents long titles from overflowing the right edge.
  */
-function fitTitle(title) {
+function fitTitle(title, maxTextWidth) {
   for (const size of [82, 72, 62, 54, 48]) {
-    const maxChars = Math.floor(MAX_TEXT_WIDTH / (size * CHAR_RATIO));
+    const maxChars = Math.floor(maxTextWidth / (size * CHAR_RATIO));
     const lines = wrap(title, maxChars, 3);
     const fits = lines.every((line) => line.length <= maxChars);
     if (fits && lines.length <= 3) return { lines, size };
   }
   const size = 48;
-  const maxChars = Math.floor(MAX_TEXT_WIDTH / (size * CHAR_RATIO));
+  const maxChars = Math.floor(maxTextWidth / (size * CHAR_RATIO));
   return {
     lines: wrap(title, maxChars, 3).map((line) =>
       line.length > maxChars ? `${line.slice(0, maxChars - 3)}...` : line,
@@ -86,12 +141,47 @@ function fitTitle(title) {
   };
 }
 
-function card({ eyebrow, title, subtitle }) {
-  const { lines: titleLines, size: titleSize } = fitTitle(title);
-  const titleStartY = 300 - (titleLines.length - 1) * (titleSize * 0.58);
+/**
+ * Eyebrow text is letter-spaced, so it consumes more width per character than
+ * the monospace advance alone. Truncate it to the same column as the title.
+ */
+function fitEyebrow(eyebrow, maxTextWidth) {
+  const text = String(eyebrow || "").toUpperCase();
+  const perChar = 26 * CHAR_RATIO + 4; // font-size * ratio + letter-spacing
+  const maxChars = Math.floor(maxTextWidth / perChar);
+  if (text.length <= maxChars) return text;
+  return `${text.slice(0, Math.max(1, maxChars - 1)).trimEnd()}\u2026`;
+}
 
-  const subtitleMaxChars = Math.floor(MAX_TEXT_WIDTH / (28 * CHAR_RATIO));
-  const subtitleLines = subtitle ? wrap(subtitle, subtitleMaxChars, 2) : [];
+function card({ eyebrow, title, subtitle, hasImage }) {
+  // Artwork occupies the right panel, so text must wrap earlier.
+  const textWidth = hasImage ? WIDTH - IMAGE_PANEL_WIDTH - TEXT_X - 60 : MAX_TEXT_WIDTH;
+
+  const { lines: titleLines, size: titleSize } = fitTitle(title, textWidth);
+  // Keep the first title line clear of the eyebrow (y=150) no matter how many
+  // lines wrap; otherwise long titles ride up and collide with it.
+  const EYEBROW_BASELINE = 150;
+  const SUBTITLE_SIZE = 28;
+  const SUBTITLE_LEADING = 40;
+  const FOOTER_TOP = 520; // accent rule sits at y=546
+
+  // Flow the block downward from the eyebrow instead of centring it, so a
+  // three-line title cannot run into the subtitle beneath it.
+  const titleStartY = EYEBROW_BASELINE + titleSize + 26;
+  const titleBottom = titleStartY + (titleLines.length - 1) * (titleSize * 1.16);
+
+  const subtitleMaxChars = Math.floor(textWidth / (SUBTITLE_SIZE * CHAR_RATIO));
+  const subtitleTop = titleBottom + 62;
+  const subtitleRoom = Math.max(0, Math.floor((FOOTER_TOP - subtitleTop) / SUBTITLE_LEADING) + 1);
+  const subtitleLines = subtitle
+    ? wrap(subtitle, subtitleMaxChars, Math.min(hasImage ? 3 : 2, subtitleRoom))
+    : [];
+
+  // Decorative circles would sit under the artwork panel, so drop them there.
+  const flourish = hasImage
+    ? ""
+    : `<circle cx="1080" cy="120" r="190" fill="${ACCENT}" opacity="0.07"/>
+  <circle cx="1150" cy="560" r="150" fill="${ACCENT}" opacity="0.05"/>`;
 
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">
   <defs>
@@ -102,10 +192,9 @@ function card({ eyebrow, title, subtitle }) {
   </defs>
   <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#bg)"/>
   <rect x="0" y="0" width="${WIDTH}" height="10" fill="${ACCENT}"/>
-  <circle cx="1080" cy="120" r="190" fill="${ACCENT}" opacity="0.07"/>
-  <circle cx="1150" cy="560" r="150" fill="${ACCENT}" opacity="0.05"/>
+  ${flourish}
 
-  <text x="${TEXT_X}" y="150" font-family="'Courier New', Courier, monospace" font-size="26" font-weight="700" letter-spacing="4" fill="${ACCENT}">${escapeXml((eyebrow || "").toUpperCase())}</text>
+  <text x="${TEXT_X}" y="150" font-family="'Courier New', Courier, monospace" font-size="26" font-weight="700" letter-spacing="4" fill="${ACCENT}">${escapeXml(fitEyebrow(eyebrow, textWidth))}</text>
 
   ${titleLines
     .map(
@@ -117,7 +206,7 @@ function card({ eyebrow, title, subtitle }) {
   ${subtitleLines
     .map(
       (line, i) =>
-        `<text x="${TEXT_X}" y="${455 + i * 40}" font-family="'Courier New', Courier, monospace" font-size="28" fill="${MUTED}">${escapeXml(line)}</text>`,
+        `<text x="${TEXT_X}" y="${subtitleTop + i * SUBTITLE_LEADING}" font-family="'Courier New', Courier, monospace" font-size="${SUBTITLE_SIZE}" fill="${MUTED}">${escapeXml(line)}</text>`,
     )
     .join("\n  ")}
 
@@ -128,7 +217,49 @@ function card({ eyebrow, title, subtitle }) {
 
 async function render(name, options) {
   const file = path.join(OUT_DIR, `${name}.png`);
-  await sharp(card(options)).png({ compressionLevel: 9 }).toFile(file);
+
+  // Resolve artwork first: a missing or too-small source falls back to the
+  // text-only layout rather than producing an upscaled, blurry panel.
+  let artwork = null;
+  if (options.image) {
+    const imagePath = path.join(ROOT, "public", options.image.replace(/^\//, ""));
+    try {
+      const meta = await sharp(imagePath).metadata();
+      if (meta.width >= MIN_SOURCE_WIDTH && meta.height >= MIN_SOURCE_WIDTH) {
+        artwork = await panel(imagePath);
+      } else {
+        console.warn(`  ${name}: source ${meta.width}x${meta.height} too small; text-only card`);
+      }
+    } catch {
+      console.warn(`  ${name}: could not read ${options.image}; text-only card`);
+    }
+  }
+
+  const base = sharp(card({ ...options, hasImage: Boolean(artwork) }));
+  if (!artwork) {
+    await base.png({ compressionLevel: 9 }).toFile(file);
+    return file;
+  }
+
+  // Composite artwork, then lay the fade and accent rules back on top so the
+  // panel blends into the card instead of looking pasted on.
+  const overlay = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}">
+  <defs><linearGradient id="f" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="${BACKGROUND}" stop-opacity="1"/>
+    <stop offset="100%" stop-color="${BACKGROUND}" stop-opacity="0"/>
+  </linearGradient></defs>
+  <rect x="${WIDTH - IMAGE_PANEL_WIDTH}" y="0" width="170" height="${HEIGHT}" fill="url(#f)"/>
+  <rect x="${WIDTH - IMAGE_PANEL_WIDTH}" y="0" width="4" height="${HEIGHT}" fill="${ACCENT}" opacity="0.5"/>
+  <rect x="0" y="0" width="${WIDTH}" height="10" fill="${ACCENT}"/>
+</svg>`);
+
+  await sharp(await base.png().toBuffer())
+    .composite([
+      { input: artwork, left: WIDTH - IMAGE_PANEL_WIDTH, top: 0 },
+      { input: overlay, left: 0, top: 0 },
+    ])
+    .png({ compressionLevel: 9 })
+    .toFile(file);
   return file;
 }
 
@@ -147,14 +278,15 @@ async function main() {
       eyebrow: "Engineering Portfolio",
       title: "Alexander Jando",
       subtitle: "Embedded systems, robotics, and software projects.",
+      image: "/images/alexander-jando-headshot.webp",
     }),
   );
 
   const staticPages = [
     { name: "projects", eyebrow: "Portfolio", title: "Projects", subtitle: "Hardware and software case studies." },
-    { name: "about", eyebrow: "Background", title: "About Me", subtitle: "Who I am and what I like building." },
-    { name: "resume", eyebrow: "Experience", title: "Resume", subtitle: "Mechatronics engineering resume." },
-    { name: "contact", eyebrow: "Get in touch", title: "Contact", subtitle: "Ways to reach me." },
+    { name: "about", eyebrow: "Background", title: "About Me", subtitle: "Who I am and what I like building.", image: "/images/alexander-jando-headshot.webp" },
+    { name: "resume", eyebrow: "Experience", title: "Resume", subtitle: "Mechatronics engineering resume.", image: "/images/alexander-jando-headshot.webp" },
+    { name: "contact", eyebrow: "Get in touch", title: "Contact", subtitle: "Ways to reach me.", image: "/images/alexander-jando-headshot.webp" },
     { name: "collection", eyebrow: "Writing", title: "Field Notes", subtitle: "Build notes, experiments, and side quests." },
   ];
   for (const page of staticPages) written.push(await render(page.name, page));
@@ -170,6 +302,7 @@ async function main() {
         eyebrow: readField(source, "category") || "Project",
         title: readField(source, "title") || slug,
         subtitle: readField(source, "summary") || "",
+        image: readField(source, "image"),
       }),
     );
   }
