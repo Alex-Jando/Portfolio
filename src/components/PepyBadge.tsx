@@ -7,19 +7,20 @@ const PEPY_PROJECT = "https://pepy.tech/projects/http-pyserver";
  * Renders the pepy.tech download badge, but only if pepy actually responds.
  *
  * The badge is a third-party image, so an outage would otherwise leave a
- * broken-image icon on the page. This fetches the SVG at build time and
- * inlines it: if pepy is down, unreachable, or returns anything other than an
- * SVG, the component renders nothing and the surrounding copy still reads
+ * broken-image icon on the page. This fetches the SVG server-side and inlines
+ * it: if pepy is down, unreachable, or returns anything other than an SVG,
+ * the component renders nothing and the surrounding copy still reads
  * correctly.
  *
- * Inlining also removes an external request at view time. The count refreshes
- * whenever the site is rebuilt.
+ * The fetch revalidates daily, so the count stays current between deploys
+ * rather than being frozen at whatever it was on the last build.
  */
 const PepyBadge = async () => {
   let svg: string;
 
   try {
     const response = await fetch(PEPY_BADGE, {
+      next: { revalidate: 86400 },
       signal: AbortSignal.timeout(5000),
     });
 

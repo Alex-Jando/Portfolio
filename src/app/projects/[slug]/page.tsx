@@ -8,6 +8,11 @@ type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+// Project pages are static, but the HTTP-PyServer page embeds a live download
+// count from pepy.tech. Revalidating daily keeps that number current between
+// deploys instead of freezing it at build time.
+export const revalidate = 86400;
+
 export function generateStaticParams() {
   return Object.keys(projectDetails).map((slug) => ({ slug }));
 }
