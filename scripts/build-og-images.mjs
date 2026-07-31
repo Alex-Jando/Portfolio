@@ -6,7 +6,9 @@
  * portrait, so linking previously produced badly cropped previews. This
  * renders branded cards in the site's dark palette instead.
  *
- * Output: public/og/<slug>.png  (plus public/og/default.png)
+ * Output: public/og/<slug>.jpg  (plus public/og/default.jpg)
+ * JPEG, not PNG: these cards are photographic and are refetched by every link
+ * scraper, so lossy compression cuts them ~80% with no visible difference.
  *
  * Run: npm run og:build
  */
@@ -231,7 +233,7 @@ function card({ eyebrow, title, subtitle, hasImage }) {
 }
 
 async function render(name, options) {
-  const file = path.join(OUT_DIR, `${name}.png`);
+  const file = path.join(OUT_DIR, `${name}.jpg`);
 
   // Resolve artwork first: a missing or too-small source falls back to the
   // text-only layout rather than producing an upscaled, blurry panel.
@@ -252,7 +254,7 @@ async function render(name, options) {
 
   const base = sharp(card({ ...options, hasImage: Boolean(artwork) }));
   if (!artwork) {
-    await base.png({ compressionLevel: 9 }).toFile(file);
+    await base.jpeg({ quality: 86, mozjpeg: true }).toFile(file);
     return file;
   }
 
@@ -274,7 +276,7 @@ async function render(name, options) {
       { input: artwork.buffer, left: WIDTH - IMAGE_PANEL_WIDTH, top: 0 },
       { input: overlay, left: 0, top: 0 },
     ])
-    .png({ compressionLevel: 9 })
+    .jpeg({ quality: 86, mozjpeg: true })
     .toFile(file);
   return file;
 }

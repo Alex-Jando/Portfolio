@@ -50,10 +50,10 @@ export function websiteSchema() {
 /** Absolute social share image URL with the dimensions scrapers expect. */
 export function ogImage(name: string) {
   return {
-    url: `${SITE_URL}/og/${name}.png`,
+    url: `${SITE_URL}/og/${name}.jpg`,
     width: 1200,
     height: 630,
-    type: "image/png",
+    type: "image/jpeg",
   };
 }
 

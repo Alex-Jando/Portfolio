@@ -117,7 +117,7 @@ export default function RootLayout({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  GitHub
+                  GitHub<span className="sr-only"> (opens in a new tab)</span>
                 </a>
               </li>
               <li>
@@ -126,7 +126,7 @@ export default function RootLayout({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  LinkedIn
+                  LinkedIn<span className="sr-only"> (opens in a new tab)</span>
                 </a>
               </li>
             </ul>
