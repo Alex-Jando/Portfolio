@@ -5,11 +5,11 @@ import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Projects | Alexander Jando",
-  description: "Here are many of the projects I've worked on and completed.",
+  description: "Engineering and software case studies by Alexander Jando: autonomous robotics, embedded devices, accessible hardware, Python tooling, and web apps.",
   alternates: { canonical: "/projects" },
   ...socialMetadata({
     title: "Projects | Alexander Jando",
-    description: "Here are many of the projects I've worked on and completed.",
+    description: "Engineering and software case studies by Alexander Jando: autonomous robotics, embedded devices, accessible hardware, Python tooling, and web apps.",
     path: "/projects",
     image: "projects",
   }),

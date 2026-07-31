@@ -6,11 +6,11 @@ import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Field Notes | Alexander Jando",
-  description: "Projects, experiments, side quests, and other things Alexander Jando wanted to remember.",
+  description: "Field notes by Alexander Jando: build logs, technical write-ups, hackathon reflections, and experiments from robotics, embedded, and software projects.",
   alternates: { canonical: "/collection" },
   ...socialMetadata({
     title: "Field Notes | Alexander Jando",
-    description: "Projects, experiments, side quests, and other things Alexander Jando wanted to remember.",
+    description: "Field notes by Alexander Jando: build logs, technical write-ups, hackathon reflections, and experiments from robotics, embedded, and software projects.",
     path: "/collection",
     image: "collection",
   }),
