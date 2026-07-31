@@ -362,7 +362,7 @@ h1 { margin-bottom: 0.75rem; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1
     padding: 0;
     background: #fff !important;
   }
-  .skip-link, .site-header, .resume-page-heading { display: none !important; }
+  .skip-link, .site-header, .site-footer, .resume-page-heading { display: none !important; }
   .page-shell { width: auto; min-height: 0; margin: 0; padding: 0; }
   .resume-document {
     width: 100%;
