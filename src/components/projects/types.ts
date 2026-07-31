@@ -13,6 +13,8 @@ export type ProjectFact = {
 
 export type ProjectData = {
   slug: string;
+  /** Display order on the projects page; lower appears first. */
+  order?: number;
   title: string;
   category: string;
   summary: string;
