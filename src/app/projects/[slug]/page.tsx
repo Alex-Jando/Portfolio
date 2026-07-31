@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ProjectLayout from "@/components/projects/ProjectLayout";
 import { getProject, projectDetails } from "@/content/projects";
-import { JsonLd, breadcrumbSchema, projectSchema } from "@/lib/seo";
+import { JsonLd, breadcrumbSchema, projectSchema, socialMetadata } from "@/lib/seo";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -21,13 +21,14 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     title: `${project.title} | Alexander Jando`,
     description: project.description,
     alternates: { canonical: `/projects/${project.slug}` },
-    openGraph: {
-      type: "article",
+    ...socialMetadata({
       title: `${project.title} | Alexander Jando`,
       description: project.description,
-      url: `/projects/${project.slug}`,
-      images: [{ url: project.image, alt: project.imageAlt }],
-    },
+      path: `/projects/${project.slug}`,
+      image: `project-${project.slug}`,
+      type: "article",
+      imageAlt: project.imageAlt,
+    }),
   };
 }
 

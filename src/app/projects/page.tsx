@@ -1,15 +1,18 @@
 import Project from "@/components/Project";
 import { projectEntries } from "@/content/projects";
 import { Metadata } from "next";
+import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Projects | Alexander Jando",
   description: "Here are many of the projects I've worked on and completed.",
   alternates: { canonical: "/projects" },
-  openGraph: {
-    type: "website",
-    url: "/projects",
-  },
+  ...socialMetadata({
+    title: "Projects | Alexander Jando",
+    description: "Here are many of the projects I've worked on and completed.",
+    path: "/projects",
+    image: "projects",
+  }),
 };
 
 const Projects = () => {

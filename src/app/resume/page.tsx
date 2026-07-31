@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import { FaEnvelope, FaGithub, FaGlobe, FaLinkedin, FaPhone } from "react-icons/fa";
 import resume from "@/generated/resume.json";
+import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Resume | Alexander Jando",
   description: "Alexander Jando's engineering resume.",
   alternates: { canonical: "/resume" },
-  openGraph: {
-    type: "website",
-    url: "/resume",
-  },
+  ...socialMetadata({
+    title: "Resume | Alexander Jando",
+    description: "Alexander Jando's engineering resume.",
+    path: "/resume",
+    image: "resume",
+  }),
 };
 
 const contactIcons = [FaEnvelope, FaPhone, FaGlobe, FaGithub, FaLinkedin];

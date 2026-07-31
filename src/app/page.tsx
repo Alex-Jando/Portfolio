@@ -2,11 +2,19 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Home | Alexander Jando",
   description: "Welcome to my portfolio website, showcasing my projects and skills as a developer and designer.",
   alternates: { canonical: "/" },
+  ...socialMetadata({
+    title: "Alexander Jando | Mechatronics Engineering Portfolio",
+    description:
+      "Embedded systems, robotics, software, and engineering projects by Alexander Jando.",
+    path: "/",
+    image: "default",
+  }),
 };
 
 const Home = () => {

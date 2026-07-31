@@ -6,7 +6,7 @@ import sections from "@/../public/data/sections.json";
 import "./global.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { JsonLd, personSchema, websiteSchema } from "@/lib/seo";
+import { JsonLd, personSchema, websiteSchema, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://jando.live"),
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     siteName: "Alexander Jando",
     title: "Alexander Jando | Mechatronics Engineering Portfolio",
     description: "Embedded systems, robotics, software, and engineering projects by Alexander Jando.",
-    images: [{ url: "/images/alexander-jando-headshot.webp", width: 1024, height: 1024, alt: "Alexander Jando" }],
+    images: [{ ...ogImage("default"), alt: "Alexander Jando engineering portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Alexander Jando | Mechatronics Engineering Portfolio",
     description: "Embedded systems, robotics, software, and engineering projects by Alexander Jando.",
-    images: ["/images/alexander-jando-headshot.webp"],
+    images: [{ ...ogImage("default"), alt: "Alexander Jando engineering portfolio" }],
   },
 };
 

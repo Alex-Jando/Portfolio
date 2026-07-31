@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "concurrently -k 'next dev --turbopack' 'npm run resume:watch'",
-    "build": "npm run resume:build && next build",
+    "build": "npm run resume:build && npm run og:build && next build",
     "start": "next start -p 8080",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "og:build": "node scripts/build-og-images.mjs",
     "resume:build": "node scripts/build-resumes.mjs",
     "resume:pdf": "node scripts/render-resume-pdf.mjs",
     "resume:watch": "node scripts/watch-resumes.mjs"

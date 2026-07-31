@@ -1,5 +1,6 @@
 import ContactBox from "@/components/ContactBox";
 import { Metadata } from "next";
+import { socialMetadata } from "@/lib/seo";
 import {
   FaEnvelope,
   FaPhone,
@@ -12,10 +13,12 @@ export const metadata: Metadata = {
   title: "Contact | Alexander Jando",
   description: "Get in touch with me through any of these contact means.",
   alternates: { canonical: "/contact" },
-  openGraph: {
-    type: "website",
-    url: "/contact",
-  },
+  ...socialMetadata({
+    title: "Contact | Alexander Jando",
+    description: "Get in touch with me through any of these contact means.",
+    path: "/contact",
+    image: "contact",
+  }),
 };
 
 const contacts = [

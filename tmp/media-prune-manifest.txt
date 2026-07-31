@@ -1,0 +1,23 @@
+# Media pruning manifest - 2026-07-31T17:51:13Z
+# Branch: refresh/v3-selfhost-improvements
+# All files recoverable from git history.
+
+## Unreferenced assets to DELETE
+    569043  public/projects/accessible-macro-pad.png
+     84087  public/projects/macro-pad-architecture.png
+   3142638  public/projects/macro-pad-breadboard-hq.jpg
+   2795900  public/projects/macro-pad-failed-wiring.jpg
+      7596  public/projects/http-pyserver.png
+    271266  public/projects/macro-pad-paired-app.png
+    137714  public/projects/macro-pad-app.png
+    272732  public/projects/macro-pad-final.png
+     68541  public/projects/macro-pad-circuit.png
+     75833  public/projects/macro-pad-breadboard.jpg
+     33491  public/projects/1p13_project1.png
+      9933  public/projects/macro-pad-enclosure-cad.jpg
+    277610  public/collections/http-pyserver-raster.png
+    172906  public/collections/carbon-pals-home.png
+      3811  public/collections/http-pyserver-protocol-playground.html
+
+## Video to RE-ENCODE (keep, optimize)
+27838520 public/collections/AIShortStoryVideoMakerDemo.mp4

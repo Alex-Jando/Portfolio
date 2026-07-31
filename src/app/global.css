@@ -38,15 +38,23 @@
   --shadow: rgba(3, 9, 20, 0.28);
 }
 
+/*
+ * Light theme: warm cream paper.
+ *
+ * Keeps the amber identity of the dark theme rather than switching to a
+ * different accent hue, so both modes read as the same site. The accent is
+ * darkened to a burnt amber so it passes contrast on a light background
+ * (the dark theme's #fca311 would be far too light here).
+ */
 :root[data-theme="light"] {
-  --primary: #111827;
-  --secondary: #00635f;
-  --background: #e8e8e5;
-  --surface: #f5f5f2;
-  --surface-strong: #ffffff;
-  --muted: #4b5563;
-  --border: rgba(0, 99, 95, 0.38);
-  --shadow: rgba(17, 24, 39, 0.12);
+  --primary: #24201a;
+  --secondary: #9a5b06;
+  --background: #f6f1e6;
+  --surface: #fbf7ee;
+  --surface-strong: #ede4d2;
+  --muted: #5c5346;
+  --border: rgba(154, 91, 6, 0.32);
+  --shadow: rgba(74, 59, 36, 0.13);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -233,7 +241,11 @@ h1 { margin-bottom: 0.75rem; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1
 .resume-skills dt::after { content: ":"; }
 .resume-note { margin: 1.5rem auto 0; color: var(--muted); text-align: center; font-size: 0.8rem; }
 
-.not-found { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; margin-top: 4rem; text-align: center; font-size: 1.5rem; }
+.not-found { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.not-found h1 { margin-bottom: 0.25rem; }
+.not-found-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; width: 100%; margin: 1.5rem 0; padding: 0; list-style: none; }
+.not-found-links li { display: flex; flex-direction: column; gap: 0.35rem; padding: 1rem; border: 1px solid var(--border); background: var(--surface); }
+.not-found-links span { color: var(--muted); font-size: 0.9rem; }
 
 @media (max-width: 980px) {
   .site-header { grid-template-columns: 1fr auto; }

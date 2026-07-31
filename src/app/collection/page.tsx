@@ -2,16 +2,18 @@ import { collectionItems } from "@/content/collections";
 import CollectionBox from "@/components/CollectionBox";
 import Link from "next/link";
 import { Metadata } from "next";
+import { socialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Field Notes | Alexander Jando",
-  description:
-    "Projects, experiments, side quests, and other things Alexander Jando wanted to remember.",
+  description: "Projects, experiments, side quests, and other things Alexander Jando wanted to remember.",
   alternates: { canonical: "/collection" },
-  openGraph: {
-    type: "website",
-    url: "/collection",
-  },
+  ...socialMetadata({
+    title: "Field Notes | Alexander Jando",
+    description: "Projects, experiments, side quests, and other things Alexander Jando wanted to remember.",
+    path: "/collection",
+    image: "collection",
+  }),
 };
 
 const Collection = () => {
