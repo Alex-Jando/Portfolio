@@ -2,8 +2,9 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Not Found | Alexander Jando",
-  description: "This page doesn't exist yet.",
+  title: "Page Not Found | Alexander Jando",
+  description:
+    "That page could not be found. Browse Alexander Jando's engineering case studies, field notes, resume, and contact details instead.",
   robots: { index: false, follow: true },
 };
 

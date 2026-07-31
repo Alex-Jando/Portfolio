@@ -18,6 +18,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        // Internal contact sheet for reviewing generated share cards.
+        disallow: "/og-preview",
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
