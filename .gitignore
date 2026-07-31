@@ -42,3 +42,7 @@ next-env.d.ts
 
 # Local scratch space
 tmp/
+
+# Generated from resumes/mechatronics/resume.tex by scripts/build-resumes.mjs
+# (runs via `npm run resume:build` before every next build)
+src/generated/
