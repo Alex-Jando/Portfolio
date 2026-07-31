@@ -1,9 +1,14 @@
 # Self-hosted staging deployment for portfolio.jando.live
 #
+# This is a systemd USER unit, matching the convention used by the other
+# apps on this host (birthday-calendar, jando-fileshare, etc.). User
+# lingering is enabled for the openclaw user, so it survives reboots.
+#
 # Install:
-#   sudo cp scripts/portfolio-staging.service /etc/systemd/system/
-#   sudo systemctl daemon-reload
-#   sudo systemctl enable --now portfolio-staging
+#   mkdir -p ~/.config/systemd/user
+#   cp scripts/portfolio-staging.service ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now portfolio-staging
 #
 # This is the staging/testing site only. Production runs on Vercel.
 
@@ -14,8 +19,6 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=openclaw
-Group=openclaw
 WorkingDirectory=/srv/openclaw/workspace/projects/portfolio-refresh
 Environment=NODE_ENV=production
 Environment=NEXT_TELEMETRY_DISABLED=1
@@ -29,9 +32,8 @@ TimeoutStopSec=20
 # Hardening
 NoNewPrivileges=true
 PrivateTmp=true
-ProtectSystem=full
-ProtectHome=read-only
+ProtectSystem=strict
 ReadWritePaths=/srv/openclaw/workspace/projects/portfolio-refresh
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

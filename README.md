@@ -77,9 +77,10 @@ Staging runs on the VPS behind Caddy and is driven by systemd.
 First-time setup:
 
 ```bash
-sudo cp scripts/portfolio-staging.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable --now portfolio-staging
+mkdir -p ~/.config/systemd/user
+cp scripts/portfolio-staging.service ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now portfolio-staging
 ```
 
 Deploy the current branch:

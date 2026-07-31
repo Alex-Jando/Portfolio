@@ -45,10 +45,10 @@ echo "==> Building"
 npm run build
 
 echo "==> Restarting $SERVICE"
-if systemctl list-unit-files | grep -q "^${SERVICE}.service"; then
-  sudo systemctl restart "$SERVICE"
+if systemctl --user list-unit-files | grep -q "^${SERVICE}.service"; then
+  systemctl --user restart "$SERVICE"
   sleep 2
-  systemctl is-active --quiet "$SERVICE" && echo "==> $SERVICE is active"
+  systemctl --user is-active --quiet "$SERVICE" && echo "==> $SERVICE is active"
 else
   echo "Service $SERVICE not installed. See scripts/portfolio-staging.service" >&2
   exit 1

@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   title: "Alexander Jando",
   description: "The engineering and software portfolio of Alexander Jando.",
   alternates: { canonical: "./" },
+  // Staging mirror must not be indexed alongside production.
+  ...((process.env.NEXT_PUBLIC_SITE_URL ?? "").includes("portfolio.jando.live")
+    ? { robots: { index: false, follow: false } }
+    : {}),
   openGraph: {
     type: "website",
     siteName: "Alexander Jando",
