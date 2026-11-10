@@ -95,11 +95,14 @@ export default function Resume() {
           <h3>Engineering Projects</h3>
           {resume.projects.map((project) => (
             <div className="resume-entry" key={project.title}>
-              <div className="resume-row resume-project-row"><strong>{project.title}</strong><em>{project.subtitle}</em></div>
-              {project.links.map((link) => <p className="resume-source" key={link.href}><a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span></a></p>)}
+              <div className="resume-row resume-project-row">
+                <strong>{project.links[0] ? <a href={project.links[0].href}>{project.title}</a> : project.title}</strong>
+                <em>{project.subtitle}</em>
+              </div>
               <ul>{project.items.map((item) => <li key={item}>{item}</li>)}</ul>
             </div>
           ))}
+          <p className="resume-source"><a href="https://jando.live/projects">More projects: jando.live/projects</a></p>
         </section>
 
         <section>
