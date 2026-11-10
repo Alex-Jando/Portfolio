@@ -80,8 +80,11 @@ RESUME_URL=https://jando.live/resume npm run resume:pdf
 ```
 
 After editing `resume.tex`, re-render the PDF or the download will disagree with
-the page. `resume:build` guards against this: it fails when the PDF is older
-than the LaTeX source, so a stale PDF cannot reach production unnoticed.
+the page. `resume:pdf` records source and PDF content hashes in
+`public/resume/resume-manifest.json`; commit that file alongside the PDF.
+`resume:build` verifies these hashes instead of filesystem timestamps, which
+change during deployment. Preview and download share a PDF URL versioned by
+its content hash to avoid stale browser caches.
 
 ## Deployments
 

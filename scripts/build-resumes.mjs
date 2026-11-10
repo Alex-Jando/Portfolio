@@ -1,4 +1,4 @@
-import { existsSync, statSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -114,12 +114,13 @@ if (!existsSync(pdfPath)) {
   throw new Error("The browser-rendered resume PDF is missing. Run npm run resume:pdf after starting the site.");
 }
 
-const pdfModified = statSync(pdfPath).mtimeMs;
-const sourceModified = statSync(source).mtimeMs;
+const manifest = JSON.parse(await readFile(path.join(publicDir, "resume-manifest.json"), "utf8"));
+const sourceHash = createHash("sha256").update(tex.replace(/\r\n/g, "\n")).digest("hex");
+const pdfHash = createHash("sha256").update(await readFile(pdfPath)).digest("hex");
 
-if (pdfModified < sourceModified) {
+if (manifest.sourceHash !== sourceHash || manifest.pdfHash !== pdfHash) {
   throw new Error(
-    `${path.relative(root, pdfPath)} is older than ${path.relative(root, source)}, ` +
+    `${path.relative(root, pdfPath)} does not match its source/PDF manifest, ` +
       "so the downloadable PDF no longer matches the resume on the site. " +
       "Start the site and run npm run resume:pdf to re-render it.",
   );
