@@ -27,8 +27,8 @@ export default function Resume() {
           <p className="page-intro">My current engineering resume.</p>
         </div>
         <div className="resume-actions">
-          <a className="button-link" href="/resume/EngineeringResume.pdf" download>[ Download PDF ]</a>
-          <a className="button-link secondary" href="/resume/EngineeringResume.pdf" target="_blank" rel="noopener noreferrer">[ Open PDF ↗ ]<span className="sr-only"> (opens in a new tab)</span></a>
+          <a className="button-link" href={resume.pdfUrl} download>[ Download PDF ]</a>
+          <a className="button-link secondary" href={resume.pdfUrl} target="_blank" rel="noopener noreferrer">[ Open PDF ↗ ]<span className="sr-only"> (opens in a new tab)</span></a>
         </div>
       </div>
 
@@ -79,12 +79,12 @@ export default function Resume() {
         </section>
 
         <section>
-          <h3>Experience</h3>
+          <h3>Engineering Experience</h3>
           {resume.experience.map((entry) => (
             <div className="resume-entry" key={`${entry.title}-${entry.date}`}>
               <div className="resume-row">
-                <strong>{entry.title}</strong><strong>{entry.date}</strong>
-                <em>{entry.subtitle}</em><em>{entry.location}</em>
+                <strong>{entry.title}</strong><strong>{entry.location}</strong>
+                <em>{entry.subtitle}</em><em>{entry.date}</em>
               </div>
               <ul>{entry.items.map((item) => <li key={item}>{item}</li>)}</ul>
             </div>
@@ -92,7 +92,7 @@ export default function Resume() {
         </section>
 
         <section>
-          <h3>Projects</h3>
+          <h3>Engineering Projects</h3>
           {resume.projects.map((project) => (
             <div className="resume-entry" key={project.title}>
               <div className="resume-row resume-project-row"><strong>{project.title}</strong><em>{project.subtitle}</em></div>
@@ -100,11 +100,6 @@ export default function Resume() {
               <ul>{project.items.map((item) => <li key={item}>{item}</li>)}</ul>
             </div>
           ))}
-        </section>
-
-        <section>
-          <h3>Awards &amp; Certifications</h3>
-          <p>{resume.awards.join(" | ")}</p>
         </section>
 
         <section>

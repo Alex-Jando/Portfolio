@@ -1,96 +1,79 @@
-% General engineering resume, source for both web and PDF versions.
-\documentclass[10pt]{article}
+\documentclass[10pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[margin=0.52in]{geometry}
+\usepackage[margin=0.55in]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage[hidelinks]{hyperref}
-\usepackage{tabularx}
-\usepackage{ragged2e}
 \pagenumbering{gobble}
 \setlength{\parindent}{0pt}
-\setlist[itemize]{noitemsep, topsep=1pt, leftmargin=*, itemsep=0pt}
-\titleformat{\section}{\vspace{2pt}\bfseries\normalsize}{}{0pt}{}[\titlerule\vspace{-3pt}]
-\titlespacing*{\section}{0pt}{4pt}{2pt}
-\newcommand{\resumeItem}[1]{\item \small #1}
-\newcommand{\resumeSubheading}[4]{
-  \textbf{#1} \hfill \textbf{#2}\\
-  \textit{#3} \hfill \textit{#4}\\
-}
-\newcommand{\resumeProject}[2]{
-  \textbf{#1} \hfill \textit{#2}\\
-}
+\setlist[itemize]{leftmargin=*,topsep=1pt,itemsep=0pt,parsep=0pt}
+\titleformat{\section}{\bfseries\large}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+\newcommand{\resumeItem}[1]{\item #1}
+\newcommand{\resumeSubheading}[4]{\textbf{#1}\hfill\textbf{#2}\\\textit{#3}\hfill\textit{#4}\par}
+\newcommand{\resumeProject}[2]{\textbf{#1}\hfill\textit{#2}\par}
 \newcommand{\link}[2]{\href{#1}{#2}}
-
 \begin{document}
-{\LARGE \textbf{Alexander Jando}}\\
-Hamilton, ON \textbar{} West Vancouver, BC \\
-\href{mailto:alex@jando.live}{alex@jando.live} \quad
-+1 (236) 865-5560 \quad
-\link{https://jando.live}{jando.live} \quad
-\link{https://github.com/Alex-Jando}{GitHub} \quad
-\link{https://www.linkedin.com/in/alex-jando}{LinkedIn}
+{\LARGE\textbf{Alexander Jando}}\\[3pt]
+Hamilton, ON \textbar{} West Vancouver, BC\\[2pt]
+\href{mailto:alex@jando.live}{alex@jando.live} \textbar{} (236) 865-5560 \textbar{}
+\link{https://jando.live}{jando.live} \textbar{}
+\link{https://github.com/Alex-Jando}{GitHub: Alex-Jando} \textbar{}
+\link{https://www.linkedin.com/in/alex-jando}{LinkedIn: alex-jando}
 
 \section*{Education}
-\resumeSubheading{McMaster University}{Expected 2030}{Mechatronics Engineering and Management (B.Eng.Mgt.)}{Hamilton, ON}
+\resumeSubheading{McMaster University}{Expected April 2030}{Mechatronics Engineering and Management Co-op (B.Eng.Mgt.)}{Hamilton, ON}
 
 \section*{Technical Skills}
-\small
-\textbf{Programming:} Python, C/C++, Java, JavaScript/TypeScript, MATLAB, SQL \\
-\textbf{Testing \& Software:} Pytest, Playwright, Jenkins, React, Next.js, Flask, OpenCV \\
-\textbf{Hardware \& Embedded:} ESP32, Arduino, Raspberry Pi, Jetson Nano, sensors, motor control, basic wiring \\
-\textbf{CAD \& Manufacturing:} Fusion 360, Autodesk Inventor, Onshape, 3D printing, laser cutting \\
-\textbf{Engineering Tools:} Git, Bitbucket, Linux, Jira, Confluence
+\textbf{Programming:} Python, C/C++, Java, JavaScript/TypeScript, MATLAB, SQL\\
+\textbf{Hardware \& Testing:} ESP32, Arduino, Raspberry Pi, oscilloscopes, firmware flashing, motor control\\
+\textbf{CAD \& Prototyping:} Fusion 360, Autodesk Inventor, Onshape, 3D printing, laser cutting\\
+\textbf{Software \& Tools:} Pytest, Playwright, Jenkins, OpenCV, Flask, React, Git, Linux, Jira
 
-\section*{Experience}
-\resumeSubheading{Corinex Communications}{May 2026 -- Present}{Hardware R\&D Engineering Co-op / Software QA Engineering Co-op}{Vancouver, BC}
+\section*{Engineering Experience}
+\textbf{Corinex Communications}\hfill\textbf{Vancouver, BC}\\
+\textit{Hardware R\&D Engineering Co-op}\hfill\textit{June -- August 2026}
 \begin{itemize}
-  \resumeItem{Transitioned from Software QA to Hardware R\&D after six weeks, expanding from test automation into mechanical design, prototyping, and workshop development.}
-  \resumeItem{Developed automated tests with Python, Pytest, and Playwright, integrated them into Jenkins CI, and tracked defects using Bitbucket and Jira.}
-  \resumeItem{Designed production and workshop components in Fusion 360, then manufactured and iterated prototypes using 3D printing.}
-  \resumeItem{Contributed to workshop layout, ventilation-system development, equipment installation, and basic electrical wiring.}
+\resumeItem{Built a test rack supporting 192 concurrent devices on a virtual network and flashed embedded firmware for testing and validation.}
+\resumeItem{Developed software to automate bill of materials (BOM) exports and collect related engineering drawings and specification sheets into folders, saving the hardware team an estimated 30 minutes per day.}
+\resumeItem{Designed and built an in-house pressurized IP67 test setup, custom fixtures, and workshop tools for product assembly, testing, and prototyping.}
+\resumeItem{Tested and tuned communication hardware with oscilloscopes to analyze frequency bands, investigate hardware behavior, and verify system performance.}
+\resumeItem{Designed components in Fusion 360 and iterated 3D-printed prototypes for production and workshop use.}
+\end{itemize}
+\textit{Software QA Engineering Co-op}\hfill\textit{May -- June 2026}
+\begin{itemize}
+\resumeItem{Developed automated tests with Python, Pytest, and Playwright and integrated them into Jenkins CI for repeatable software validation.}
+\resumeItem{Investigated defects across software and embedded hardware with QA and firmware engineers; verified fixes.}
+\end{itemize}
+\textbf{Hypercharge Networks}\hfill\textbf{North Vancouver, BC}\\
+\textit{EV Charger Technician Intern}\hfill\textit{June -- August 2023}
+\begin{itemize}
+\resumeItem{Prepared and configured 100+ EV chargers by initializing firmware, registering units on the network, and checking connectivity and performance before deployment.}
+\resumeItem{Diagnosed faulty or uncalibrated units, replaced internal components, and documented hardware tests and quality checks in a production environment.}
 \end{itemize}
 
-\resumeSubheading{McMaster University}{September 2025 -- December 2025}{Project Manager \& Software Lead, Robotic Order-Packing System (ENG 1P13)}{Hamilton, ON}
+\section*{Engineering Projects}
+\resumeProject{Robotic Order-Packing System}{Project Manager \& Software Lead}
 \begin{itemize}
-  \resumeItem{Managed a five-person team building an automated warehouse order-packing system on a Q-Arm robot, owning scope, timelines, and task allocation across mechanical and software workstreams.}
-  \resumeItem{Led development of modular Python control software for product lookup, arm motion sequencing, packing operations, and operation logging.}
-  \resumeItem{Designed a 4:1 geared rack-and-pinion gripper in Autodesk Inventor within a 100 g end-effector limit, iterating through 3D-printed prototypes to resolve gear meshing, tolerance, and rigidity failures.}
+\resumeItem{Led a five-person team building a Q-Arm packing system for McMaster ENG 1P13; managed scope and schedules.}
+\resumeItem{Designed a 4:1 rack-and-pinion gripper in Autodesk Inventor within a 100 g limit; iterated 3D-printed prototypes to resolve gear meshing, tolerance, and rigidity issues.}
+\resumeItem{Developed modular Python control software for product lookup, arm motion sequencing, packing, and operation logging.}
+\end{itemize}
+\resumeProject{\link{https://jando.live/projects/accessible-macro-pad}{Accessible Macro Pad}}{Project Coordinator \& Hardware Designer}
+\begin{itemize}
+\resumeItem{Designed a Bluetooth device with three large controls and six configurable mobile actions; created the enclosure, keycaps, and ESP32 resistor-ladder circuit.}
+\resumeItem{Contributed to firmware and the React Native app; repaired connections and calibrated ADC thresholds for reliable detection of all three inputs.}
+\end{itemize}
+\resumeProject{FIRA RoboWorld Cup Autonomous Race Car}{Computer Vision \& Controls Developer}
+\begin{itemize}
+\resumeItem{Built an autonomous car with Raspberry Pi, Arduino, Python, and OpenCV; implemented edge detection and PID steering. Placed 1st nationally and 2nd internationally in the autonomous car competition.}
+\end{itemize}
+\resumeProject{NoNotes -- AI Note-Taking Platform}{Backend Development Lead}
+\begin{itemize}
+\resumeItem{Led Flask and SQLite backend development, integrating speech-to-text, NLTK, and summarization to create searchable lecture notes; won 1st place at HappyHacks II in 48 hours.}
 \end{itemize}
 
-\resumeSubheading{Hypercharge Canada}{June 2023 -- August 2023}{EV Charger Technician Intern}{Vancouver, BC}
-\begin{itemize}
-  \resumeItem{Assembled, configured, and tested 100+ EV charging units involving embedded firmware and power electronics.}
-  \resumeItem{Diagnosed hardware faults, replaced internal components, and performed electrical checks and quality control.}
-\end{itemize}
-
-\section*{Projects}
-\resumeProject{Accessible Macro Pad}{Project Coordinator \& Sole Hardware Designer}\\
-\textbf{Case Study:} \link{https://jando.live/projects/accessible-macro-pad}{jando.live/projects/accessible-macro-pad}
-\begin{itemize}
-  \resumeItem{Designed an accessible Bluetooth device with three large physical controls and six configurable mobile actions.}
-  \resumeItem{Created the enclosure, keycaps, and ESP32 resistor-ladder circuit; contributed to firmware and the React Native app.}
-  \resumeItem{Rebuilt failed connections and calibrated ADC thresholds until all three inputs triggered reliably.}
-\end{itemize}
-
-\resumeProject{FIRA RoboWorld Cup Autonomous Race Car}{1st Nationally, 2nd Internationally}
-\begin{itemize}
-  \resumeItem{Built an autonomous race car using Raspberry Pi, Arduino, Python, and OpenCV.}
-  \resumeItem{Implemented vision-based edge detection and PID steering, then tuned the integrated system for competition.}
-\end{itemize}
-
-\resumeProject{NoNotes, AI-Powered Note-Taking Platform}{1st Place, HappyHacks II}
-\begin{itemize}
-  \resumeItem{Led backend development for a Flask and SQLite platform that converted lectures into searchable notes.}
-  \resumeItem{Integrated speech-to-text, NLTK processing, and automated summarization during a 48-hour hackathon.}
-\end{itemize}
-
-\section*{Awards \& Certifications}
-\small
-1st Place, FIRA RoboWorld Cup National \textbar{} 2nd Place, FIRA RoboWorld Cup International \\
-1st Place, HappyHacks II \textbar{} Developer of the Year, Game of Apps \textbar{} CyberTitan Platinum Division
-
-\section*{Languages}
-\small English (Native) \textbar{} French (Fluent, DELF B2)
+\vspace{3pt}
+\textbf{Languages:} English (Native); French (Fluent, DELF B2)
 \end{document}

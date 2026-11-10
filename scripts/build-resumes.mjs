@@ -1,4 +1,5 @@
 import { existsSync, statSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -13,6 +14,8 @@ const source = path.join(root, "resumes/mechatronics/resume.tex");
 const generatedDir = path.join(root, "src/generated");
 const publicDir = path.join(root, "public/resume");
 const tex = await readFile(source, "utf8");
+const pdfFile = path.join(publicDir, "EngineeringResume.pdf");
+const pdfVersion = existsSync(pdfFile) ? createHash("sha256").update(await readFile(pdfFile)).digest("hex").slice(0, 16) : "missing";
 
 const clean = (value = "") => value
   .replace(/\\&/g, "&")
@@ -43,7 +46,7 @@ const parseEntries = (value, command) => {
   });
 };
 
-const skillsBlock = section("Technical Skills", "Experience");
+const skillsBlock = section("Technical Skills", "Engineering Experience");
 const skills = [...skillsBlock.matchAll(/\\textbf\{([^}]*)\}\s*([^\\\n]*)/g)].map((match) => ({
   label: clean(match[1]).replace(/:$/, ""), value: clean(match[2]),
 }));
@@ -55,8 +58,24 @@ const education = educationMatch ? {
   location: clean(educationMatch[4]), detail: clean(educationMatch[5]),
 } : null;
 
+const experienceBlock = section("Engineering Experience", "Engineering Projects");
+const companies = [...experienceBlock.matchAll(/\\textbf\{([^}]*)\}\\hfill\\textbf\{([^}]*)\}/g)];
+const experience = companies.flatMap((company, companyIndex) => {
+  const block = experienceBlock.slice(company.index, companies[companyIndex + 1]?.index ?? experienceBlock.length);
+  const roles = [...block.matchAll(/\\textit\{([^}]*)\}\\hfill\\textit\{([^}]*)\}/g)];
+  return roles.map((role, roleIndex) => ({
+    title: clean(company[1]), location: clean(company[2]), subtitle: clean(role[1]), date: clean(role[2]),
+    items: items(block.slice(role.index, roles[roleIndex + 1]?.index ?? block.length)),
+  }));
+});
+const projectsBlock = section("Engineering Projects", null);
+const projectLinks = links(projectsBlock);
+const projects = parseEntries(projectsBlock.replace(/\\link\{([^}]*)\}\{([^}]*)\}/g, "$2"), "resumeProject")
+  .map((project) => ({ ...project, links: projectLinks.filter((link) => link.label === project.title) }));
+
 const data = {
   variant: "General Engineering Resume",
+  pdfUrl: `/resume/EngineeringResume.pdf?v=${pdfVersion}`,
   name: "Alexander Jando",
   locations: "Hamilton, ON | West Vancouver, BC",
   contacts: [
@@ -69,10 +88,10 @@ const data = {
   summary: clean(section("Summary", "Education")),
   education,
   skills,
-  experience: parseEntries(section("Experience", "Projects"), "resumeSubheading"),
-  projects: parseEntries(section("Projects", "Awards \\& Certifications"), "resumeProject"),
-  awards: clean(section("Awards \\& Certifications", "Languages")).split(/\\\\|\|/).map(clean).filter(Boolean),
-  languages: clean(section("Languages", null)).split("|").map(clean).filter(Boolean),
+  experience,
+  projects,
+  awards: [],
+  languages: clean(tex.match(/\\textbf\{Languages:\}([^\n]*)/)?.[1]).split(";").map(clean).filter(Boolean),
   generatedAt: new Date().toISOString(),
 };
 
